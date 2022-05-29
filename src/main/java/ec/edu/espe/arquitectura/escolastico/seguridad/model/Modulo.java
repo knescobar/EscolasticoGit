@@ -2,7 +2,6 @@ package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,18 +14,14 @@ import javax.persistence.Table;
 
 public class Modulo implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 5465481L;
     @Id
-    @Basic(optional = false)
     @Column(name = "cod_modulo", nullable = false, length = 16)
     private String codModulo;
-    @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
-    @Basic(optional = false)
     @Column(name = "estado", nullable = false, length = 3)
     private String estado;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "modulo")
@@ -37,13 +32,6 @@ public class Modulo implements Serializable {
 
     public Modulo(String codModulo) {
         this.codModulo = codModulo;
-    }
-
-    public Modulo(String codModulo, String nombre, String estado, int version) {
-        this.codModulo = codModulo;
-        this.nombre = nombre;
-        this.estado = estado;
-        this.version = version;
     }
 
     public String getCodModulo() {
@@ -95,7 +83,6 @@ public class Modulo implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Modulo)) {
             return false;
         }

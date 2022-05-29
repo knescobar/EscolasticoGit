@@ -3,7 +3,6 @@ package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,52 +19,40 @@ import javax.persistence.UniqueConstraint;
 
 public class Usuario implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 554654852L;
     @Id
-    @Basic(optional = false)
     @Column(name = "cod_usuario", nullable = false, length = 30)
     private String codUsuario;
-    @Basic(optional = false)
     @Column(name = "mail", nullable = false, length = 128)
     private String mail;
-    @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 128)
     private String nombre;
     @Column(name = "telefono", length = 10)
     private String telefono;
-    @Basic(optional = false)
     @Column(name = "clave", nullable = false, length = 64)
     private String clave;
-    @Basic(optional = false)
     @Column(name = "estado", nullable = false, length = 3)
     private String estado;
-    @Basic(optional = false)
     @Column(name = "fecha_creacion", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCreacion;
-    @Basic(optional = false)
     @Column(name = "origen", nullable = false, length = 3)
     private String origen;
     @Column(name = "fecha_cambio_clave")
     @Temporal(TemporalType.DATE)
     private Date fechaCambioClave;
-    @Basic(optional = false)
     @Column(name = "nro_intentos_fallidos", nullable = false)
     private short nroIntentosFallidos;
     @Column(name = "fecha_ultima_sesion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaUltimaSesion;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "segUsuario")
@@ -76,21 +63,6 @@ public class Usuario implements Serializable {
 
     public Usuario(String codUsuario) {
         this.codUsuario = codUsuario;
-    }
-
-    public Usuario(String codUsuario, String mail, String nombre, String clave, String estado, Date fechaCreacion, String origen, short nroIntentosFallidos, String audUsuario, Date audFecha, String audIp, int version) {
-        this.codUsuario = codUsuario;
-        this.mail = mail;
-        this.nombre = nombre;
-        this.clave = clave;
-        this.estado = estado;
-        this.fechaCreacion = fechaCreacion;
-        this.origen = origen;
-        this.nroIntentosFallidos = nroIntentosFallidos;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
     }
 
     public String getCodUsuario() {
@@ -230,7 +202,6 @@ public class Usuario implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Usuario)) {
             return false;
         }

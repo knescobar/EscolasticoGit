@@ -2,7 +2,6 @@ package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -17,20 +16,16 @@ import javax.persistence.TemporalType;
 
 public class UsuarioPerfil implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 8564651L;
     @EmbeddedId
     protected UsuarioPerfilPK segUsuarioPerfilPK;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
     @JoinColumn(name = "cod_perfil", referencedColumnName = "cod_perfil", nullable = false, insertable = false, updatable = false)
@@ -45,14 +40,6 @@ public class UsuarioPerfil implements Serializable {
 
     public UsuarioPerfil(UsuarioPerfilPK segUsuarioPerfilPK) {
         this.segUsuarioPerfilPK = segUsuarioPerfilPK;
-    }
-
-    public UsuarioPerfil(UsuarioPerfilPK segUsuarioPerfilPK, String audUsuario, Date audFecha, String audIp, int version) {
-        this.segUsuarioPerfilPK = segUsuarioPerfilPK;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
     }
 
     public UsuarioPerfil(String codUsuario, String codPerfil) {
@@ -124,7 +111,6 @@ public class UsuarioPerfil implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof UsuarioPerfil)) {
             return false;
         }

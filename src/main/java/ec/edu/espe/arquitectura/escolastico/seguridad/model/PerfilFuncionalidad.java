@@ -2,14 +2,11 @@ package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,20 +16,16 @@ import javax.persistence.TemporalType;
 
 public class PerfilFuncionalidad implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 46545582L;
     @EmbeddedId
     protected PerfilFuncionalidadPK segPerfilFuncionalidadPK;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
     @JoinColumn(name = "cod_funcionalidad", referencedColumnName = "cod_funcionalidad", nullable = false, insertable = false, updatable = false)
@@ -48,15 +41,7 @@ public class PerfilFuncionalidad implements Serializable {
     public PerfilFuncionalidad(PerfilFuncionalidadPK segPerfilFuncionalidadPK) {
         this.segPerfilFuncionalidadPK = segPerfilFuncionalidadPK;
     }
-
-    public PerfilFuncionalidad(PerfilFuncionalidadPK segPerfilFuncionalidadPK, String audUsuario, Date audFecha, String audIp, int version) {
-        this.segPerfilFuncionalidadPK = segPerfilFuncionalidadPK;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
-    }
-
+    
     public PerfilFuncionalidad(String codPerfil, int codFuncionalidad) {
         this.segPerfilFuncionalidadPK = new PerfilFuncionalidadPK(codPerfil, codFuncionalidad);
     }
@@ -126,7 +111,6 @@ public class PerfilFuncionalidad implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof PerfilFuncionalidad)) {
             return false;
         }

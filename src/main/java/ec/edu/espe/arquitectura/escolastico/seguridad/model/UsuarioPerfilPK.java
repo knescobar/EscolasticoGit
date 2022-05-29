@@ -1,7 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -9,10 +8,8 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class UsuarioPerfilPK implements Serializable {
 
-    @Basic(optional = false)
     @Column(name = "cod_usuario", nullable = false, length = 30)
     private String codUsuario;
-    @Basic(optional = false)
     @Column(name = "cod_perfil", nullable = false, length = 8)
     private String codPerfil;
 
@@ -50,7 +47,6 @@ public class UsuarioPerfilPK implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof UsuarioPerfilPK)) {
             return false;
         }
