@@ -18,28 +18,22 @@ import javax.persistence.TemporalType;
 
 public class TipoDocumento implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 58578581L;
     @Id
-    @Basic(optional = false)
     @Column(name = "cod_tipo_documento", nullable = false, length = 16)
     private String codTipoDocumento;
-    @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 64)
     private String nombre;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perTipoDocumento")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoDocumento")
     private List<DocumentoPersona> perDocumentoPersonaList;
 
     public TipoDocumento() {
@@ -47,15 +41,6 @@ public class TipoDocumento implements Serializable {
 
     public TipoDocumento(String codTipoDocumento) {
         this.codTipoDocumento = codTipoDocumento;
-    }
-
-    public TipoDocumento(String codTipoDocumento, String nombre, String audUsuario, Date audFecha, String audIp, int version) {
-        this.codTipoDocumento = codTipoDocumento;
-        this.nombre = nombre;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
     }
 
     public String getCodTipoDocumento() {
@@ -123,7 +108,6 @@ public class TipoDocumento implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof TipoDocumento)) {
             return false;
         }

@@ -3,7 +3,6 @@ package ec.edu.espe.arquitectura.escolastico.educacion.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,68 +19,42 @@ import javax.persistence.Table;
 
 public class Carrera implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 178855L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "cod_carrera", nullable = false)
     private Integer codCarrera;
-    @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 255)
     private String nombre;
-    @Basic(optional = false)
     @Column(name = "total_semestres", nullable = false)
     private int totalSemestres;
-    @Basic(optional = false)
     @Column(name = "grado", nullable = false, length = 25)
     private String grado;
-    @Basic(optional = false)
     @Column(name = "perfil_profesional", nullable = false, length = 500)
     private String perfilProfesional;
-    @Basic(optional = false)
     @Column(name = "nivel", nullable = false, length = 32)
     private String nivel;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Basic(optional = false)
     @Column(name = "total_creditos", nullable = false, precision = 5, scale = 2)
     private BigDecimal totalCreditos;
-    @Basic(optional = false)
     @Column(name = "total_horas", nullable = false, precision = 5, scale = 2)
     private BigDecimal totalHoras;
-    @Basic(optional = false)
     @Column(name = "siglas", nullable = false, length = 32)
     private String siglas;
-    @Basic(optional = false)
     @Column(name = "precio_credito", nullable = false, precision = 5, scale = 2)
     private BigDecimal precioCredito;
     @Column(name = "modalidad", length = 64)
     private String modalidad;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codCarrera")
-    private List<MallaCarrera> eduMallaCarreraList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codCarrera")
-    private List<Matricula> eduMatriculaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "carrera")
+    private List<MallaCarrera> mallaCarrera;
     @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)
     @ManyToOne(optional = false)
-    private Departamento codDepartamento;
+    private Departamento departamento;
 
     public Carrera() {
     }
 
     public Carrera(Integer codCarrera) {
         this.codCarrera = codCarrera;
-    }
-
-    public Carrera(Integer codCarrera, String nombre, int totalSemestres, String grado, String perfilProfesional, String nivel, BigDecimal totalCreditos, BigDecimal totalHoras, String siglas, BigDecimal precioCredito) {
-        this.codCarrera = codCarrera;
-        this.nombre = nombre;
-        this.totalSemestres = totalSemestres;
-        this.grado = grado;
-        this.perfilProfesional = perfilProfesional;
-        this.nivel = nivel;
-        this.totalCreditos = totalCreditos;
-        this.totalHoras = totalHoras;
-        this.siglas = siglas;
-        this.precioCredito = precioCredito;
     }
 
     public Integer getCodCarrera() {
@@ -172,28 +145,20 @@ public class Carrera implements Serializable {
         this.modalidad = modalidad;
     }
 
-    public List<MallaCarrera> getEduMallaCarreraList() {
-        return eduMallaCarreraList;
+    public List<MallaCarrera> getMallaCarrera() {
+        return mallaCarrera;
     }
 
-    public void setEduMallaCarreraList(List<MallaCarrera> eduMallaCarreraList) {
-        this.eduMallaCarreraList = eduMallaCarreraList;
+    public void setMallaCarrera(List<MallaCarrera> mallaCarrera) {
+        this.mallaCarrera = mallaCarrera;
     }
 
-    public List<Matricula> getEduMatriculaList() {
-        return eduMatriculaList;
+    public Departamento getDepartamento() {
+        return departamento;
     }
 
-    public void setEduMatriculaList(List<Matricula> eduMatriculaList) {
-        this.eduMatriculaList = eduMatriculaList;
-    }
-
-    public Departamento getCodDepartamento() {
-        return codDepartamento;
-    }
-
-    public void setCodDepartamento(Departamento codDepartamento) {
-        this.codDepartamento = codDepartamento;
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
     }
 
     @Override

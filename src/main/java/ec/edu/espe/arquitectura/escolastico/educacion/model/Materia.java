@@ -3,7 +3,6 @@ package ec.edu.espe.arquitectura.escolastico.educacion.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -19,59 +18,42 @@ import javax.persistence.Table;
 
 public class Materia implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1478565L;
     @EmbeddedId
-    protected MateriaPK eduMateriaPK;
-    @Basic(optional = false)
+    private MateriaPK pk;
     @Column(name = "nombre", nullable = false, length = 255)
     private String nombre;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Basic(optional = false)
     @Column(name = "creditos", nullable = false, precision = 4, scale = 2)
     private BigDecimal creditos;
-    @Basic(optional = false)
     @Column(name = "horas", nullable = false, precision = 4, scale = 2)
     private BigDecimal horas;
-    @Basic(optional = false)
     @Column(name = "ponderacion", nullable = false, precision = 5, scale = 2)
     private BigDecimal ponderacion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eduMateria")
-    private List<Nrc> eduNrcList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eduMateria")
-    private List<MallaCarrera> eduMallaCarreraList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eduMateria")
-    private List<Prerequisito> eduPrerequisitoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eduMateria1")
-    private List<Prerequisito> eduPrerequisitoList1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")
+    private List<Prerequisito> materia;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "prerequisito")
+    private List<Prerequisito> prerequisito;
     @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Departamento eduDepartamento;
+    private Departamento departamento;
 
     public Materia() {
     }
 
     public Materia(MateriaPK eduMateriaPK) {
-        this.eduMateriaPK = eduMateriaPK;
-    }
-
-    public Materia(MateriaPK eduMateriaPK, String nombre, BigDecimal creditos, BigDecimal horas, BigDecimal ponderacion) {
-        this.eduMateriaPK = eduMateriaPK;
-        this.nombre = nombre;
-        this.creditos = creditos;
-        this.horas = horas;
-        this.ponderacion = ponderacion;
+        this.pk = eduMateriaPK;
     }
 
     public Materia(int codMateria, int codDepartamento) {
-        this.eduMateriaPK = new MateriaPK(codMateria, codDepartamento);
+        this.pk = new MateriaPK(codMateria, codDepartamento);
     }
 
-    public MateriaPK getEduMateriaPK() {
-        return eduMateriaPK;
+    public MateriaPK getPk() {
+        return pk;
     }
 
-    public void setEduMateriaPK(MateriaPK eduMateriaPK) {
-        this.eduMateriaPK = eduMateriaPK;
+    public void setPk(MateriaPK pk) {
+        this.pk = pk;
     }
 
     public String getNombre() {
@@ -106,52 +88,34 @@ public class Materia implements Serializable {
         this.ponderacion = ponderacion;
     }
 
-    public List<Nrc> getEduNrcList() {
-        return eduNrcList;
+    public List<Prerequisito> getMateria() {
+        return materia;
     }
 
-    public void setEduNrcList(List<Nrc> eduNrcList) {
-        this.eduNrcList = eduNrcList;
+    public void setMateria(List<Prerequisito> materia) {
+        this.materia = materia;
     }
 
-    public List<MallaCarrera> getEduMallaCarreraList() {
-        return eduMallaCarreraList;
+    public List<Prerequisito> getPrerequisito() {
+        return prerequisito;
     }
 
-    public void setEduMallaCarreraList(List<MallaCarrera> eduMallaCarreraList) {
-        this.eduMallaCarreraList = eduMallaCarreraList;
+    public void setPrerequisito(List<Prerequisito> prerequisito) {
+        this.prerequisito = prerequisito;
     }
 
-    public List<Prerequisito> getEduPrerequisitoList() {
-        return eduPrerequisitoList;
+    public Departamento getDepartamento() {
+        return departamento;
     }
 
-    public void setEduPrerequisitoList(List<Prerequisito> eduPrerequisitoList) {
-        this.eduPrerequisitoList = eduPrerequisitoList;
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
     }
-
-    public List<Prerequisito> getEduPrerequisitoList1() {
-        return eduPrerequisitoList1;
-    }
-
-    public void setEduPrerequisitoList1(List<Prerequisito> eduPrerequisitoList1) {
-        this.eduPrerequisitoList1 = eduPrerequisitoList1;
-    }
-
-    public Departamento getEduDepartamento() {
-        return eduDepartamento;
-    }
-
-    public void setEduDepartamento(Departamento eduDepartamento) {
-        this.eduDepartamento = eduDepartamento;
-    }
-
- 
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (eduMateriaPK != null ? eduMateriaPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -162,7 +126,7 @@ public class Materia implements Serializable {
             return false;
         }
         Materia other = (Materia) object;
-        if ((this.eduMateriaPK == null && other.eduMateriaPK != null) || (this.eduMateriaPK != null && !this.eduMateriaPK.equals(other.eduMateriaPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -170,7 +134,7 @@ public class Materia implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.escolastico.model.EduMateria[ eduMateriaPK=" + eduMateriaPK + " ]";
+        return "ec.edu.espe.arquitectura.escolastico.model.EduMateria[ eduMateriaPK=" + pk + " ]";
     }
     
 }

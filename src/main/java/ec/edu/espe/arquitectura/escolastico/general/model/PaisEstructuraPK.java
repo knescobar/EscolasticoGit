@@ -1,17 +1,14 @@
 package ec.edu.espe.arquitectura.escolastico.general.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class PaisEstructuraPK implements Serializable {
 
-    @Basic(optional = false)
     @Column(name = "cod_pais", nullable = false, length = 2)
     private String codPais;
-    @Basic(optional = false)
     @Column(name = "nivel", nullable = false)
     private short nivel;
 
@@ -49,7 +46,6 @@ public class PaisEstructuraPK implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof PaisEstructuraPK)) {
             return false;
         }

@@ -2,7 +2,6 @@ package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,38 +16,27 @@ import javax.persistence.Table;
 
 public class Departamento implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 152425L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "cod_departamento", nullable = false)
     private Integer codDepartamento;
-    @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 255)
     private String nombre;
-    @Basic(optional = false)
     @Column(name = "descripcion", nullable = false, length = 255)
     private String descripcion;
-    @Basic(optional = false)
     @Column(name = "siglas", nullable = false, length = 32)
     private String siglas;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codDepartamento")
-    private List<Carrera> eduCarreraList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eduDepartamento")
-    private List<Materia> eduMateriaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "departamento")
+    private List<Carrera> carreras;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "departamento")
+    private List<Materia> materias;
 
     public Departamento() {
     }
 
     public Departamento(Integer codDepartamento) {
         this.codDepartamento = codDepartamento;
-    }
-
-    public Departamento(Integer codDepartamento, String nombre, String descripcion, String siglas) {
-        this.codDepartamento = codDepartamento;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.siglas = siglas;
     }
 
     public Integer getCodDepartamento() {
@@ -83,20 +71,20 @@ public class Departamento implements Serializable {
         this.siglas = siglas;
     }
 
-    public List<Carrera> getEduCarreraList() {
-        return eduCarreraList;
+    public List<Carrera> getCarreras() {
+        return carreras;
     }
 
-    public void setEduCarreraList(List<Carrera> eduCarreraList) {
-        this.eduCarreraList = eduCarreraList;
+    public void setCarreras(List<Carrera> carreras) {
+        this.carreras = carreras;
     }
 
-    public List<Materia> getEduMateriaList() {
-        return eduMateriaList;
+    public List<Materia> getMaterias() {
+        return materias;
     }
 
-    public void setEduMateriaList(List<Materia> eduMateriaList) {
-        this.eduMateriaList = eduMateriaList;
+    public void setMaterias(List<Materia> materias) {
+        this.materias = materias;
     }
     
     @Override
@@ -108,7 +96,6 @@ public class Departamento implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Departamento)) {
             return false;
         }

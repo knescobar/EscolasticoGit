@@ -7,15 +7,15 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-05-28T17:42:49", comments="EclipseLink-2.7.7.v20200504-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-05-28T23:17:19", comments="EclipseLink-2.7.7.v20200504-rNA")
 @StaticMetamodel(Departamento.class)
 public class Departamento_ { 
 
     public static volatile SingularAttribute<Departamento, String> descripcion;
+    public static volatile ListAttribute<Departamento, Carrera> carreras;
     public static volatile SingularAttribute<Departamento, Integer> codDepartamento;
     public static volatile SingularAttribute<Departamento, String> siglas;
-    public static volatile ListAttribute<Departamento, Carrera> eduCarreraList;
-    public static volatile ListAttribute<Departamento, Materia> eduMateriaList;
     public static volatile SingularAttribute<Departamento, String> nombre;
+    public static volatile ListAttribute<Departamento, Materia> materias;
 
 }

@@ -1,12 +1,9 @@
 package ec.edu.espe.arquitectura.escolastico.general.model;
 
-import ec.edu.espe.arquitectura.escolastico.persona.model.Persona;
-import ec.edu.espe.arquitectura.escolastico.educacion.model.*;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,16 +22,13 @@ import javax.persistence.TemporalType;
 
 public class UbicacionGeografica implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 5287581L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "cod_ubicacion_geo_int", nullable = false)
     private Integer codUbicacionGeoInt;
-    @Basic(optional = false)
     @Column(name = "cod_ubicacion_geografica", nullable = false, length = 20)
     private String codUbicacionGeografica;
-    @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
     @Column(name = "codigo_area_telefono", length = 4)
@@ -43,21 +37,17 @@ public class UbicacionGeografica implements Serializable {
     private String codigoAlterno;
     @Column(name = "codigo_postal", length = 15)
     private String codigoPostal;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(mappedBy = "codUbicacionGeoInt")
-    private List<InstitucionGen> genInstitucionList;
+    @OneToMany(mappedBy = "ubicacionGeo")
+    private List<InstitucionGeneral> instituciones;
     @JoinColumn(name = "cod_pais", referencedColumnName = "cod_pais")
     @ManyToOne
     private Pais codPais;
@@ -65,32 +55,16 @@ public class UbicacionGeografica implements Serializable {
         @JoinColumn(name = "cod_pais", referencedColumnName = "cod_pais", insertable = false, updatable = false),
         @JoinColumn(name = "nivel", referencedColumnName = "nivel", nullable = false,  insertable = false, updatable = false)})
     @ManyToOne(optional = false)
-    private PaisEstructura genPaisEstructura;
-    @OneToMany(mappedBy = "codUbicacionGeoPadre")
-    private List<UbicacionGeografica> genUbicacionGeograficaList;
+    private PaisEstructura paisEstructura;
     @JoinColumn(name = "cod_ubicacion_geo_padre", referencedColumnName = "cod_ubicacion_geo_int")
     @ManyToOne
-    private UbicacionGeografica codUbicacionGeoPadre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lugarNacimiento")
-    private List<Persona> perPersonaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codUbicacionGeoInt")
-    private List<InstitucionEducativa> eduInstitucionEducativaList;
+    private UbicacionGeografica ubicacionGeoPadre;
 
     public UbicacionGeografica() {
     }
 
     public UbicacionGeografica(Integer codUbicacionGeoInt) {
         this.codUbicacionGeoInt = codUbicacionGeoInt;
-    }
-
-    public UbicacionGeografica(Integer codUbicacionGeoInt, String codUbicacionGeografica, String nombre, String audUsuario, Date audFecha, String audIp, int version) {
-        this.codUbicacionGeoInt = codUbicacionGeoInt;
-        this.codUbicacionGeografica = codUbicacionGeografica;
-        this.nombre = nombre;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
     }
 
     public Integer getCodUbicacionGeoInt() {
@@ -173,12 +147,12 @@ public class UbicacionGeografica implements Serializable {
         this.version = version;
     }
 
-    public List<InstitucionGen> getGenInstitucionList() {
-        return genInstitucionList;
+    public List<InstitucionGeneral> getInstituciones() {
+        return instituciones;
     }
 
-    public void setGenInstitucionList(List<InstitucionGen> genInstitucionList) {
-        this.genInstitucionList = genInstitucionList;
+    public void setInstituciones(List<InstitucionGeneral> instituciones) {
+        this.instituciones = instituciones;
     }
 
     public Pais getCodPais() {
@@ -189,44 +163,20 @@ public class UbicacionGeografica implements Serializable {
         this.codPais = codPais;
     }
 
-    public PaisEstructura getGenPaisEstructura() {
-        return genPaisEstructura;
+    public PaisEstructura getPaisEstructura() {
+        return paisEstructura;
     }
 
-    public void setGenPaisEstructura(PaisEstructura genPaisEstructura) {
-        this.genPaisEstructura = genPaisEstructura;
+    public void setPaisEstructura(PaisEstructura paisEstructura) {
+        this.paisEstructura = paisEstructura;
     }
 
-    public List<UbicacionGeografica> getGenUbicacionGeograficaList() {
-        return genUbicacionGeograficaList;
+    public UbicacionGeografica getUbicacionGeoPadre() {
+        return ubicacionGeoPadre;
     }
 
-    public void setGenUbicacionGeograficaList(List<UbicacionGeografica> genUbicacionGeograficaList) {
-        this.genUbicacionGeograficaList = genUbicacionGeograficaList;
-    }
-
-    public UbicacionGeografica getCodUbicacionGeoPadre() {
-        return codUbicacionGeoPadre;
-    }
-
-    public void setCodUbicacionGeoPadre(UbicacionGeografica codUbicacionGeoPadre) {
-        this.codUbicacionGeoPadre = codUbicacionGeoPadre;
-    }
-
-    public List<Persona> getPerPersonaList() {
-        return perPersonaList;
-    }
-
-    public void setPerPersonaList(List<Persona> perPersonaList) {
-        this.perPersonaList = perPersonaList;
-    }
-
-    public List<InstitucionEducativa> getEduInstitucionEducativaList() {
-        return eduInstitucionEducativaList;
-    }
-
-    public void setEduInstitucionEducativaList(List<InstitucionEducativa> eduInstitucionEducativaList) {
-        this.eduInstitucionEducativaList = eduInstitucionEducativaList;
+    public void setUbicacionGeoPadre(UbicacionGeografica ubicacionGeoPadre) {
+        this.ubicacionGeoPadre = ubicacionGeoPadre;
     }
 
     @Override

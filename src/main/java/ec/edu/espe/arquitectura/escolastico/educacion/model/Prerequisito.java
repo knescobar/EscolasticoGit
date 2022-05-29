@@ -1,7 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,24 +14,22 @@ import javax.persistence.Table;
 
 public class Prerequisito implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1585458L;
     @Id
-    @Basic(optional = false)
     @Column(name = "cod_prerequisito", nullable = false)
     private Integer codPrerequisito;
-    @Basic(optional = false)
     @Column(name = "tipo", nullable = false, length = 3)
     private String tipo;
     @JoinColumns({
         @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false),
         @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)})
     @ManyToOne(optional = false)
-    private Materia eduMateria;
+    private Materia materia;
     @JoinColumns({
         @JoinColumn(name = "cod_materia_prerequisito", referencedColumnName = "cod_materia", nullable = false),
         @JoinColumn(name = "edu_cod_departamento", referencedColumnName = "cod_departamento", nullable = false)})
     @ManyToOne(optional = false)
-    private Materia eduMateria1;
+    private Materia prerequisito;
 
     public Prerequisito() {
     }
@@ -62,20 +59,20 @@ public class Prerequisito implements Serializable {
         this.tipo = tipo;
     }
 
-    public Materia getEduMateria() {
-        return eduMateria;
+    public Materia getMateria() {
+        return materia;
     }
 
-    public void setEduMateria(Materia eduMateria) {
-        this.eduMateria = eduMateria;
+    public void setMateria(Materia materia) {
+        this.materia = materia;
     }
 
-    public Materia getEduMateria1() {
-        return eduMateria1;
+    public Materia getPrerequisito() {
+        return prerequisito;
     }
 
-    public void setEduMateria1(Materia eduMateria1) {
-        this.eduMateria1 = eduMateria1;
+    public void setPrerequisito(Materia prerequisito) {
+        this.prerequisito = prerequisito;
     }
     
     @Override

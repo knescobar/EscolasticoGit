@@ -3,7 +3,6 @@ package ec.edu.espe.arquitectura.escolastico.organizacionFisica.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,73 +18,46 @@ import javax.persistence.TemporalType;
 
 public class Edificio implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1785487548L;
     @Id
-    @Basic(optional = false)
     @Column(name = "cod_edificio", nullable = false, length = 8)
     private String codEdificio;
-    @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 128)
     private String nombre;
     @Column(name = "cod_alterno", length = 16)
     private String codAlterno;
-    @Basic(optional = false)
     @Column(name = "descripcion", nullable = false, length = 500)
     private String descripcion;
-    @Basic(optional = false)
     @Column(name = "direccion", nullable = false, length = 256)
     private String direccion;
     @Column(name = "comentario", length = 1000)
     private String comentario;
-    @Basic(optional = false)
     @Column(name = "maneja_bloques", nullable = false, length = 1)
     private String manejaBloques;
-    @Basic(optional = false)
     @Column(name = "posee_aulas", nullable = false, length = 1)
     private String poseeAulas;
-    @Basic(optional = false)
     @Column(name = "pisos", nullable = false)
     private short pisos;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
     @JoinColumn(name = "cod_sede", referencedColumnName = "cod_sede")
     @ManyToOne
-    private Sede codSede;
-    @OneToMany(mappedBy = "codEdificio")
-    private List<EdificioBloque> ofiEdificioBloqueList;
-    @OneToMany(mappedBy = "codEdificio")
-    private List<Aula> ofiAulaList;
-
+    private Sede sede;
+    @OneToMany(mappedBy = "edificio")
+    private List<EdificioBloque> bloques;
+    
     public Edificio() {
     }
 
     public Edificio(String codEdificio) {
         this.codEdificio = codEdificio;
-    }
-
-    public Edificio(String codEdificio, String nombre, String descripcion, String direccion, String manejaBloques, String poseeAulas, short pisos, String audUsuario, Date audFecha, String audIp, int version) {
-        this.codEdificio = codEdificio;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.direccion = direccion;
-        this.manejaBloques = manejaBloques;
-        this.poseeAulas = poseeAulas;
-        this.pisos = pisos;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
     }
 
     public String getCodEdificio() {
@@ -192,28 +164,20 @@ public class Edificio implements Serializable {
         this.version = version;
     }
 
-    public Sede getCodSede() {
-        return codSede;
+    public Sede getSede() {
+        return sede;
     }
 
-    public void setCodSede(Sede codSede) {
-        this.codSede = codSede;
+    public void setSede(Sede sede) {
+        this.sede = sede;
     }
 
-    public List<EdificioBloque> getOfiEdificioBloqueList() {
-        return ofiEdificioBloqueList;
+    public List<EdificioBloque> getBloques() {
+        return bloques;
     }
 
-    public void setOfiEdificioBloqueList(List<EdificioBloque> ofiEdificioBloqueList) {
-        this.ofiEdificioBloqueList = ofiEdificioBloqueList;
-    }
-
-    public List<Aula> getOfiAulaList() {
-        return ofiAulaList;
-    }
-
-    public void setOfiAulaList(List<Aula> ofiAulaList) {
-        this.ofiAulaList = ofiAulaList;
+    public void setBloques(List<EdificioBloque> bloques) {
+        this.bloques = bloques;
     }
 
     @Override

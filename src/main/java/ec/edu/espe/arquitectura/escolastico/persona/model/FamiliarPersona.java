@@ -2,7 +2,6 @@ package ec.edu.espe.arquitectura.escolastico.persona.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -17,13 +16,11 @@ import javax.persistence.TemporalType;
 
 public class FamiliarPersona implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 157858L;
     @EmbeddedId
-    protected FamiliarPersonaPK perFamiliarPersonaPK;
-    @Basic(optional = false)
+    private FamiliarPersonaPK pk;
     @Column(name = "tipo_familiar", nullable = false, length = 3)
     private String tipoFamiliar;
-    @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 128)
     private String nombre;
     @Column(name = "tipo_identificacion", length = 3)
@@ -35,50 +32,36 @@ public class FamiliarPersona implements Serializable {
     private Date fechaNacimiento;
     @Column(name = "telefono", length = 20)
     private String telefono;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Persona perPersona;
+    private Persona persona;
 
     public FamiliarPersona() {
     }
 
     public FamiliarPersona(FamiliarPersonaPK perFamiliarPersonaPK) {
-        this.perFamiliarPersonaPK = perFamiliarPersonaPK;
-    }
-
-    public FamiliarPersona(FamiliarPersonaPK perFamiliarPersonaPK, String tipoFamiliar, String nombre, String audUsuario, Date audFecha, String audIp, int version) {
-        this.perFamiliarPersonaPK = perFamiliarPersonaPK;
-        this.tipoFamiliar = tipoFamiliar;
-        this.nombre = nombre;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
+        this.pk = perFamiliarPersonaPK;
     }
 
     public FamiliarPersona(int codPersona, short secFamiliarPersona) {
-        this.perFamiliarPersonaPK = new FamiliarPersonaPK(codPersona, secFamiliarPersona);
+        this.pk = new FamiliarPersonaPK(codPersona, secFamiliarPersona);
     }
 
-    public FamiliarPersonaPK getPerFamiliarPersonaPK() {
-        return perFamiliarPersonaPK;
+    public FamiliarPersonaPK getPk() {
+        return pk;
     }
 
-    public void setPerFamiliarPersonaPK(FamiliarPersonaPK perFamiliarPersonaPK) {
-        this.perFamiliarPersonaPK = perFamiliarPersonaPK;
+    public void setPk(FamiliarPersonaPK pk) {
+        this.pk = pk;
     }
 
     public String getTipoFamiliar() {
@@ -161,29 +144,28 @@ public class FamiliarPersona implements Serializable {
         this.version = version;
     }
 
-    public Persona getPerPersona() {
-        return perPersona;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setPerPersona(Persona perPersona) {
-        this.perPersona = perPersona;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (perFamiliarPersonaPK != null ? perFamiliarPersonaPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof FamiliarPersona)) {
             return false;
         }
         FamiliarPersona other = (FamiliarPersona) object;
-        if ((this.perFamiliarPersonaPK == null && other.perFamiliarPersonaPK != null) || (this.perFamiliarPersonaPK != null && !this.perFamiliarPersonaPK.equals(other.perFamiliarPersonaPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -191,7 +173,7 @@ public class FamiliarPersona implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.escolastico.model.PerFamiliarPersona[ perFamiliarPersonaPK=" + perFamiliarPersonaPK + " ]";
+        return "ec.edu.espe.arquitectura.escolastico.model.PerFamiliarPersona[ perFamiliarPersonaPK=" + pk + " ]";
     }
     
 }

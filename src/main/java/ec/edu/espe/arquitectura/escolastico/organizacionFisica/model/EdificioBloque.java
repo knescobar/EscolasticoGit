@@ -3,7 +3,6 @@ package ec.edu.espe.arquitectura.escolastico.organizacionFisica.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,49 +18,34 @@ import javax.persistence.TemporalType;
 
 public class EdificioBloque implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 58571L;
     @Id
-    @Basic(optional = false)
     @Column(name = "cod_edificio_bloque", nullable = false, length = 8)
     private String codEdificioBloque;
-    @Basic(optional = false)
     @Column(name = "nombre_bloque", nullable = false, length = 128)
     private String nombreBloque;
     @Column(name = "descripcion", length = 500)
     private String descripcion;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
     @JoinColumn(name = "cod_edificio", referencedColumnName = "cod_edificio")
     @ManyToOne
-    private Edificio codEdificio;
-    @OneToMany(mappedBy = "codEdificioBloque")
-    private List<Aula> ofiAulaList;
+    private Edificio edificio;
+    @OneToMany(mappedBy = "edificioBloque")
+    private List<Aula> aulas;
 
     public EdificioBloque() {
     }
 
     public EdificioBloque(String codEdificioBloque) {
         this.codEdificioBloque = codEdificioBloque;
-    }
-
-    public EdificioBloque(String codEdificioBloque, String nombreBloque, String audUsuario, Date audFecha, String audIp, int version) {
-        this.codEdificioBloque = codEdificioBloque;
-        this.nombreBloque = nombreBloque;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
     }
 
     public String getCodEdificioBloque() {
@@ -120,20 +104,20 @@ public class EdificioBloque implements Serializable {
         this.version = version;
     }
 
-    public Edificio getCodEdificio() {
-        return codEdificio;
+    public Edificio getEdificio() {
+        return edificio;
     }
 
-    public void setCodEdificio(Edificio codEdificio) {
-        this.codEdificio = codEdificio;
+    public void setEdificio(Edificio edificio) {
+        this.edificio = edificio;
     }
 
-    public List<Aula> getOfiAulaList() {
-        return ofiAulaList;
+    public List<Aula> getAulas() {
+        return aulas;
     }
 
-    public void setOfiAulaList(List<Aula> ofiAulaList) {
-        this.ofiAulaList = ofiAulaList;
+    public void setAulas(List<Aula> aulas) {
+        this.aulas = aulas;
     }
 
     @Override
@@ -145,7 +129,6 @@ public class EdificioBloque implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof EdificioBloque)) {
             return false;
         }

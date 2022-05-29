@@ -2,7 +2,6 @@ package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,48 +18,33 @@ import javax.persistence.TemporalType;
 
 public class Periodo implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 58758691L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "cod_periodo", nullable = false)
     private Integer codPeriodo;
-    @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 255)
     private String nombre;
-    @Basic(optional = false)
     @Column(name = "nivel", nullable = false, length = 32)
     private String nivel;
-    @Basic(optional = false)
     @Column(name = "fecha_inicio", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date fechaInicio;
-    @Basic(optional = false)
     @Column(name = "fecha_fin", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date fechaFin;
-    @Basic(optional = false)
     @Column(name = "parciales", nullable = false)
     private short parciales;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "eduPeriodo")
-    private Nrc eduNrc;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "codPeriodo")
-    private Matricula eduMatricula;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "periodo")
+    private Nrc nrc;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "periodo")
+    private Matricula matricula;
 
     public Periodo() {
     }
 
     public Periodo(Integer codPeriodo) {
         this.codPeriodo = codPeriodo;
-    }
-
-    public Periodo(Integer codPeriodo, String nombre, String nivel, Date fechaInicio, Date fechaFin, short parciales) {
-        this.codPeriodo = codPeriodo;
-        this.nombre = nombre;
-        this.nivel = nivel;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.parciales = parciales;
     }
 
     public Integer getCodPeriodo() {
@@ -111,20 +95,20 @@ public class Periodo implements Serializable {
         this.parciales = parciales;
     }
 
-    public Nrc getEduNrc() {
-        return eduNrc;
+    public Nrc getNrc() {
+        return nrc;
     }
 
-    public void setEduNrc(Nrc eduNrc) {
-        this.eduNrc = eduNrc;
+    public void setNrc(Nrc nrc) {
+        this.nrc = nrc;
     }
 
-    public Matricula getEduMatricula() {
-        return eduMatricula;
+    public Matricula getMatricula() {
+        return matricula;
     }
 
-    public void setEduMatricula(Matricula eduMatricula) {
-        this.eduMatricula = eduMatricula;
+    public void setMatricula(Matricula matricula) {
+        this.matricula = matricula;
     }
     
     @Override
@@ -136,7 +120,6 @@ public class Periodo implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Periodo)) {
             return false;
         }

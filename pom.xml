@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ec.edu.espe.arquitectura</groupId>
-	<artifactId>Escolastico</artifactId>
+	<artifactId>escolastico</artifactId>
 	<version>1</version>
 	<name>Escolastico</name>
-	<description>Poryecto escolastico</description>
+	<description>Proyecto escolastico</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

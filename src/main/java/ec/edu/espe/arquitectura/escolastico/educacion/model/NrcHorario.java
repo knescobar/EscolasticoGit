@@ -3,7 +3,6 @@ package ec.edu.espe.arquitectura.escolastico.educacion.model;
 import ec.edu.espe.arquitectura.escolastico.organizacionFisica.model.Aula;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -19,14 +18,12 @@ import javax.persistence.TemporalType;
 
 public class NrcHorario implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 474587451481L;
     @EmbeddedId
-    protected NrcHorarioPK eduNrcHorarioPK;
-    @Basic(optional = false)
+    private NrcHorarioPK pk;
     @Column(name = "hora_inicio", nullable = false)
     @Temporal(TemporalType.TIME)
     private Date horaInicio;
-    @Basic(optional = false)
     @Column(name = "hora_fin", nullable = false)
     @Temporal(TemporalType.TIME)
     private Date horaFin;
@@ -36,34 +33,28 @@ public class NrcHorario implements Serializable {
         @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false),
         @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
-    private Nrc eduNrc;
+    private Nrc nrc;
     @JoinColumn(name = "cod_aula", referencedColumnName = "cod_aula", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Aula ofiAula;
+    private Aula aula;
 
     public NrcHorario() {
     }
 
     public NrcHorario(NrcHorarioPK eduNrcHorarioPK) {
-        this.eduNrcHorarioPK = eduNrcHorarioPK;
-    }
-
-    public NrcHorario(NrcHorarioPK eduNrcHorarioPK, Date horaInicio, Date horaFin) {
-        this.eduNrcHorarioPK = eduNrcHorarioPK;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
+        this.pk = eduNrcHorarioPK;
     }
 
     public NrcHorario(short codNrc, int codPeriodo, int codDepartamento, int codMateria, int codAula, String diaSemana) {
-        this.eduNrcHorarioPK = new NrcHorarioPK(codNrc, codPeriodo, codDepartamento, codMateria, codAula, diaSemana);
+        this.pk = new NrcHorarioPK(codNrc, codPeriodo, codDepartamento, codMateria, codAula, diaSemana);
     }
 
-    public NrcHorarioPK getEduNrcHorarioPK() {
-        return eduNrcHorarioPK;
+    public NrcHorarioPK getPk() {
+        return pk;
     }
 
-    public void setEduNrcHorarioPK(NrcHorarioPK eduNrcHorarioPK) {
-        this.eduNrcHorarioPK = eduNrcHorarioPK;
+    public void setPk(NrcHorarioPK pk) {
+        this.pk = pk;
     }
 
     public Date getHoraInicio() {
@@ -82,37 +73,36 @@ public class NrcHorario implements Serializable {
         this.horaFin = horaFin;
     }
 
-    public Nrc getEduNrc() {
-        return eduNrc;
+    public Nrc getNrc() {
+        return nrc;
     }
 
-    public void setEduNrc(Nrc eduNrc) {
-        this.eduNrc = eduNrc;
+    public void setNrc(Nrc nrc) {
+        this.nrc = nrc;
     }
 
-    public Aula getOfiAula() {
-        return ofiAula;
+    public Aula getAula() {
+        return aula;
     }
 
-    public void setOfiAula(Aula ofiAula) {
-        this.ofiAula = ofiAula;
+    public void setAula(Aula aula) {
+        this.aula = aula;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (eduNrcHorarioPK != null ? eduNrcHorarioPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof NrcHorario)) {
             return false;
         }
         NrcHorario other = (NrcHorario) object;
-        if ((this.eduNrcHorarioPK == null && other.eduNrcHorarioPK != null) || (this.eduNrcHorarioPK != null && !this.eduNrcHorarioPK.equals(other.eduNrcHorarioPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -120,7 +110,7 @@ public class NrcHorario implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.escolastico.model.EduNrcHorario[ eduNrcHorarioPK=" + eduNrcHorarioPK + " ]";
+        return "ec.edu.espe.arquitectura.escolastico.model.EduNrcHorario[ eduNrcHorarioPK=" + pk + " ]";
     }
     
 }

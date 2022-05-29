@@ -2,7 +2,6 @@ package ec.edu.espe.arquitectura.escolastico.persona.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -17,19 +16,15 @@ import javax.persistence.TemporalType;
 
 public class DireccionPersona implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 5875877L;
     @EmbeddedId
-    protected DireccionPersonaPK perDireccionPersonaPK;
-    @Basic(optional = false)
+    private DireccionPersonaPK pk;
     @Column(name = "cod_tipo_direccion", nullable = false, length = 3)
     private String codTipoDireccion;
-    @Basic(optional = false)
     @Column(name = "cod_org_geo_direccion", nullable = false)
     private int codOrgGeoDireccion;
-    @Basic(optional = false)
     @Column(name = "calle_principal", nullable = false, length = 100)
     private String callePrincipal;
-    @Basic(optional = false)
     @Column(name = "numeracion", nullable = false, length = 15)
     private String numeracion;
     @Column(name = "calle_secundaria", length = 100)
@@ -42,56 +37,38 @@ public class DireccionPersona implements Serializable {
     private String referencia;
     @Column(name = "telefono", length = 15)
     private String telefono;
-    @Basic(optional = false)
     @Column(name = "principal", nullable = false, length = 1)
     private String principal;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Persona perPersona;
+    private Persona persona;
 
     public DireccionPersona() {
     }
 
     public DireccionPersona(DireccionPersonaPK perDireccionPersonaPK) {
-        this.perDireccionPersonaPK = perDireccionPersonaPK;
-    }
-
-    public DireccionPersona(DireccionPersonaPK perDireccionPersonaPK, String codTipoDireccion, int codOrgGeoDireccion, String callePrincipal, String numeracion, String principal, String audUsuario, Date audFecha, String audIp, int version) {
-        this.perDireccionPersonaPK = perDireccionPersonaPK;
-        this.codTipoDireccion = codTipoDireccion;
-        this.codOrgGeoDireccion = codOrgGeoDireccion;
-        this.callePrincipal = callePrincipal;
-        this.numeracion = numeracion;
-        this.principal = principal;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
+        this.pk = perDireccionPersonaPK;
     }
 
     public DireccionPersona(int codPersona, short secDireccion) {
-        this.perDireccionPersonaPK = new DireccionPersonaPK(codPersona, secDireccion);
+        this.pk = new DireccionPersonaPK(codPersona, secDireccion);
     }
 
-    public DireccionPersonaPK getPerDireccionPersonaPK() {
-        return perDireccionPersonaPK;
+    public DireccionPersonaPK getPk() {
+        return pk;
     }
 
-    public void setPerDireccionPersonaPK(DireccionPersonaPK perDireccionPersonaPK) {
-        this.perDireccionPersonaPK = perDireccionPersonaPK;
+    public void setPk(DireccionPersonaPK pk) {
+        this.pk = pk;
     }
 
     public String getCodTipoDireccion() {
@@ -206,29 +183,28 @@ public class DireccionPersona implements Serializable {
         this.version = version;
     }
 
-    public Persona getPerPersona() {
-        return perPersona;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setPerPersona(Persona perPersona) {
-        this.perPersona = perPersona;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (perDireccionPersonaPK != null ? perDireccionPersonaPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof DireccionPersona)) {
             return false;
         }
         DireccionPersona other = (DireccionPersona) object;
-        if ((this.perDireccionPersonaPK == null && other.perDireccionPersonaPK != null) || (this.perDireccionPersonaPK != null && !this.perDireccionPersonaPK.equals(other.perDireccionPersonaPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -236,7 +212,7 @@ public class DireccionPersona implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.escolastico.model.PerDireccionPersona[ perDireccionPersonaPK=" + perDireccionPersonaPK + " ]";
+        return "ec.edu.espe.arquitectura.escolastico.model.PerDireccionPersona[ perDireccionPersonaPK=" + pk + " ]";
     }
     
 }

@@ -1,10 +1,8 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
 import ec.edu.espe.arquitectura.escolastico.general.model.UbicacionGeografica;
-import ec.edu.espe.arquitectura.escolastico.general.model.UbicacionGeografica;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,54 +20,35 @@ import javax.persistence.TemporalType;
 
 public class InstitucionEducativa implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 142578L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "cod_institucion_educativa", nullable = false)
     private Integer codInstitucionEducativa;
-    @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 255)
     private String nombre;
-    @Basic(optional = false)
     @Column(name = "tipo", nullable = false, length = 3)
     private String tipo;
-    @Basic(optional = false)
     @Column(name = "direccion", nullable = false, length = 500)
     private String direccion;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
     @JoinColumn(name = "cod_ubicacion_geo_int", referencedColumnName = "cod_ubicacion_geo_int", nullable = false)
     @ManyToOne(optional = false)
-    private UbicacionGeografica codUbicacionGeoInt;
+    private UbicacionGeografica ubicacionGeo;
 
     public InstitucionEducativa() {
     }
 
     public InstitucionEducativa(Integer codInstitucionEducativa) {
         this.codInstitucionEducativa = codInstitucionEducativa;
-    }
-
-    public InstitucionEducativa(Integer codInstitucionEducativa, String nombre, String tipo, String direccion, String audUsuario, Date audFecha, String audIp, int version) {
-        this.codInstitucionEducativa = codInstitucionEducativa;
-        this.nombre = nombre;
-        this.tipo = tipo;
-        this.direccion = direccion;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
     }
 
     public Integer getCodInstitucionEducativa() {
@@ -136,12 +115,12 @@ public class InstitucionEducativa implements Serializable {
         this.version = version;
     }
 
-    public UbicacionGeografica getCodUbicacionGeoInt() {
-        return codUbicacionGeoInt;
+    public UbicacionGeografica getUbicacionGeo() {
+        return ubicacionGeo;
     }
 
-    public void setCodUbicacionGeoInt(UbicacionGeografica codUbicacionGeoInt) {
-        this.codUbicacionGeoInt = codUbicacionGeoInt;
+    public void setUbicacionGeo(UbicacionGeografica ubicacionGeo) {
+        this.ubicacionGeo = ubicacionGeo;
     }
 
     @Override

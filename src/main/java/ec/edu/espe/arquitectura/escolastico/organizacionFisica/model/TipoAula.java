@@ -3,7 +3,6 @@ package ec.edu.espe.arquitectura.escolastico.organizacionFisica.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,42 +18,27 @@ public class TipoAula implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
     @Column(name = "cod_tipo_aula", nullable = false, length = 10)
     private String codTipoAula;
-    @Basic(optional = false)
     @Column(name = "descripcion", nullable = false, length = 128)
     private String descripcion;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
     @OneToMany(mappedBy = "codTipoAula")
-    private List<Aula> ofiAulaList;
+    private List<Aula> aulas;
 
     public TipoAula() {
     }
 
     public TipoAula(String codTipoAula) {
         this.codTipoAula = codTipoAula;
-    }
-
-    public TipoAula(String codTipoAula, String descripcion, String audUsuario, Date audFecha, String audIp, int version) {
-        this.codTipoAula = codTipoAula;
-        this.descripcion = descripcion;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
     }
 
     public String getCodTipoAula() {
@@ -105,12 +89,12 @@ public class TipoAula implements Serializable {
         this.version = version;
     }
 
-    public List<Aula> getOfiAulaList() {
-        return ofiAulaList;
+    public List<Aula> getAulas() {
+        return aulas;
     }
 
-    public void setOfiAulaList(List<Aula> ofiAulaList) {
-        this.ofiAulaList = ofiAulaList;
+    public void setAulas(List<Aula> aulas) {
+        this.aulas = aulas;
     }
 
     @Override
@@ -122,7 +106,6 @@ public class TipoAula implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof TipoAula)) {
             return false;
         }

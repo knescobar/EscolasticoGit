@@ -1,17 +1,14 @@
 package ec.edu.espe.arquitectura.escolastico.persona.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class DocumentoPersonaPK implements Serializable {
 
-    @Basic(optional = false)
     @Column(name = "cod_persona", nullable = false)
     private int codPersona;
-    @Basic(optional = false)
     @Column(name = "cod_tipo_documento", nullable = false, length = 16)
     private String codTipoDocumento;
 
@@ -49,7 +46,6 @@ public class DocumentoPersonaPK implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof DocumentoPersonaPK)) {
             return false;
         }

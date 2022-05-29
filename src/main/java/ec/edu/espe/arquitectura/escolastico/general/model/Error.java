@@ -1,7 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.general.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,15 +11,12 @@ import javax.persistence.Table;
 
 public class Error implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 582281L;
     @Id
-    @Basic(optional = false)
     @Column(name = "cod_error", nullable = false, length = 5)
     private String codError;
-    @Basic(optional = false)
     @Column(name = "titulo", nullable = false, length = 255)
     private String titulo;
-    @Basic(optional = false)
     @Column(name = "descripcion", nullable = false, length = 1000)
     private String descripcion;
 
@@ -29,12 +25,6 @@ public class Error implements Serializable {
 
     public Error(String codError) {
         this.codError = codError;
-    }
-
-    public Error(String codError, String titulo, String descripcion) {
-        this.codError = codError;
-        this.titulo = titulo;
-        this.descripcion = descripcion;
     }
 
     public String getCodError() {
@@ -70,7 +60,6 @@ public class Error implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Error)) {
             return false;
         }

@@ -3,7 +3,6 @@ package ec.edu.espe.arquitectura.escolastico.organizacionFisica.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,37 +18,30 @@ import javax.persistence.TemporalType;
 
 public class Sede implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 85878571L;
     @Id
-    @Basic(optional = false)
     @Column(name = "cod_sede", nullable = false, length = 8)
     private String codSede;
-    @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 128)
     private String nombre;
     @Column(name = "direccion", length = 255)
     private String direccion;
-    @Basic(optional = false)
     @Column(name = "es_principal", nullable = false, length = 1)
     private String esPrincipal;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(mappedBy = "codSede")
-    private List<Edificio> ofiEdificioList;
+    @OneToMany(mappedBy = "sede")
+    private List<Edificio> edificios;
     @JoinColumn(name = "cod_institucion", referencedColumnName = "cod_institucion")
     @ManyToOne
-    private Institucion codInstitucion;
+    private Institucion institucion;
 
     public Sede() {
     }
@@ -57,17 +49,7 @@ public class Sede implements Serializable {
     public Sede(String codSede) {
         this.codSede = codSede;
     }
-
-    public Sede(String codSede, String nombre, String esPrincipal, String audUsuario, Date audFecha, String audIp, int version) {
-        this.codSede = codSede;
-        this.nombre = nombre;
-        this.esPrincipal = esPrincipal;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
-    }
-
+    
     public String getCodSede() {
         return codSede;
     }
@@ -132,20 +114,20 @@ public class Sede implements Serializable {
         this.version = version;
     }
 
-    public List<Edificio> getOfiEdificioList() {
-        return ofiEdificioList;
+    public List<Edificio> getEdificios() {
+        return edificios;
     }
 
-    public void setOfiEdificioList(List<Edificio> ofiEdificioList) {
-        this.ofiEdificioList = ofiEdificioList;
+    public void setEdificios(List<Edificio> edificios) {
+        this.edificios = edificios;
     }
 
-    public Institucion getCodInstitucion() {
-        return codInstitucion;
+    public Institucion getInstitucion() {
+        return institucion;
     }
 
-    public void setCodInstitucion(Institucion codInstitucion) {
-        this.codInstitucion = codInstitucion;
+    public void setInstitucion(Institucion institucion) {
+        this.institucion = institucion;
     }
 
     @Override
@@ -157,7 +139,6 @@ public class Sede implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Sede)) {
             return false;
         }

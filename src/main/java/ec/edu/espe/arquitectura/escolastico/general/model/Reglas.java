@@ -2,7 +2,6 @@ package ec.edu.espe.arquitectura.escolastico.general.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,40 +14,31 @@ import javax.persistence.TemporalType;
 
 public class Reglas implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 4528471L;
     @Id
-    @Basic(optional = false)
     @Column(name = "cod_regla", nullable = false, length = 30)
     private String codRegla;
-    @Basic(optional = false)
     @Column(name = "descripcion", nullable = false, length = 100)
     private String descripcion;
-    @Basic(optional = false)
     @Column(name = "tipo", nullable = false, length = 3)
     private String tipo;
     @Column(name = "valor_numerico")
     private Integer valorNumerico;
     @Column(name = "valor_texto", length = 50)
     private String valorTexto;
-    @Basic(optional = false)
     @Column(name = "unidad", nullable = false, length = 100)
     private String unidad;
-    @Basic(optional = false)
     @Column(name = "clasificacion", nullable = false, length = 3)
     private String clasificacion;
     @Column(name = "descripcion_detallada", length = 500)
     private String descripcionDetallada;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
 
@@ -58,19 +48,7 @@ public class Reglas implements Serializable {
     public Reglas(String codRegla) {
         this.codRegla = codRegla;
     }
-
-    public Reglas(String codRegla, String descripcion, String tipo, String unidad, String clasificacion, String audUsuario, Date audFecha, String audIp, int version) {
-        this.codRegla = codRegla;
-        this.descripcion = descripcion;
-        this.tipo = tipo;
-        this.unidad = unidad;
-        this.clasificacion = clasificacion;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
-    }
-
+    
     public String getCodRegla() {
         return codRegla;
     }

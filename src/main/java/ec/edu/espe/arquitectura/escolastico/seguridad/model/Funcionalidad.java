@@ -22,39 +22,31 @@ import javax.persistence.TemporalType;
 
 public class Funcionalidad implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 586996981L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "cod_funcionalidad", nullable = false)
     private Integer codFuncionalidad;
-    @Basic(optional = false)
     @Column(name = "url_principal", nullable = false, length = 200)
     private String urlPrincipal;
-    @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 200)
     private String nombre;
     @Column(name = "descripcion", length = 500)
     private String descripcion;
-    @Basic(optional = false)
     @Column(name = "estado", nullable = false, length = 3)
     private String estado;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
     @JoinColumn(name = "cod_modulo", referencedColumnName = "cod_modulo", nullable = false)
     @ManyToOne(optional = false)
-    private Modulo codModulo;
+    private Modulo modulo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "segFuncionalidad")
     private List<PerfilFuncionalidad> segPerfilFuncionalidadList;
 
@@ -63,17 +55,6 @@ public class Funcionalidad implements Serializable {
 
     public Funcionalidad(Integer codFuncionalidad) {
         this.codFuncionalidad = codFuncionalidad;
-    }
-
-    public Funcionalidad(Integer codFuncionalidad, String urlPrincipal, String nombre, String estado, String audUsuario, Date audFecha, String audIp, int version) {
-        this.codFuncionalidad = codFuncionalidad;
-        this.urlPrincipal = urlPrincipal;
-        this.nombre = nombre;
-        this.estado = estado;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
     }
 
     public Integer getCodFuncionalidad() {
@@ -148,12 +129,12 @@ public class Funcionalidad implements Serializable {
         this.version = version;
     }
 
-    public Modulo getCodModulo() {
-        return codModulo;
+    public Modulo getModulo() {
+        return modulo;
     }
 
-    public void setCodModulo(Modulo codModulo) {
-        this.codModulo = codModulo;
+    public void setModulo(Modulo modulo) {
+        this.modulo = modulo;
     }
 
     public List<PerfilFuncionalidad> getSegPerfilFuncionalidadList() {
@@ -173,7 +154,6 @@ public class Funcionalidad implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Funcionalidad)) {
             return false;
         }

@@ -2,7 +2,6 @@ package ec.edu.espe.arquitectura.escolastico.persona.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -17,13 +16,11 @@ import javax.persistence.TemporalType;
 
 public class DocumentoPersona implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 52825852821L;
     @EmbeddedId
-    protected DocumentoPersonaPK perDocumentoPersonaPK;
-    @Basic(optional = false)
+    private DocumentoPersonaPK pk;
     @Column(name = "estado", nullable = false, length = 3)
     private String estado;
-    @Basic(optional = false)
     @Column(name = "fecha_registro", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaRegistro;
@@ -39,53 +36,39 @@ public class DocumentoPersona implements Serializable {
     private String digitalizado;
     @Column(name = "url", length = 255)
     private String url;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Persona perPersona;
+    private Persona persona;
     @JoinColumn(name = "cod_tipo_documento", referencedColumnName = "cod_tipo_documento", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private TipoDocumento perTipoDocumento;
+    private TipoDocumento tipoDocumento;
 
     public DocumentoPersona() {
     }
 
     public DocumentoPersona(DocumentoPersonaPK perDocumentoPersonaPK) {
-        this.perDocumentoPersonaPK = perDocumentoPersonaPK;
+        this.pk = perDocumentoPersonaPK;
     }
-
-    public DocumentoPersona(DocumentoPersonaPK perDocumentoPersonaPK, String estado, Date fechaRegistro, String audUsuario, Date audFecha, String audIp, int version) {
-        this.perDocumentoPersonaPK = perDocumentoPersonaPK;
-        this.estado = estado;
-        this.fechaRegistro = fechaRegistro;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
-    }
-
+    
     public DocumentoPersona(int codPersona, String codTipoDocumento) {
-        this.perDocumentoPersonaPK = new DocumentoPersonaPK(codPersona, codTipoDocumento);
+        this.pk = new DocumentoPersonaPK(codPersona, codTipoDocumento);
     }
 
-    public DocumentoPersonaPK getPerDocumentoPersonaPK() {
-        return perDocumentoPersonaPK;
+    public DocumentoPersonaPK getPk() {
+        return pk;
     }
 
-    public void setPerDocumentoPersonaPK(DocumentoPersonaPK perDocumentoPersonaPK) {
-        this.perDocumentoPersonaPK = perDocumentoPersonaPK;
+    public void setPk(DocumentoPersonaPK pk) {
+        this.pk = pk;
     }
 
     public String getEstado() {
@@ -176,37 +159,36 @@ public class DocumentoPersona implements Serializable {
         this.version = version;
     }
 
-    public Persona getPerPersona() {
-        return perPersona;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setPerPersona(Persona perPersona) {
-        this.perPersona = perPersona;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
-    public TipoDocumento getPerTipoDocumento() {
-        return perTipoDocumento;
+    public TipoDocumento getTipoDocumento() {
+        return tipoDocumento;
     }
 
-    public void setPerTipoDocumento(TipoDocumento perTipoDocumento) {
-        this.perTipoDocumento = perTipoDocumento;
+    public void setTipoDocumento(TipoDocumento tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (perDocumentoPersonaPK != null ? perDocumentoPersonaPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof DocumentoPersona)) {
             return false;
         }
         DocumentoPersona other = (DocumentoPersona) object;
-        if ((this.perDocumentoPersonaPK == null && other.perDocumentoPersonaPK != null) || (this.perDocumentoPersonaPK != null && !this.perDocumentoPersonaPK.equals(other.perDocumentoPersonaPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -214,7 +196,7 @@ public class DocumentoPersona implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.escolastico.model.PerDocumentoPersona[ perDocumentoPersonaPK=" + perDocumentoPersonaPK + " ]";
+        return "ec.edu.espe.arquitectura.escolastico.model.PerDocumentoPersona[ perDocumentoPersonaPK=" + pk + " ]";
     }
     
 }

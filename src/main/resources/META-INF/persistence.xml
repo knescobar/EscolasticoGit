@@ -19,7 +19,6 @@
     <class>ec.edu.espe.arquitectura.escolastico.general.model.PaisEstructura</class>
     <class>ec.edu.espe.arquitectura.escolastico.general.model.UbicacionGeografica</class>
     <class>ec.edu.espe.arquitectura.escolastico.general.model.Reglas</class>
-    <class>ec.edu.espe.arquitectura.escolastico.general.model.InstitucionGen</class>
     <class>ec.edu.espe.arquitectura.escolastico.organizacionFisica.model.Aula</class>
     <class>ec.edu.espe.arquitectura.escolastico.organizacionFisica.model.Edificio</class>
     <class>ec.edu.espe.arquitectura.escolastico.organizacionFisica.model.EdificioBloque</class>
@@ -41,6 +40,7 @@
     <class>ec.edu.espe.arquitectura.escolastico.seguridad.model.Usuario</class>
     <class>ec.edu.espe.arquitectura.escolastico.seguridad.model.RegistroSesion</class>
     <class>ec.edu.espe.arquitectura.escolastico.seguridad.model.PerfilFuncionalidad</class>
+    <class>ec.edu.espe.arquitectura.escolastico.general.model.InstitucionGeneral</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/matriculaFinal"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>

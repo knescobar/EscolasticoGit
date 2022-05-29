@@ -1,7 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -9,22 +8,16 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class MatriculaNrcPK implements Serializable {
 
-    @Basic(optional = false)
     @Column(name = "cod_matricula", nullable = false, length = 10)
     private String codMatricula;
-    @Basic(optional = false)
     @Column(name = "cod_persona", nullable = false)
     private int codPersona;
-    @Basic(optional = false)
     @Column(name = "cod_nrc", nullable = false)
     private short codNrc;
-    @Basic(optional = false)
     @Column(name = "cod_periodo", nullable = false)
     private int codPeriodo;
-    @Basic(optional = false)
     @Column(name = "cod_departamento", nullable = false)
     private int codDepartamento;
-    @Basic(optional = false)
     @Column(name = "cod_materia", nullable = false)
     private int codMateria;
 

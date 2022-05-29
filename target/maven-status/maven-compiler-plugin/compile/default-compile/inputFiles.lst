@@ -10,6 +10,7 @@ D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu
 D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\MallaCarrera.java
 D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\Edificio.java
 D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\MatriculaPK.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\InstitucionGeneral.java
 D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\UsuarioPerfilPK.java
 D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\TipoAula.java
 D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\RegistroSesion.java
@@ -49,5 +50,4 @@ D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu
 D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\MatriculaNrcPK.java
 D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\Persona.java
 D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Departamento.java
-D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\InstitucionGen.java
 D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Carrera.java

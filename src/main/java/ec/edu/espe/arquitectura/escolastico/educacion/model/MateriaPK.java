@@ -1,7 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -9,10 +8,8 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class MateriaPK implements Serializable {
 
-    @Basic(optional = false)
     @Column(name = "cod_materia", nullable = false)
     private int codMateria;
-    @Basic(optional = false)
     @Column(name = "cod_departamento", nullable = false)
     private int codDepartamento;
 
@@ -50,7 +47,6 @@ public class MateriaPK implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof MateriaPK)) {
             return false;
         }

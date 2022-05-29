@@ -1,7 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,21 +15,20 @@ import javax.persistence.Table;
 
 public class MallaCarrera implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 5178544L;
     @Id
-    @Basic(optional = false)
     @Column(name = "cod_materiacarrera", nullable = false)
     private Integer codMateriacarrera;
     @Column(name = "nivel")
     private Integer nivel;
     @JoinColumn(name = "cod_carrera", referencedColumnName = "cod_carrera", nullable = false)
     @ManyToOne(optional = false)
-    private Carrera codCarrera;
+    private Carrera carrera;
     @JoinColumns({
         @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false),
         @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)})
     @ManyToOne(optional = false)
-    private Materia eduMateria;
+    private Materia materia;
 
     public MallaCarrera() {
     }
@@ -55,20 +53,20 @@ public class MallaCarrera implements Serializable {
         this.nivel = nivel;
     }
 
-    public Carrera getCodCarrera() {
-        return codCarrera;
+    public Carrera getCarrera() {
+        return carrera;
     }
 
-    public void setCodCarrera(Carrera codCarrera) {
-        this.codCarrera = codCarrera;
+    public void setCarrera(Carrera carrera) {
+        this.carrera = carrera;
     }
 
-    public Materia getEduMateria() {
-        return eduMateria;
+    public Materia getMateria() {
+        return materia;
     }
 
-    public void setEduMateria(Materia eduMateria) {
-        this.eduMateria = eduMateria;
+    public void setMateria(Materia materia) {
+        this.materia = materia;
     }
 
     @Override
@@ -80,7 +78,6 @@ public class MallaCarrera implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof MallaCarrera)) {
             return false;
         }

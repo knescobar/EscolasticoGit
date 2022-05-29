@@ -29,7 +29,7 @@ public class Modulo implements Serializable {
     @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codModulo")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modulo")
     private List<Funcionalidad> segFuncionalidadList;
 
     public Modulo() {

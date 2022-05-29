@@ -16,10 +16,9 @@ import javax.persistence.Table;
 
 public class Calificacion implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 178415487L;
     @EmbeddedId
-    protected CalificacionPK eduCalificacionPK;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    private CalificacionPK pk;
     @Column(name = "nota1", precision = 5, scale = 2)
     private BigDecimal nota1;
     @Column(name = "nota2", precision = 5, scale = 2)
@@ -52,25 +51,21 @@ public class Calificacion implements Serializable {
         @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento",  insertable = false, updatable = false),
         @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", insertable = false, updatable = false)})
     @ManyToOne(optional = false)
-    private MatriculaNrc eduMatriculaNrc;
+    private MatriculaNrc matriculaNrc;
 
     public Calificacion() {
     }
 
     public Calificacion(CalificacionPK eduCalificacionPK) {
-        this.eduCalificacionPK = eduCalificacionPK;
+        this.pk = eduCalificacionPK;
     }
 
-    public Calificacion(String codMatricula, int codPersona, short codNrc) {
-        this.eduCalificacionPK = new CalificacionPK(codMatricula, codPersona, codNrc);
+    public CalificacionPK getPk() {
+        return pk;
     }
 
-    public CalificacionPK getEduCalificacionPK() {
-        return eduCalificacionPK;
-    }
-
-    public void setEduCalificacionPK(CalificacionPK eduCalificacionPK) {
-        this.eduCalificacionPK = eduCalificacionPK;
+    public void setPk(CalificacionPK pk) {
+        this.pk = pk;
     }
 
     public BigDecimal getNota1() {
@@ -169,18 +164,18 @@ public class Calificacion implements Serializable {
         this.observacion = observacion;
     }
 
-    public MatriculaNrc getEduMatriculaNrc() {
-        return eduMatriculaNrc;
+    public MatriculaNrc getMatriculaNrc() {
+        return matriculaNrc;
     }
 
-    public void setEduMatriculaNrc(MatriculaNrc eduMatriculaNrc) {
-        this.eduMatriculaNrc = eduMatriculaNrc;
+    public void setMatriculaNrc(MatriculaNrc matriculaNrc) {
+        this.matriculaNrc = matriculaNrc;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (eduCalificacionPK != null ? eduCalificacionPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -191,7 +186,7 @@ public class Calificacion implements Serializable {
             return false;
         }
         Calificacion other = (Calificacion) object;
-        if ((this.eduCalificacionPK == null && other.eduCalificacionPK != null) || (this.eduCalificacionPK != null && !this.eduCalificacionPK.equals(other.eduCalificacionPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -199,7 +194,7 @@ public class Calificacion implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.escolastico.model.EduCalificacion[ eduCalificacionPK=" + eduCalificacionPK + " ]";
+        return "ec.edu.espe.arquitectura.escolastico.model.EduCalificacion[ eduCalificacionPK=" + pk + " ]";
     }
     
 }

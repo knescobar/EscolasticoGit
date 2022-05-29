@@ -1,15 +1,10 @@
 package ec.edu.espe.arquitectura.escolastico.general.model;
 
-import ec.edu.espe.arquitectura.escolastico.persona.model.Persona;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,58 +14,33 @@ import javax.persistence.TemporalType;
 
 public class Pais implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 4585281L;
     @Id
-    @Basic(optional = false)
     @Column(name = "cod_pais", nullable = false, length = 2)
     private String codPais;
-    @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
-    @Basic(optional = false)
     @Column(name = "por_omision", nullable = false, length = 1)
     private String porOmision;
     @Column(name = "codigo_telefonico", length = 3)
     private String codigoTelefonico;
     @Column(name = "nacionalidad", length = 50)
     private String nacionalidad;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "genPais")
-    private List<PaisEstructura> genPaisEstructuraList;
-    @OneToMany(mappedBy = "codPais")
-    private List<UbicacionGeografica> genUbicacionGeograficaList;
-    @OneToMany(mappedBy = "codPaisNacimiento")
-    private List<Persona> perPersonaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nacionalidad")
-    private List<Persona> perPersonaList1;
 
     public Pais() {
     }
 
     public Pais(String codPais) {
         this.codPais = codPais;
-    }
-
-    public Pais(String codPais, String nombre, String porOmision, String audUsuario, Date audFecha, String audIp, int version) {
-        this.codPais = codPais;
-        this.nombre = nombre;
-        this.porOmision = porOmision;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
     }
 
     public String getCodPais() {
@@ -143,39 +113,6 @@ public class Pais implements Serializable {
 
     public void setVersion(int version) {
         this.version = version;
-    }
-
-    public List<PaisEstructura> getGenPaisEstructuraList() {
-        return genPaisEstructuraList;
-    }
-
-    public void setGenPaisEstructuraList(List<PaisEstructura> genPaisEstructuraList) {
-        this.genPaisEstructuraList = genPaisEstructuraList;
-    }
-
-    public List<UbicacionGeografica> getGenUbicacionGeograficaList() {
-        return genUbicacionGeograficaList;
-    }
-
-    public void setGenUbicacionGeograficaList(List<UbicacionGeografica> genUbicacionGeograficaList) {
-        this.genUbicacionGeograficaList = genUbicacionGeograficaList;
-    }
-
-
-    public List<Persona> getPerPersonaList() {
-        return perPersonaList;
-    }
-
-    public void setPerPersonaList(List<Persona> perPersonaList) {
-        this.perPersonaList = perPersonaList;
-    }
-
-    public List<Persona> getPerPersonaList1() {
-        return perPersonaList1;
-    }
-
-    public void setPerPersonaList1(List<Persona> perPersonaList1) {
-        this.perPersonaList1 = perPersonaList1;
     }
 
     @Override

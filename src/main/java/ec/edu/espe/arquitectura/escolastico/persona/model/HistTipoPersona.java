@@ -2,14 +2,11 @@ package ec.edu.espe.arquitectura.escolastico.persona.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,14 +16,12 @@ import javax.persistence.TemporalType;
 
 public class HistTipoPersona implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 5858581L;
     @EmbeddedId
-    protected HistTipoPersonaPK perHistTipoPersonaPK;
-    @Basic(optional = false)
+    private HistTipoPersonaPK pk;
     @Column(name = "fecha_inicio", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaInicio;
-    @Basic(optional = false)
     @Column(name = "cod_usuario_ini", nullable = false, length = 30)
     private String codUsuarioIni;
     @Column(name = "fecha_fin")
@@ -34,53 +29,39 @@ public class HistTipoPersona implements Serializable {
     private Date fechaFin;
     @Column(name = "cod_usuario_fin", length = 30)
     private String codUsuarioFin;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Persona perPersona;
+    private Persona persona;
     @JoinColumn(name = "cod_tipo_persona", referencedColumnName = "cod_tipo_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private TipoPersona perTipoPersona;
+    private TipoPersona tipoPersona;
 
     public HistTipoPersona() {
     }
 
     public HistTipoPersona(HistTipoPersonaPK perHistTipoPersonaPK) {
-        this.perHistTipoPersonaPK = perHistTipoPersonaPK;
+        this.pk = perHistTipoPersonaPK;
     }
-
-    public HistTipoPersona(HistTipoPersonaPK perHistTipoPersonaPK, Date fechaInicio, String codUsuarioIni, String audUsuario, Date audFecha, String audIp, int version) {
-        this.perHistTipoPersonaPK = perHistTipoPersonaPK;
-        this.fechaInicio = fechaInicio;
-        this.codUsuarioIni = codUsuarioIni;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
-    }
-
+    
     public HistTipoPersona(int codPersona, String codTipoPersona) {
-        this.perHistTipoPersonaPK = new HistTipoPersonaPK(codPersona, codTipoPersona);
+        this.pk = new HistTipoPersonaPK(codPersona, codTipoPersona);
     }
 
-    public HistTipoPersonaPK getPerHistTipoPersonaPK() {
-        return perHistTipoPersonaPK;
+    public HistTipoPersonaPK getPk() {
+        return pk;
     }
 
-    public void setPerHistTipoPersonaPK(HistTipoPersonaPK perHistTipoPersonaPK) {
-        this.perHistTipoPersonaPK = perHistTipoPersonaPK;
+    public void setPk(HistTipoPersonaPK pk) {
+        this.pk = pk;
     }
 
     public Date getFechaInicio() {
@@ -147,37 +128,36 @@ public class HistTipoPersona implements Serializable {
         this.version = version;
     }
 
-    public Persona getPerPersona() {
-        return perPersona;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setPerPersona(Persona perPersona) {
-        this.perPersona = perPersona;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
-    public TipoPersona getPerTipoPersona() {
-        return perTipoPersona;
+    public TipoPersona getTipoPersona() {
+        return tipoPersona;
     }
 
-    public void setPerTipoPersona(TipoPersona perTipoPersona) {
-        this.perTipoPersona = perTipoPersona;
+    public void setTipoPersona(TipoPersona tipoPersona) {
+        this.tipoPersona = tipoPersona;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (perHistTipoPersonaPK != null ? perHistTipoPersonaPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof HistTipoPersona)) {
             return false;
         }
         HistTipoPersona other = (HistTipoPersona) object;
-        if ((this.perHistTipoPersonaPK == null && other.perHistTipoPersonaPK != null) || (this.perHistTipoPersonaPK != null && !this.perHistTipoPersonaPK.equals(other.perHistTipoPersonaPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -185,7 +165,7 @@ public class HistTipoPersona implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.escolastico.model.PerHistTipoPersona[ perHistTipoPersonaPK=" + perHistTipoPersonaPK + " ]";
+        return "ec.edu.espe.arquitectura.escolastico.model.PerHistTipoPersona[ perHistTipoPersonaPK=" + pk + " ]";
     }
     
 }

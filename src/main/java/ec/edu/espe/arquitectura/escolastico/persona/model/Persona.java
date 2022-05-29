@@ -8,7 +8,6 @@ import ec.edu.espe.arquitectura.escolastico.general.model.UbicacionGeografica;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,87 +26,68 @@ import javax.persistence.TemporalType;
 
 public class Persona implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 12856528696L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "cod_persona", nullable = false)
     private Integer codPersona;
-    @Basic(optional = false)
     @Column(name = "codigo_alterno", nullable = false, length = 15)
     private String codigoAlterno;
-    @Basic(optional = false)
     @Column(name = "tipo_identificacion", nullable = false, length = 3)
     private String tipoIdentificacion;
-    @Basic(optional = false)
     @Column(name = "identificacion", nullable = false, length = 20)
     private String identificacion;
-    @Basic(optional = false)
     @Column(name = "nombre1", nullable = false, length = 32)
     private String nombre1;
     @Column(name = "nombre2", length = 32)
     private String nombre2;
-    @Basic(optional = false)
     @Column(name = "apellido1", nullable = false, length = 32)
     private String apellido1;
     @Column(name = "apellido2", length = 32)
     private String apellido2;
-    @Basic(optional = false)
     @Column(name = "nombre_completo", nullable = false, length = 128)
     private String nombreCompleto;
     @Column(name = "nombre_comun", length = 64)
     private String nombreComun;
-    @Basic(optional = false)
     @Column(name = "genero", nullable = false, length = 3)
     private String genero;
-    @Basic(optional = false)
     @Column(name = "fecha_nacimiento", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
-    @Basic(optional = false)
     @Column(name = "estado_civil", nullable = false, length = 3)
     private String estadoCivil;
-    @Basic(optional = false)
     @Column(name = "email", nullable = false, length = 128)
     private String email;
     @Column(name = "email_alterno", length = 128)
     private String emailAlterno;
-    @Basic(optional = false)
     @Column(name = "estado", nullable = false, length = 3)
     private String estado;
     @Column(name = "telefono_movil", length = 20)
     private String telefonoMovil;
-    @Basic(optional = false)
     @Column(name = "extranjero", nullable = false, length = 1)
     private String extranjero;
-    @Basic(optional = false)
     @Column(name = "requiere_representante", nullable = false, length = 1)
     private String requiereRepresentante;
-    @Basic(optional = false)
     @Column(name = "discapacidad", nullable = false, length = 1)
     private String discapacidad;
     @Column(name = "porcentaje_discapacidad")
     private Short porcentajeDiscapacidad;
     @Column(name = "carnet_conadis", length = 10)
     private String carnetConadis;
-    @Basic(optional = false)
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    @Basic(optional = false)
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    @Basic(optional = false)
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Basic(optional = false)
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codPersona")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<Nrc> eduNrcList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perPersona")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<DireccionPersona> perDireccionPersonaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perPersona")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<Matricula> eduMatriculaList;
     @JoinColumn(name = "cod_pais_nacimiento", referencedColumnName = "cod_pais")
     @ManyToOne
@@ -120,44 +100,18 @@ public class Persona implements Serializable {
     private UbicacionGeografica lugarNacimiento;
     @JoinColumn(name = "cod_tipo_discapacidad", referencedColumnName = "cod_tipo_discapacidad")
     @ManyToOne
-    private TipoDiscapacidad codTipoDiscapacidad;
+    private TipoDiscapacidad tipoDiscapacidad;
     @JoinColumn(name = "cod_tipo_persona", referencedColumnName = "cod_tipo_persona")
     @ManyToOne
-    private TipoPersona codTipoPersona;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perPersona")
-    private List<DocumentoPersona> perDocumentoPersonaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perPersona")
-    private List<FamiliarPersona> perFamiliarPersonaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perPersona")
-    private List<HistTipoPersona> perHistTipoPersonaList;
+    private TipoPersona tipoPersona;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+    private List<DocumentoPersona> documentos;
 
     public Persona() {
     }
 
     public Persona(Integer codPersona) {
         this.codPersona = codPersona;
-    }
-
-    public Persona(Integer codPersona, String codigoAlterno, String tipoIdentificacion, String identificacion, String nombre1, String apellido1, String nombreCompleto, String genero, Date fechaNacimiento, String estadoCivil, String email, String estado, String extranjero, String requiereRepresentante, String discapacidad, String audUsuario, Date audFecha, String audIp, int version) {
-        this.codPersona = codPersona;
-        this.codigoAlterno = codigoAlterno;
-        this.tipoIdentificacion = tipoIdentificacion;
-        this.identificacion = identificacion;
-        this.nombre1 = nombre1;
-        this.apellido1 = apellido1;
-        this.nombreCompleto = nombreCompleto;
-        this.genero = genero;
-        this.fechaNacimiento = fechaNacimiento;
-        this.estadoCivil = estadoCivil;
-        this.email = email;
-        this.estado = estado;
-        this.extranjero = extranjero;
-        this.requiereRepresentante = requiereRepresentante;
-        this.discapacidad = discapacidad;
-        this.audUsuario = audUsuario;
-        this.audFecha = audFecha;
-        this.audIp = audIp;
-        this.version = version;
     }
 
     public Integer getCodPersona() {
@@ -417,44 +371,28 @@ public class Persona implements Serializable {
         this.lugarNacimiento = lugarNacimiento;
     }
 
-    public TipoDiscapacidad getCodTipoDiscapacidad() {
-        return codTipoDiscapacidad;
+    public TipoDiscapacidad getTipoDiscapacidad() {
+        return tipoDiscapacidad;
     }
 
-    public void setCodTipoDiscapacidad(TipoDiscapacidad codTipoDiscapacidad) {
-        this.codTipoDiscapacidad = codTipoDiscapacidad;
+    public void setTipoDiscapacidad(TipoDiscapacidad tipoDiscapacidad) {
+        this.tipoDiscapacidad = tipoDiscapacidad;
     }
 
-    public TipoPersona getCodTipoPersona() {
-        return codTipoPersona;
+    public TipoPersona getTipoPersona() {
+        return tipoPersona;
     }
 
-    public void setCodTipoPersona(TipoPersona codTipoPersona) {
-        this.codTipoPersona = codTipoPersona;
+    public void setTipoPersona(TipoPersona tipoPersona) {
+        this.tipoPersona = tipoPersona;
     }
 
-    public List<DocumentoPersona> getPerDocumentoPersonaList() {
-        return perDocumentoPersonaList;
+    public List<DocumentoPersona> getDocumentos() {
+        return documentos;
     }
 
-    public void setPerDocumentoPersonaList(List<DocumentoPersona> perDocumentoPersonaList) {
-        this.perDocumentoPersonaList = perDocumentoPersonaList;
-    }
-
-    public List<FamiliarPersona> getPerFamiliarPersonaList() {
-        return perFamiliarPersonaList;
-    }
-
-    public void setPerFamiliarPersonaList(List<FamiliarPersona> perFamiliarPersonaList) {
-        this.perFamiliarPersonaList = perFamiliarPersonaList;
-    }
-
-    public List<HistTipoPersona> getPerHistTipoPersonaList() {
-        return perHistTipoPersonaList;
-    }
-
-    public void setPerHistTipoPersonaList(List<HistTipoPersona> perHistTipoPersonaList) {
-        this.perHistTipoPersonaList = perHistTipoPersonaList;
+    public void setDocumentos(List<DocumentoPersona> documentos) {
+        this.documentos = documentos;
     }
 
     @Override

@@ -17,6 +17,7 @@ ec\edu\espe\arquitectura\escolastico\educacion\model\InstitucionEducativa.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\CalificacionPK_.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\Prerequisito_.class
 ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\TipoAula_.class
+ec\edu\espe\arquitectura\escolastico\general\model\InstitucionGeneral_.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\NrcHorario_.class
 ec\edu\espe\arquitectura\escolastico\general\model\UbicacionGeografica.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\NrcPK.class
@@ -62,7 +63,6 @@ ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\Edificio_.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\MatriculaNrcPK_.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\Nrc.class
 ec\edu\espe\arquitectura\escolastico\persona\model\HistTipoPersona.class
-ec\edu\espe\arquitectura\escolastico\general\model\InstitucionGen.class
 ec\edu\espe\arquitectura\escolastico\seguridad\model\Funcionalidad_.class
 ec\edu\espe\arquitectura\escolastico\persona\model\FamiliarPersona.class
 ec\edu\espe\arquitectura\escolastico\persona\model\HistTipoPersonaPK_.class
@@ -80,7 +80,6 @@ ec\edu\espe\arquitectura\escolastico\educacion\model\MatriculaPK.class
 ec\edu\espe\arquitectura\escolastico\persona\model\DocumentoPersonaPK.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\Departamento_.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\Nrc_.class
-ec\edu\espe\arquitectura\escolastico\general\model\InstitucionGen_.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\CalificacionPK.class
 ec\edu\espe\arquitectura\escolastico\persona\model\TipoPersona.class
 ec\edu\espe\arquitectura\escolastico\EscolasticoApplication.class
@@ -94,6 +93,7 @@ ec\edu\espe\arquitectura\escolastico\seguridad\model\PerfilFuncionalidadPK.class
 ec\edu\espe\arquitectura\escolastico\seguridad\model\Funcionalidad.class
 ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\EdificioBloque.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\Calificacion_.class
+ec\edu\espe\arquitectura\escolastico\general\model\InstitucionGeneral.class
 ec\edu\espe\arquitectura\escolastico\general\model\Reglas_.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\InstitucionEducativa_.class
 ec\edu\espe\arquitectura\escolastico\persona\model\TipoDocumento_.class
