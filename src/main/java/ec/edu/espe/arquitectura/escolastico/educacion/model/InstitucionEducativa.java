@@ -17,7 +17,6 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "edu_institucion_educativa")
-
 public class InstitucionEducativa implements Serializable {
 
     private static final long serialVersionUID = 142578L;
@@ -132,7 +131,6 @@ public class InstitucionEducativa implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof InstitucionEducativa)) {
             return false;
         }

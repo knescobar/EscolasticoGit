@@ -19,7 +19,6 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "edu_nrc", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"cod_periodo"})})
-
 public class Nrc implements Serializable {
 
     private static final long serialVersionUID = 5724581L;

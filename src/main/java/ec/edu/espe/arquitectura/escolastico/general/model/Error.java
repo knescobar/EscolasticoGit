@@ -8,7 +8,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "gen_error")
-
 public class Error implements Serializable {
 
     private static final long serialVersionUID = 582281L;

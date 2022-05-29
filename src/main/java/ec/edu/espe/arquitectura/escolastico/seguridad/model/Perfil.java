@@ -14,7 +14,6 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "seg_perfil")
-
 public class Perfil implements Serializable {
 
     private static final long serialVersionUID = 6546548L;
@@ -34,11 +33,9 @@ public class Perfil implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "segPerfil")
-    private List<UsuarioPerfil> segUsuarioPerfilList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "segPerfil")
-    private List<PerfilFuncionalidad> segPerfilFuncionalidadList;
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfil")
+    private List<UsuarioPerfil> usuarioPerfiles;
+    
     public Perfil() {
     }
 
@@ -102,20 +99,12 @@ public class Perfil implements Serializable {
         this.version = version;
     }
 
-    public List<UsuarioPerfil> getSegUsuarioPerfilList() {
-        return segUsuarioPerfilList;
+    public List<UsuarioPerfil> getUsuarioPerfiles() {
+        return usuarioPerfiles;
     }
 
-    public void setSegUsuarioPerfilList(List<UsuarioPerfil> segUsuarioPerfilList) {
-        this.segUsuarioPerfilList = segUsuarioPerfilList;
-    }
-
-    public List<PerfilFuncionalidad> getSegPerfilFuncionalidadList() {
-        return segPerfilFuncionalidadList;
-    }
-
-    public void setSegPerfilFuncionalidadList(List<PerfilFuncionalidad> segPerfilFuncionalidadList) {
-        this.segPerfilFuncionalidadList = segPerfilFuncionalidadList;
+    public void setUsuarioPerfiles(List<UsuarioPerfil> usuarioPerfiles) {
+        this.usuarioPerfiles = usuarioPerfiles;
     }
 
     @Override

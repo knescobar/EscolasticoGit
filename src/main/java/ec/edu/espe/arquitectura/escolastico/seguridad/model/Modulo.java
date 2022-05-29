@@ -1,17 +1,13 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "seg_modulo")
-
 public class Modulo implements Serializable {
 
     private static final long serialVersionUID = 5465481L;
@@ -24,8 +20,6 @@ public class Modulo implements Serializable {
     private String estado;
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modulo")
-    private List<Funcionalidad> segFuncionalidadList;
 
     public Modulo() {
     }
@@ -64,14 +58,6 @@ public class Modulo implements Serializable {
 
     public void setVersion(int version) {
         this.version = version;
-    }
-
-    public List<Funcionalidad> getSegFuncionalidadList() {
-        return segFuncionalidadList;
-    }
-
-    public void setSegFuncionalidadList(List<Funcionalidad> segFuncionalidadList) {
-        this.segFuncionalidadList = segFuncionalidadList;
     }
 
     @Override

@@ -18,7 +18,6 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "seg_funcionalidad")
-
 public class Funcionalidad implements Serializable {
 
     private static final long serialVersionUID = 586996981L;
@@ -46,8 +45,8 @@ public class Funcionalidad implements Serializable {
     @JoinColumn(name = "cod_modulo", referencedColumnName = "cod_modulo", nullable = false)
     @ManyToOne(optional = false)
     private Modulo modulo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "segFuncionalidad")
-    private List<PerfilFuncionalidad> segPerfilFuncionalidadList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "funcionalidad")
+    private List<PerfilFuncionalidad> perfilFuncionalidades;
 
     public Funcionalidad() {
     }
@@ -136,12 +135,12 @@ public class Funcionalidad implements Serializable {
         this.modulo = modulo;
     }
 
-    public List<PerfilFuncionalidad> getSegPerfilFuncionalidadList() {
-        return segPerfilFuncionalidadList;
+    public List<PerfilFuncionalidad> getPerfilFuncionalidades() {
+        return perfilFuncionalidades;
     }
 
-    public void setSegPerfilFuncionalidadList(List<PerfilFuncionalidad> segPerfilFuncionalidadList) {
-        this.segPerfilFuncionalidadList = segPerfilFuncionalidadList;
+    public void setPerfilFuncionalidades(List<PerfilFuncionalidad> perfilFuncionalidades) {
+        this.perfilFuncionalidades = perfilFuncionalidades;
     }
 
     @Override

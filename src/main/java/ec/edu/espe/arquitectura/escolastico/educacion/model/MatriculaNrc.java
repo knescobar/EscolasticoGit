@@ -16,7 +16,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "edu_matricula_nrc")
-
 public class MatriculaNrc implements Serializable {
 
     private static final long serialVersionUID = 758581L;

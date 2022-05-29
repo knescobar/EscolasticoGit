@@ -11,7 +11,6 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "gen_pais")
-
 public class Pais implements Serializable {
 
     private static final long serialVersionUID = 4585281L;
@@ -124,7 +123,6 @@ public class Pais implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Pais)) {
             return false;
         }

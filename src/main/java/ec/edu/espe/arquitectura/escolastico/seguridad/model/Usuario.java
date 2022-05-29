@@ -16,7 +16,6 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "seg_usuario", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"mail"})})
-
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 554654852L;
@@ -55,8 +54,8 @@ public class Usuario implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "segUsuario")
-    private List<UsuarioPerfil> segUsuarioPerfilList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private List<UsuarioPerfil> perfiles;
 
     public Usuario() {
     }
@@ -185,12 +184,12 @@ public class Usuario implements Serializable {
         this.version = version;
     }
 
-    public List<UsuarioPerfil> getSegUsuarioPerfilList() {
-        return segUsuarioPerfilList;
+    public List<UsuarioPerfil> getPerfiles() {
+        return perfiles;
     }
 
-    public void setSegUsuarioPerfilList(List<UsuarioPerfil> segUsuarioPerfilList) {
-        this.segUsuarioPerfilList = segUsuarioPerfilList;
+    public void setPerfiles(List<UsuarioPerfil> perfiles) {
+        this.perfiles = perfiles;
     }
 
     @Override

@@ -13,10 +13,9 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "ofi_tipo_aula")
-
 public class TipoAula implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 47854875181L;
     @Id
     @Column(name = "cod_tipo_aula", nullable = false, length = 10)
     private String codTipoAula;

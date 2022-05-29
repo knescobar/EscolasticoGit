@@ -19,7 +19,6 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "gen_ubicacion_geografica")
-
 public class UbicacionGeografica implements Serializable {
 
     private static final long serialVersionUID = 5287581L;
@@ -188,7 +187,6 @@ public class UbicacionGeografica implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof UbicacionGeografica)) {
             return false;
         }

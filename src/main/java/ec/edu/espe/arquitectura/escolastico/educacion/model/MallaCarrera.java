@@ -12,7 +12,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "edu_malla_carrera")
-
 public class MallaCarrera implements Serializable {
 
     private static final long serialVersionUID = 5178544L;

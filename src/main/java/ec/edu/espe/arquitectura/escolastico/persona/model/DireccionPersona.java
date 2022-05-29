@@ -13,7 +13,6 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "per_direccion_persona")
-
 public class DireccionPersona implements Serializable {
 
     private static final long serialVersionUID = 5875877L;

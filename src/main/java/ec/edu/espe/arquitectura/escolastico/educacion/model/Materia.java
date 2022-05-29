@@ -15,7 +15,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "edu_materia")
-
 public class Materia implements Serializable {
 
     private static final long serialVersionUID = 1478565L;
@@ -121,7 +120,6 @@ public class Materia implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Materia)) {
             return false;
         }

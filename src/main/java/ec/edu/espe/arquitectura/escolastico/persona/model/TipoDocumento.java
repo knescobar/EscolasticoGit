@@ -3,7 +3,6 @@ package ec.edu.espe.arquitectura.escolastico.persona.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,6 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "per_tipo_documento")
-
 public class TipoDocumento implements Serializable {
 
     private static final long serialVersionUID = 58578581L;

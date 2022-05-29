@@ -16,7 +16,6 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "ofi_aula")
-
 public class Aula implements Serializable {
 
     private static final long serialVersionUID = 7469681L;

@@ -13,12 +13,11 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "seg_perfil_funcionalidad")
-
 public class PerfilFuncionalidad implements Serializable {
 
     private static final long serialVersionUID = 46545582L;
     @EmbeddedId
-    protected PerfilFuncionalidadPK segPerfilFuncionalidadPK;
+    private PerfilFuncionalidadPK pk;
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
     @Column(name = "aud_fecha", nullable = false)
@@ -30,28 +29,28 @@ public class PerfilFuncionalidad implements Serializable {
     private int version;
     @JoinColumn(name = "cod_funcionalidad", referencedColumnName = "cod_funcionalidad", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Funcionalidad segFuncionalidad;
+    private Funcionalidad funcionalidad;
     @JoinColumn(name = "cod_perfil", referencedColumnName = "cod_perfil", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Perfil segPerfil;
+    private Perfil perfil;
 
     public PerfilFuncionalidad() {
     }
 
     public PerfilFuncionalidad(PerfilFuncionalidadPK segPerfilFuncionalidadPK) {
-        this.segPerfilFuncionalidadPK = segPerfilFuncionalidadPK;
+        this.pk = segPerfilFuncionalidadPK;
     }
     
     public PerfilFuncionalidad(String codPerfil, int codFuncionalidad) {
-        this.segPerfilFuncionalidadPK = new PerfilFuncionalidadPK(codPerfil, codFuncionalidad);
+        this.pk = new PerfilFuncionalidadPK(codPerfil, codFuncionalidad);
     }
 
-    public PerfilFuncionalidadPK getSegPerfilFuncionalidadPK() {
-        return segPerfilFuncionalidadPK;
+    public PerfilFuncionalidadPK getPk() {
+        return pk;
     }
 
-    public void setSegPerfilFuncionalidadPK(PerfilFuncionalidadPK segPerfilFuncionalidadPK) {
-        this.segPerfilFuncionalidadPK = segPerfilFuncionalidadPK;
+    public void setPk(PerfilFuncionalidadPK pk) {
+        this.pk = pk;
     }
 
     public String getAudUsuario() {
@@ -86,26 +85,26 @@ public class PerfilFuncionalidad implements Serializable {
         this.version = version;
     }
 
-    public Funcionalidad getSegFuncionalidad() {
-        return segFuncionalidad;
+    public Funcionalidad getFuncionalidad() {
+        return funcionalidad;
     }
 
-    public void setSegFuncionalidad(Funcionalidad segFuncionalidad) {
-        this.segFuncionalidad = segFuncionalidad;
+    public void setFuncionalidad(Funcionalidad funcionalidad) {
+        this.funcionalidad = funcionalidad;
     }
 
-    public Perfil getSegPerfil() {
-        return segPerfil;
+    public Perfil getPerfil() {
+        return perfil;
     }
 
-    public void setSegPerfil(Perfil segPerfil) {
-        this.segPerfil = segPerfil;
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (segPerfilFuncionalidadPK != null ? segPerfilFuncionalidadPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -115,7 +114,7 @@ public class PerfilFuncionalidad implements Serializable {
             return false;
         }
         PerfilFuncionalidad other = (PerfilFuncionalidad) object;
-        if ((this.segPerfilFuncionalidadPK == null && other.segPerfilFuncionalidadPK != null) || (this.segPerfilFuncionalidadPK != null && !this.segPerfilFuncionalidadPK.equals(other.segPerfilFuncionalidadPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -123,7 +122,7 @@ public class PerfilFuncionalidad implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.escolastico.model.SegPerfilFuncionalidad[ segPerfilFuncionalidadPK=" + segPerfilFuncionalidadPK + " ]";
+        return "ec.edu.espe.arquitectura.escolastico.model.SegPerfilFuncionalidad[ segPerfilFuncionalidadPK=" + pk + " ]";
     }
     
 }

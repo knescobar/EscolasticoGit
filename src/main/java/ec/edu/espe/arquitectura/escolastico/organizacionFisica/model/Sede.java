@@ -15,7 +15,6 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "ofi_sede")
-
 public class Sede implements Serializable {
 
     private static final long serialVersionUID = 85878571L;

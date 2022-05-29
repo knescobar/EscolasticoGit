@@ -13,12 +13,11 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "seg_usuario_perfil")
-
 public class UsuarioPerfil implements Serializable {
 
     private static final long serialVersionUID = 8564651L;
     @EmbeddedId
-    protected UsuarioPerfilPK segUsuarioPerfilPK;
+    private UsuarioPerfilPK pk;
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
     @Column(name = "aud_fecha", nullable = false)
@@ -30,28 +29,28 @@ public class UsuarioPerfil implements Serializable {
     private int version;
     @JoinColumn(name = "cod_perfil", referencedColumnName = "cod_perfil", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Perfil segPerfil;
+    private Perfil perfil;
     @JoinColumn(name = "cod_usuario", referencedColumnName = "cod_usuario", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Usuario segUsuario;
+    private Usuario usuario;
 
     public UsuarioPerfil() {
     }
 
     public UsuarioPerfil(UsuarioPerfilPK segUsuarioPerfilPK) {
-        this.segUsuarioPerfilPK = segUsuarioPerfilPK;
+        this.pk = segUsuarioPerfilPK;
     }
 
     public UsuarioPerfil(String codUsuario, String codPerfil) {
-        this.segUsuarioPerfilPK = new UsuarioPerfilPK(codUsuario, codPerfil);
+        this.pk = new UsuarioPerfilPK(codUsuario, codPerfil);
     }
 
-    public UsuarioPerfilPK getSegUsuarioPerfilPK() {
-        return segUsuarioPerfilPK;
+    public UsuarioPerfilPK getPk() {
+        return pk;
     }
 
-    public void setSegUsuarioPerfilPK(UsuarioPerfilPK segUsuarioPerfilPK) {
-        this.segUsuarioPerfilPK = segUsuarioPerfilPK;
+    public void setPk(UsuarioPerfilPK pk) {
+        this.pk = pk;
     }
 
     public String getAudUsuario() {
@@ -86,26 +85,26 @@ public class UsuarioPerfil implements Serializable {
         this.version = version;
     }
 
-    public Perfil getSegPerfil() {
-        return segPerfil;
+    public Perfil getPerfil() {
+        return perfil;
     }
 
-    public void setSegPerfil(Perfil segPerfil) {
-        this.segPerfil = segPerfil;
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 
-    public Usuario getSegUsuario() {
-        return segUsuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setSegUsuario(Usuario segUsuario) {
-        this.segUsuario = segUsuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (segUsuarioPerfilPK != null ? segUsuarioPerfilPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -115,7 +114,7 @@ public class UsuarioPerfil implements Serializable {
             return false;
         }
         UsuarioPerfil other = (UsuarioPerfil) object;
-        if ((this.segUsuarioPerfilPK == null && other.segUsuarioPerfilPK != null) || (this.segUsuarioPerfilPK != null && !this.segUsuarioPerfilPK.equals(other.segUsuarioPerfilPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -123,7 +122,7 @@ public class UsuarioPerfil implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.escolastico.model.SegUsuarioPerfil[ segUsuarioPerfilPK=" + segUsuarioPerfilPK + " ]";
+        return "ec.edu.espe.arquitectura.escolastico.model.SegUsuarioPerfil[ segUsuarioPerfilPK=" + pk + " ]";
     }
     
 }
