@@ -5,8 +5,8 @@ import ec.edu.espe.arquitectura.escolastico.educacion.model.MateriaPK;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MateriaRepository extends JpaRepository<Materia, MateriaPK>{
-    
-    List<Materia> findByNombreLike (String nombrePattern);
-        
+public interface MateriaRepository extends JpaRepository<Materia, MateriaPK> {
+
+    List<Materia> findByNombreLike(String nombrePattern);
+
 }
