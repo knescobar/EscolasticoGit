@@ -1,8 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.persona.model;
 
 
-import ec.edu.espe.arquitectura.escolastico.educacion.model.Matricula;
-import ec.edu.espe.arquitectura.escolastico.educacion.model.Nrc;
 import ec.edu.espe.arquitectura.escolastico.general.model.Pais;
 import ec.edu.espe.arquitectura.escolastico.general.model.UbicacionGeografica;
 import java.io.Serializable;
@@ -11,7 +9,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
