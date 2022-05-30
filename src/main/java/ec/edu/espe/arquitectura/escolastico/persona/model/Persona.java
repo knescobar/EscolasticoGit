@@ -11,6 +11,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -83,14 +84,10 @@ public class Persona implements Serializable {
     @Column(name = "version", nullable = false)
     private int version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
-    private List<Nrc> eduNrcList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
-    private List<DireccionPersona> perDireccionPersonaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
-    private List<Matricula> eduMatriculaList;
+    private List<DireccionPersona> direcciones;
     @JoinColumn(name = "cod_pais_nacimiento", referencedColumnName = "cod_pais")
     @ManyToOne
-    private Pais codPaisNacimiento;
+    private Pais paisNacionalidad;
     @JoinColumn(name = "nacionalidad", referencedColumnName = "cod_pais", nullable = false)
     @ManyToOne(optional = false)
     private Pais nacionalidad;
@@ -105,6 +102,8 @@ public class Persona implements Serializable {
     private TipoPersona tipoPersona;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<DocumentoPersona> documentos;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+    private List<FamiliarPersona> familiares;
 
     public Persona() {
     }
@@ -321,37 +320,20 @@ public class Persona implements Serializable {
         this.version = version;
     }
 
-    public List<Nrc> getEduNrcList() {
-        return eduNrcList;
+    public List<DireccionPersona> getDirecciones() {
+        return direcciones;
     }
 
-    public void setEduNrcList(List<Nrc> eduNrcList) {
-        this.eduNrcList = eduNrcList;
+    public void setDirecciones(List<DireccionPersona> direcciones) {
+        this.direcciones = direcciones;
     }
 
-   
-    public List<DireccionPersona> getPerDireccionPersonaList() {
-        return perDireccionPersonaList;
+    public Pais getPaisNacionalidad() {
+        return paisNacionalidad;
     }
 
-    public void setPerDireccionPersonaList(List<DireccionPersona> perDireccionPersonaList) {
-        this.perDireccionPersonaList = perDireccionPersonaList;
-    }
-
-    public List<Matricula> getEduMatriculaList() {
-        return eduMatriculaList;
-    }
-
-    public void setEduMatriculaList(List<Matricula> eduMatriculaList) {
-        this.eduMatriculaList = eduMatriculaList;
-    }
-    
-    public Pais getCodPaisNacimiento() {
-        return codPaisNacimiento;
-    }
-
-    public void setCodPaisNacimiento(Pais codPaisNacimiento) {
-        this.codPaisNacimiento = codPaisNacimiento;
+    public void setPaisNacionalidad(Pais paisNacionalidad) {
+        this.paisNacionalidad = paisNacionalidad;
     }
 
     public Pais getNacionalidad() {
@@ -394,6 +376,14 @@ public class Persona implements Serializable {
         this.documentos = documentos;
     }
 
+    public List<FamiliarPersona> getFamiliares() {
+        return familiares;
+    }
+
+    public void setFamiliares(List<FamiliarPersona> familiares) {
+        this.familiares = familiares;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -403,7 +393,6 @@ public class Persona implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Persona)) {
             return false;
         }

@@ -8,16 +8,16 @@ import javax.annotation.processing.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-05-29T17:18:52", comments="EclipseLink-2.7.7.v20200504-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-05-29T21:18:21", comments="EclipseLink-2.7.7.v20200504-rNA")
 @StaticMetamodel(PerfilFuncionalidad.class)
 public class PerfilFuncionalidad_ { 
 
-    public static volatile SingularAttribute<PerfilFuncionalidad, PerfilFuncionalidadPK> segPerfilFuncionalidadPK;
     public static volatile SingularAttribute<PerfilFuncionalidad, String> audUsuario;
     public static volatile SingularAttribute<PerfilFuncionalidad, Date> audFecha;
-    public static volatile SingularAttribute<PerfilFuncionalidad, Funcionalidad> segFuncionalidad;
+    public static volatile SingularAttribute<PerfilFuncionalidad, Funcionalidad> funcionalidad;
     public static volatile SingularAttribute<PerfilFuncionalidad, String> audIp;
+    public static volatile SingularAttribute<PerfilFuncionalidad, PerfilFuncionalidadPK> pk;
     public static volatile SingularAttribute<PerfilFuncionalidad, Integer> version;
-    public static volatile SingularAttribute<PerfilFuncionalidad, Perfil> segPerfil;
+    public static volatile SingularAttribute<PerfilFuncionalidad, Perfil> perfil;
 
 }

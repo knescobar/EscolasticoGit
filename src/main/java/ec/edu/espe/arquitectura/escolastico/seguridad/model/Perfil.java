@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -33,9 +34,9 @@ public class Perfil implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfil")
-    private List<UsuarioPerfil> usuarioPerfiles;
-    
+    @OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "perfil")
+    private List<PerfilFuncionalidad> perfilesFuncionalidad;
+
     public Perfil() {
     }
 
@@ -99,12 +100,12 @@ public class Perfil implements Serializable {
         this.version = version;
     }
 
-    public List<UsuarioPerfil> getUsuarioPerfiles() {
-        return usuarioPerfiles;
+    public List<PerfilFuncionalidad> getPerfilesFuncionalidad() {
+        return perfilesFuncionalidad;
     }
 
-    public void setUsuarioPerfiles(List<UsuarioPerfil> usuarioPerfiles) {
-        this.usuarioPerfiles = usuarioPerfiles;
+    public void setPerfilesFuncionalidad(List<PerfilFuncionalidad> perfilesFuncionalidad) {
+        this.perfilesFuncionalidad = perfilesFuncionalidad;
     }
 
     @Override

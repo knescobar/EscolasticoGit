@@ -30,7 +30,7 @@ public class TipoAula implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(mappedBy = "codTipoAula")
+    @OneToMany(mappedBy = "tipoAula")
     private List<Aula> aulas;
 
     public TipoAula() {

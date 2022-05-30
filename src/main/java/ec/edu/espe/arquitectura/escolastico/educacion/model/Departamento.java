@@ -13,7 +13,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "edu_departamento")
-
 public class Departamento implements Serializable {
 
     private static final long serialVersionUID = 152425L;
