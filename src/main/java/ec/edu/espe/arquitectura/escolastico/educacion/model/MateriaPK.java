@@ -4,7 +4,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-
 @Embeddable
 public class MateriaPK implements Serializable {
 
@@ -64,5 +63,5 @@ public class MateriaPK implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.EduMateriaPK[ codMateria=" + codMateria + ", codDepartamento=" + codDepartamento + " ]";
     }
-    
+
 }

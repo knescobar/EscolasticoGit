@@ -57,7 +57,7 @@ public class DocumentoPersona implements Serializable {
     public DocumentoPersona(DocumentoPersonaPK perDocumentoPersonaPK) {
         this.pk = perDocumentoPersonaPK;
     }
-    
+
     public DocumentoPersona(int codPersona, String codTipoDocumento) {
         this.pk = new DocumentoPersonaPK(codPersona, codTipoDocumento);
     }
@@ -197,5 +197,5 @@ public class DocumentoPersona implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.PerDocumentoPersona[ perDocumentoPersonaPK=" + pk + " ]";
     }
-    
+
 }

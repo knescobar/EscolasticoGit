@@ -58,7 +58,7 @@ public class CalificacionPK implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-      
+
         if (!(object instanceof CalificacionPK)) {
             return false;
         }
@@ -79,5 +79,5 @@ public class CalificacionPK implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.EduCalificacionPK[ codMatricula=" + codMatricula + ", codPersona=" + codPersona + ", codNrc=" + codNrc + " ]";
     }
-    
+
 }

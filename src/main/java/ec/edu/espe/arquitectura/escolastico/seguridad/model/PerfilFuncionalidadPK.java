@@ -63,5 +63,5 @@ public class PerfilFuncionalidadPK implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.SegPerfilFuncionalidadPK[ codPerfil=" + codPerfil + ", codFuncionalidad=" + codFuncionalidad + " ]";
     }
-    
+
 }

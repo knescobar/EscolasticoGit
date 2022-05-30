@@ -63,5 +63,5 @@ public class DocumentoPersonaPK implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.PerDocumentoPersonaPK[ codPersona=" + codPersona + ", codTipoDocumento=" + codTipoDocumento + " ]";
     }
-    
+
 }

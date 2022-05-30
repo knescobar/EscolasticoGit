@@ -109,7 +109,7 @@ public class Periodo implements Serializable {
     public void setMatricula(Matricula matricula) {
         this.matricula = matricula;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -133,5 +133,5 @@ public class Periodo implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.EduPeriodo[ codPeriodo=" + codPeriodo + " ]";
     }
-    
+
 }

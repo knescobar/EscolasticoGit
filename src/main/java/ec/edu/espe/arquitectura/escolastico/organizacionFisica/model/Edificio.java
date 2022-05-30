@@ -51,7 +51,7 @@ public class Edificio implements Serializable {
     private Sede sede;
     @OneToMany(mappedBy = "edificio")
     private List<EdificioBloque> bloques;
-    
+
     public Edificio() {
     }
 
@@ -202,5 +202,5 @@ public class Edificio implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.OfiEdificio[ codEdificio=" + codEdificio + " ]";
     }
-    
+
 }

@@ -119,5 +119,5 @@ public class TipoAula implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.OfiTipoAula[ codTipoAula=" + codTipoAula + " ]";
     }
-    
+
 }

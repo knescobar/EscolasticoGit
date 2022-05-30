@@ -215,5 +215,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.SegUsuario[ codUsuario=" + codUsuario + " ]";
     }
-    
+
 }

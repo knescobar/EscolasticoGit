@@ -63,5 +63,5 @@ public class HistTipoPersonaPK implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.PerHistTipoPersonaPK[ codPersona=" + codPersona + ", codTipoPersona=" + codTipoPersona + " ]";
     }
-    
+
 }

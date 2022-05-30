@@ -48,7 +48,7 @@ public class Sede implements Serializable {
     public Sede(String codSede) {
         this.codSede = codSede;
     }
-    
+
     public String getCodSede() {
         return codSede;
     }
@@ -152,5 +152,5 @@ public class Sede implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.OfiSede[ codSede=" + codSede + " ]";
     }
-    
+
 }

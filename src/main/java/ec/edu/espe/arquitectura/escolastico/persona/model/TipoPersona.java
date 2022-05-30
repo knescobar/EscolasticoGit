@@ -32,7 +32,7 @@ public class TipoPersona implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private int version;
-    
+
     public TipoPersona() {
     }
 
@@ -127,5 +127,5 @@ public class TipoPersona implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.PerTipoPersona[ codTipoPersona=" + codTipoPersona + " ]";
     }
-    
+
 }

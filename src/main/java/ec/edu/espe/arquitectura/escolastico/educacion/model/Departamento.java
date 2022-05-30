@@ -85,7 +85,7 @@ public class Departamento implements Serializable {
     public void setMaterias(List<Materia> materias) {
         this.materias = materias;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -109,5 +109,5 @@ public class Departamento implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.EduDepartamento[ codDepartamento=" + codDepartamento + " ]";
     }
-    
+
 }

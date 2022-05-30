@@ -4,7 +4,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-
 @Embeddable
 public class NrcHorarioPK implements Serializable {
 
@@ -124,5 +123,5 @@ public class NrcHorarioPK implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.EduNrcHorarioPK[ codNrc=" + codNrc + ", codPeriodo=" + codPeriodo + ", codDepartamento=" + codDepartamento + ", codMateria=" + codMateria + ", codAula=" + codAula + ", diaSemana=" + diaSemana + " ]";
     }
-    
+
 }

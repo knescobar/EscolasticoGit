@@ -1,6 +1,5 @@
 package ec.edu.espe.arquitectura.escolastico.general.model;
 
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -52,7 +51,7 @@ public class UbicacionGeografica implements Serializable {
     private Pais codPais;
     @JoinColumns({
         @JoinColumn(name = "cod_pais", referencedColumnName = "cod_pais", insertable = false, updatable = false),
-        @JoinColumn(name = "nivel", referencedColumnName = "nivel", nullable = false,  insertable = false, updatable = false)})
+        @JoinColumn(name = "nivel", referencedColumnName = "nivel", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private PaisEstructura paisEstructura;
     @JoinColumn(name = "cod_ubicacion_geo_padre", referencedColumnName = "cod_ubicacion_geo_int")
@@ -201,5 +200,5 @@ public class UbicacionGeografica implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.GenUbicacionGeografica[ codUbicacionGeoInt=" + codUbicacionGeoInt + " ]";
     }
-    
+
 }

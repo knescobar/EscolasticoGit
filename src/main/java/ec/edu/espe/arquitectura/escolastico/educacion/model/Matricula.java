@@ -17,7 +17,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
-
 @Entity
 @Table(name = "edu_matricula", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"cod_periodo"})})
@@ -120,7 +119,6 @@ public class Matricula implements Serializable {
         this.matriculaNrc = matriculaNrc;
     }
 
-  
     @Override
     public int hashCode() {
         int hash = 0;
@@ -144,5 +142,5 @@ public class Matricula implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.EduMatricula[ eduMatriculaPK=" + pk + " ]";
     }
-    
+
 }

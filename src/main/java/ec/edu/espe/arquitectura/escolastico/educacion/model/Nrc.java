@@ -15,7 +15,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-
 @Entity
 @Table(name = "edu_nrc", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"cod_periodo"})})
@@ -50,7 +49,7 @@ public class Nrc implements Serializable {
     public Nrc(NrcPK eduNrcPK) {
         this.pk = eduNrcPK;
     }
-    
+
     public Nrc(short codNrc, int codPeriodo, int codDepartamento, int codMateria) {
         this.pk = new NrcPK(codNrc, codPeriodo, codDepartamento, codMateria);
     }
@@ -142,5 +141,5 @@ public class Nrc implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.EduNrc[ eduNrcPK=" + pk + " ]";
     }
-    
+
 }

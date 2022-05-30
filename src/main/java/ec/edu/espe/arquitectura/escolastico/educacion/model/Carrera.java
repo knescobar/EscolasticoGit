@@ -183,5 +183,5 @@ public class Carrera implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.EduCarrera[ codCarrera=" + codCarrera + " ]";
     }
-    
+
 }

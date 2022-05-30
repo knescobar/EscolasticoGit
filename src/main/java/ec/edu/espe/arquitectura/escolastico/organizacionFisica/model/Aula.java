@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
 @Table(name = "ofi_aula")
 public class Aula implements Serializable {
@@ -54,6 +53,7 @@ public class Aula implements Serializable {
     public Aula(Integer codAula) {
         this.codAula = codAula;
     }
+
     public Integer getCodAula() {
         return codAula;
     }
@@ -141,7 +141,6 @@ public class Aula implements Serializable {
     public void setTipoAula(TipoAula tipoAula) {
         this.tipoAula = tipoAula;
     }
-    
 
     @Override
     public int hashCode() {
@@ -166,5 +165,5 @@ public class Aula implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.OfiAula[ codAula=" + codAula + " ]";
     }
-    
+
 }

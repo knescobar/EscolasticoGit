@@ -1,6 +1,5 @@
 package ec.edu.espe.arquitectura.escolastico.persona.model;
 
-
 import ec.edu.espe.arquitectura.escolastico.general.model.Pais;
 import ec.edu.espe.arquitectura.escolastico.general.model.UbicacionGeografica;
 import java.io.Serializable;
@@ -404,5 +403,5 @@ public class Persona implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.PerPersona[ codPersona=" + codPersona + " ]";
     }
-    
+
 }

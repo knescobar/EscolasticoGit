@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ReglasRepository extends JpaRepository<Reglas, String> {
-    
-      List<Reglas> findByClasificacionLike(String clasificacionPattern);
-      
+
+    List<Reglas> findByClasificacionLike(String clasificacionPattern);
+
 }

@@ -149,5 +149,5 @@ public class Institucion implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.OfiInstitucion[ codInstitucion=" + codInstitucion + " ]";
     }
-    
+
 }

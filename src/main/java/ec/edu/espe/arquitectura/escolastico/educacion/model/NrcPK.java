@@ -93,5 +93,5 @@ public class NrcPK implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.EduNrcPK[ codNrc=" + codNrc + ", codPeriodo=" + codPeriodo + ", codDepartamento=" + codDepartamento + ", codMateria=" + codMateria + " ]";
     }
-    
+
 }

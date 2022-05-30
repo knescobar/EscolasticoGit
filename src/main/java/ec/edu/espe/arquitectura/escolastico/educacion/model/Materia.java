@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "edu_materia")
 public class Materia implements Serializable {
@@ -134,5 +133,5 @@ public class Materia implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.EduMateria[ eduMateriaPK=" + pk + " ]";
     }
-    
+
 }

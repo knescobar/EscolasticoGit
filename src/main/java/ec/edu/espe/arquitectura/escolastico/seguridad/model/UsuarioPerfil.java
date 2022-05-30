@@ -124,5 +124,5 @@ public class UsuarioPerfil implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.SegUsuarioPerfil[ segUsuarioPerfilPK=" + pk + " ]";
     }
-    
+
 }

@@ -111,5 +111,5 @@ public class NrcHorario implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.EduNrcHorario[ eduNrcHorarioPK=" + pk + " ]";
     }
-    
+
 }

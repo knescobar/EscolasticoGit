@@ -213,5 +213,5 @@ public class DireccionPersona implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.PerDireccionPersona[ perDireccionPersonaPK=" + pk + " ]";
     }
-    
+
 }

@@ -40,7 +40,7 @@ public class PerfilFuncionalidad implements Serializable {
     public PerfilFuncionalidad(PerfilFuncionalidadPK segPerfilFuncionalidadPK) {
         this.pk = segPerfilFuncionalidadPK;
     }
-    
+
     public PerfilFuncionalidad(String codPerfil, int codFuncionalidad) {
         this.pk = new PerfilFuncionalidadPK(codPerfil, codFuncionalidad);
     }
@@ -124,5 +124,5 @@ public class PerfilFuncionalidad implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.SegPerfilFuncionalidad[ segPerfilFuncionalidadPK=" + pk + " ]";
     }
-    
+
 }

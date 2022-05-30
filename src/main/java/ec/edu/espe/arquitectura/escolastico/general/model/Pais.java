@@ -137,5 +137,5 @@ public class Pais implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.GenPais[ codPais=" + codPais + " ]";
     }
-    
+
 }

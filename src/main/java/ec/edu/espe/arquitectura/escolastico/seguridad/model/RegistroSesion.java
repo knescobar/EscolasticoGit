@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "seg_registro_sesion")
 public class RegistroSesion implements Serializable {
-    
+
     private static final long serialVersionUID = 848516546L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +38,7 @@ public class RegistroSesion implements Serializable {
     public RegistroSesion(Integer secuencia) {
         this.secuencia = secuencia;
     }
-    
+
     public Integer getSecuencia() {
         return secuencia;
     }
@@ -110,5 +110,5 @@ public class RegistroSesion implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.SegRegistroSesion[ secuencia=" + secuencia + " ]";
     }
-    
+
 }

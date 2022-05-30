@@ -9,7 +9,6 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "edu_malla_carrera")
 public class MallaCarrera implements Serializable {
@@ -91,5 +90,5 @@ public class MallaCarrera implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.EduMallaCarrera[ codMateriacarrera=" + codMateriacarrera + " ]";
     }
-    
+
 }

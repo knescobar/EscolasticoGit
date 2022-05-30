@@ -63,5 +63,5 @@ public class PaisEstructuraPK implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.GenPaisEstructuraPK[ codPais=" + codPais + ", nivel=" + nivel + " ]";
     }
-    
+
 }

@@ -14,7 +14,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
 @Table(name = "edu_institucion_educativa")
 public class InstitucionEducativa implements Serializable {
@@ -145,5 +144,5 @@ public class InstitucionEducativa implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.EduInstitucionEducativa[ codInstitucionEducativa=" + codInstitucionEducativa + " ]";
     }
-    
+
 }

@@ -174,5 +174,5 @@ public class FamiliarPersona implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.PerFamiliarPersona[ perFamiliarPersonaPK=" + pk + " ]";
     }
-    
+
 }

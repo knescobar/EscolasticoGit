@@ -73,7 +73,7 @@ public class Prerequisito implements Serializable {
     public void setPrerequisito(Materia prerequisito) {
         this.prerequisito = prerequisito;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -97,5 +97,5 @@ public class Prerequisito implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.EduPrerequisito[ codPrerequisito=" + codPrerequisito + " ]";
     }
-    
+
 }

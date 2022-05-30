@@ -50,7 +50,7 @@ public class HistTipoPersona implements Serializable {
     public HistTipoPersona(HistTipoPersonaPK perHistTipoPersonaPK) {
         this.pk = perHistTipoPersonaPK;
     }
-    
+
     public HistTipoPersona(int codPersona, String codTipoPersona) {
         this.pk = new HistTipoPersonaPK(codPersona, codTipoPersona);
     }
@@ -166,5 +166,5 @@ public class HistTipoPersona implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.PerHistTipoPersona[ perHistTipoPersonaPK=" + pk + " ]";
     }
-    
+
 }

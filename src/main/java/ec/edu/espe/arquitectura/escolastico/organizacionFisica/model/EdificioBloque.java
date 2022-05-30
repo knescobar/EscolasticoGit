@@ -142,5 +142,5 @@ public class EdificioBloque implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.OfiEdificioBloque[ codEdificioBloque=" + codEdificioBloque + " ]";
     }
-    
+
 }

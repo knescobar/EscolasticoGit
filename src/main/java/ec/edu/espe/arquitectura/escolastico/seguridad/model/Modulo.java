@@ -83,5 +83,5 @@ public class Modulo implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.SegModulo[ codModulo=" + codModulo + " ]";
     }
-    
+
 }

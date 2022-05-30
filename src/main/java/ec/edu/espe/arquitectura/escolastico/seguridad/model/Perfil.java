@@ -34,7 +34,7 @@ public class Perfil implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "perfil")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "perfil")
     private List<PerfilFuncionalidad> perfilesFuncionalidad;
 
     public Perfil() {
@@ -43,7 +43,7 @@ public class Perfil implements Serializable {
     public Perfil(String codPerfil) {
         this.codPerfil = codPerfil;
     }
-    
+
     public String getCodPerfil() {
         return codPerfil;
     }
@@ -131,5 +131,5 @@ public class Perfil implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.SegPerfil[ codPerfil=" + codPerfil + " ]";
     }
-    
+
 }

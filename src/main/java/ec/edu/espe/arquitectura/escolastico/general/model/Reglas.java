@@ -47,7 +47,7 @@ public class Reglas implements Serializable {
     public Reglas(String codRegla) {
         this.codRegla = codRegla;
     }
-    
+
     public String getCodRegla() {
         return codRegla;
     }
@@ -167,5 +167,5 @@ public class Reglas implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.GenReglas[ codRegla=" + codRegla + " ]";
     }
-    
+
 }
