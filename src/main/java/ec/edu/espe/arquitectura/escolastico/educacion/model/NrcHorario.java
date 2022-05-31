@@ -44,7 +44,7 @@ public class NrcHorario implements Serializable {
         this.pk = eduNrcHorarioPK;
     }
 
-    public NrcHorario(short codNrc, int codPeriodo, int codDepartamento, int codMateria, int codAula, String diaSemana) {
+    public NrcHorario(Integer codNrc, Integer codPeriodo, Integer codDepartamento, Integer codMateria, Integer codAula, String diaSemana) {
         this.pk = new NrcHorarioPK(codNrc, codPeriodo, codDepartamento, codMateria, codAula, diaSemana);
     }
 

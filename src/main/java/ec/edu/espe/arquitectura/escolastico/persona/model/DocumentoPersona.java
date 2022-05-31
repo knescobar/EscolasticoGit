@@ -43,7 +43,7 @@ public class DocumentoPersona implements Serializable {
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
     @Column(name = "version", nullable = false)
-    private int version;
+    private Integer version;
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Persona persona;
@@ -58,7 +58,7 @@ public class DocumentoPersona implements Serializable {
         this.pk = perDocumentoPersonaPK;
     }
 
-    public DocumentoPersona(int codPersona, String codTipoDocumento) {
+    public DocumentoPersona(Integer codPersona, String codTipoDocumento) {
         this.pk = new DocumentoPersonaPK(codPersona, codTipoDocumento);
     }
 
@@ -150,11 +150,11 @@ public class DocumentoPersona implements Serializable {
         this.audIp = audIp;
     }
 
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 

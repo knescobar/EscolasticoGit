@@ -10,14 +10,14 @@ public class CalificacionPK implements Serializable {
     @Column(name = "cod_matricula", nullable = false, length = 10)
     private String codMatricula;
     @Column(name = "cod_persona", nullable = false)
-    private int codPersona;
+    private Integer codPersona;
     @Column(name = "cod_nrc", nullable = false)
-    private short codNrc;
+    private Integer codNrc;
 
     public CalificacionPK() {
     }
 
-    public CalificacionPK(String codMatricula, int codPersona, short codNrc) {
+    public CalificacionPK(String codMatricula, Integer codPersona, Integer codNrc) {
         this.codMatricula = codMatricula;
         this.codPersona = codPersona;
         this.codNrc = codNrc;
@@ -31,19 +31,19 @@ public class CalificacionPK implements Serializable {
         this.codMatricula = codMatricula;
     }
 
-    public int getCodPersona() {
+    public Integer getCodPersona() {
         return codPersona;
     }
 
-    public void setCodPersona(int codPersona) {
+    public void setCodPersona(Integer codPersona) {
         this.codPersona = codPersona;
     }
 
-    public short getCodNrc() {
+    public Integer getCodNrc() {
         return codNrc;
     }
 
-    public void setCodNrc(short codNrc) {
+    public void setCodNrc(Integer codNrc) {
         this.codNrc = codNrc;
     }
 

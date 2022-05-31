@@ -7,7 +7,7 @@ import javax.annotation.processing.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-05-29T21:35:08", comments="EclipseLink-2.7.7.v20200504-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-05-31T15:37:48", comments="EclipseLink-2.7.7.v20200504-rNA")
 @StaticMetamodel(Periodo.class)
 public class Periodo_ { 
 
@@ -17,7 +17,7 @@ public class Periodo_ {
     public static volatile SingularAttribute<Periodo, String> nombre;
     public static volatile SingularAttribute<Periodo, String> nivel;
     public static volatile SingularAttribute<Periodo, Date> fechaFin;
-    public static volatile SingularAttribute<Periodo, Short> parciales;
+    public static volatile SingularAttribute<Periodo, Integer> parciales;
     public static volatile SingularAttribute<Periodo, Nrc> nrc;
 
 }

@@ -2,6 +2,7 @@ package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
 import ec.edu.espe.arquitectura.escolastico.persona.model.Persona;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -31,7 +32,7 @@ public class Matricula implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fecha;
     @Column(name = "costo", nullable = false)
-    private double costo;
+    private BigDecimal costo;
     @JoinColumn(name = "cod_carrera", referencedColumnName = "cod_carrera", nullable = false)
     @ManyToOne(optional = false)
     private Carrera carrera;
@@ -51,7 +52,7 @@ public class Matricula implements Serializable {
         this.pk = eduMatriculaPK;
     }
 
-    public Matricula(String codMatricula, int codPersona) {
+    public Matricula(String codMatricula, Integer codPersona) {
         this.pk = new MatriculaPK(codMatricula, codPersona);
     }
 
@@ -79,11 +80,11 @@ public class Matricula implements Serializable {
         this.fecha = fecha;
     }
 
-    public double getCosto() {
+    public BigDecimal getCosto() {
         return costo;
     }
 
-    public void setCosto(double costo) {
+    public void setCosto(BigDecimal costo) {
         this.costo = costo;
     }
 

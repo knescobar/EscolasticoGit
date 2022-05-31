@@ -10,15 +10,15 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-05-29T21:35:08", comments="EclipseLink-2.7.7.v20200504-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-05-31T15:37:48", comments="EclipseLink-2.7.7.v20200504-rNA")
 @StaticMetamodel(Nrc.class)
 public class Nrc_ { 
 
-    public static volatile SingularAttribute<Nrc, Short> cupoDisponible;
+    public static volatile SingularAttribute<Nrc, Integer> cupoDisponible;
     public static volatile SingularAttribute<Nrc, Persona> persona;
     public static volatile ListAttribute<Nrc, NrcHorario> horario;
     public static volatile SingularAttribute<Nrc, Periodo> periodo;
-    public static volatile SingularAttribute<Nrc, Short> cupoRegistrado;
+    public static volatile SingularAttribute<Nrc, Integer> cupoRegistrado;
     public static volatile SingularAttribute<Nrc, Materia> materia;
     public static volatile SingularAttribute<Nrc, NrcPK> pk;
     public static volatile SingularAttribute<Nrc, String> nombre;

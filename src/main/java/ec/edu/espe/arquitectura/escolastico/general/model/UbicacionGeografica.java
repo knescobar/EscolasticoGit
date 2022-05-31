@@ -43,7 +43,7 @@ public class UbicacionGeografica implements Serializable {
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
     @Column(name = "version", nullable = false)
-    private int version;
+    private Integer version;
     @OneToMany(mappedBy = "ubicacionGeo")
     private List<InstitucionGeneral> instituciones;
     @JoinColumn(name = "cod_pais", referencedColumnName = "cod_pais")
@@ -54,7 +54,7 @@ public class UbicacionGeografica implements Serializable {
         @JoinColumn(name = "nivel", referencedColumnName = "nivel", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private PaisEstructura paisEstructura;
-    @JoinColumn(name = "cod_ubicacion_geo_padre", referencedColumnName = "cod_ubicacion_geo_int")
+    @JoinColumn(name = "cod_ubicacion_geo_padre", referencedColumnName = "cod_ubicacion_geo_int", insertable = false, updatable = false)
     @ManyToOne
     private UbicacionGeografica ubicacionGeoPadre;
 
@@ -137,11 +137,11 @@ public class UbicacionGeografica implements Serializable {
         this.audIp = audIp;
     }
 
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 

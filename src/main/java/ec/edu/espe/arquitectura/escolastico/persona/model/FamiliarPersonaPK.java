@@ -8,31 +8,31 @@ import javax.persistence.Embeddable;
 public class FamiliarPersonaPK implements Serializable {
 
     @Column(name = "cod_persona", nullable = false)
-    private int codPersona;
+    private Integer codPersona;
     @Column(name = "sec_familiar_persona", nullable = false)
-    private short secFamiliarPersona;
+    private Integer secFamiliarPersona;
 
     public FamiliarPersonaPK() {
     }
 
-    public FamiliarPersonaPK(int codPersona, short secFamiliarPersona) {
+    public FamiliarPersonaPK(Integer codPersona, Integer secFamiliarPersona) {
         this.codPersona = codPersona;
         this.secFamiliarPersona = secFamiliarPersona;
     }
 
-    public int getCodPersona() {
+    public Integer getCodPersona() {
         return codPersona;
     }
 
-    public void setCodPersona(int codPersona) {
+    public void setCodPersona(Integer codPersona) {
         this.codPersona = codPersona;
     }
 
-    public short getSecFamiliarPersona() {
+    public Integer getSecFamiliarPersona() {
         return secFamiliarPersona;
     }
 
-    public void setSecFamiliarPersona(short secFamiliarPersona) {
+    public void setSecFamiliarPersona(Integer secFamiliarPersona) {
         this.secFamiliarPersona = secFamiliarPersona;
     }
 

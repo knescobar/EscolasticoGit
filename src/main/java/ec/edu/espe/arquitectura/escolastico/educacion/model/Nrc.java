@@ -24,9 +24,9 @@ public class Nrc implements Serializable {
     @EmbeddedId
     private NrcPK pk;
     @Column(name = "cupo_disponible", nullable = false)
-    private short cupoDisponible;
+    private Integer cupoDisponible;
     @Column(name = "cupo_registrado", nullable = false)
-    private short cupoRegistrado;
+    private Integer cupoRegistrado;
     @Column(name = "nombre", length = 255)
     private String nombre;
     @JoinColumns({
@@ -50,7 +50,7 @@ public class Nrc implements Serializable {
         this.pk = eduNrcPK;
     }
 
-    public Nrc(short codNrc, int codPeriodo, int codDepartamento, int codMateria) {
+    public Nrc(Integer codNrc, int codPeriodo, int codDepartamento, int codMateria) {
         this.pk = new NrcPK(codNrc, codPeriodo, codDepartamento, codMateria);
     }
 
@@ -62,19 +62,19 @@ public class Nrc implements Serializable {
         this.pk = pk;
     }
 
-    public short getCupoDisponible() {
+    public Integer getCupoDisponible() {
         return cupoDisponible;
     }
 
-    public void setCupoDisponible(short cupoDisponible) {
+    public void setCupoDisponible(Integer cupoDisponible) {
         this.cupoDisponible = cupoDisponible;
     }
 
-    public short getCupoRegistrado() {
+    public Integer getCupoRegistrado() {
         return cupoRegistrado;
     }
 
-    public void setCupoRegistrado(short cupoRegistrado) {
+    public void setCupoRegistrado(Integer cupoRegistrado) {
         this.cupoRegistrado = cupoRegistrado;
     }
 

@@ -8,7 +8,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-05-29T21:35:08", comments="EclipseLink-2.7.7.v20200504-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-05-31T15:37:49", comments="EclipseLink-2.7.7.v20200504-rNA")
 @StaticMetamodel(Edificio.class)
 public class Edificio_ { 
 
@@ -16,7 +16,7 @@ public class Edificio_ {
     public static volatile SingularAttribute<Edificio, String> manejaBloques;
     public static volatile SingularAttribute<Edificio, String> audUsuario;
     public static volatile SingularAttribute<Edificio, String> codAlterno;
-    public static volatile SingularAttribute<Edificio, Short> pisos;
+    public static volatile SingularAttribute<Edificio, Integer> pisos;
     public static volatile SingularAttribute<Edificio, Sede> sede;
     public static volatile SingularAttribute<Edificio, String> direccion;
     public static volatile ListAttribute<Edificio, EdificioBloque> bloques;

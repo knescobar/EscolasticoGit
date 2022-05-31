@@ -3,6 +3,7 @@ package ec.edu.espe.arquitectura.escolastico.educacion.model;
 import ec.edu.espe.arquitectura.escolastico.general.model.UbicacionGeografica;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +38,7 @@ public class InstitucionEducativa implements Serializable {
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
     @Column(name = "version", nullable = false)
-    private int version;
+    private Integer version;
     @JoinColumn(name = "cod_ubicacion_geo_int", referencedColumnName = "cod_ubicacion_geo_int", nullable = false)
     @ManyToOne(optional = false)
     private UbicacionGeografica ubicacionGeo;
@@ -105,11 +106,11 @@ public class InstitucionEducativa implements Serializable {
         this.audIp = audIp;
     }
 
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 
@@ -123,8 +124,8 @@ public class InstitucionEducativa implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (codInstitucionEducativa != null ? codInstitucionEducativa.hashCode() : 0);
+        int hash = 3;
+        hash = 31 * hash + Objects.hashCode(this.codInstitucionEducativa);
         return hash;
     }
 

@@ -28,7 +28,7 @@ public class PaisEstructura implements Serializable {
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
     @Column(name = "version", nullable = false)
-    private int version;
+    private Integer version;
     @JoinColumn(name = "cod_pais", referencedColumnName = "cod_pais", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Pais pais;
@@ -40,7 +40,7 @@ public class PaisEstructura implements Serializable {
         this.pk = genPaisEstructuraPK;
     }
 
-    public PaisEstructura(String codPais, short nivel) {
+    public PaisEstructura(String codPais, Integer nivel) {
         this.pk = new PaisEstructuraPK(codPais, nivel);
     }
 
@@ -84,11 +84,11 @@ public class PaisEstructura implements Serializable {
         this.audIp = audIp;
     }
 
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 

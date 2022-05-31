@@ -4,36 +4,35 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-
 @Embeddable
 public class DireccionPersonaPK implements Serializable {
 
     @Column(name = "cod_persona", nullable = false)
-    private int codPersona;
+    private Integer codPersona;
     @Column(name = "sec_direccion", nullable = false)
-    private short secDireccion;
+    private Integer secDireccion;
 
     public DireccionPersonaPK() {
     }
 
-    public DireccionPersonaPK(int codPersona, short secDireccion) {
+    public DireccionPersonaPK(Integer codPersona, Integer secDireccion) {
         this.codPersona = codPersona;
         this.secDireccion = secDireccion;
     }
 
-    public int getCodPersona() {
+    public Integer getCodPersona() {
         return codPersona;
     }
 
-    public void setCodPersona(int codPersona) {
+    public void setCodPersona(Integer codPersona) {
         this.codPersona = codPersona;
     }
 
-    public short getSecDireccion() {
+    public Integer getSecDireccion() {
         return secDireccion;
     }
 
-    public void setSecDireccion(short secDireccion) {
+    public void setSecDireccion(Integer secDireccion) {
         this.secDireccion = secDireccion;
     }
 
@@ -64,5 +63,5 @@ public class DireccionPersonaPK implements Serializable {
     public String toString() {
         return "ec.edu.espe.arquitectura.escolastico.model.PerDireccionPersonaPK[ codPersona=" + codPersona + ", secDireccion=" + secDireccion + " ]";
     }
-    
+
 }

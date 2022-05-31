@@ -67,7 +67,7 @@ public class Persona implements Serializable {
     @Column(name = "discapacidad", nullable = false, length = 1)
     private String discapacidad;
     @Column(name = "porcentaje_discapacidad")
-    private Short porcentajeDiscapacidad;
+    private Integer porcentajeDiscapacidad;
     @Column(name = "carnet_conadis", length = 10)
     private String carnetConadis;
     @Column(name = "aud_usuario", nullable = false, length = 30)
@@ -78,7 +78,7 @@ public class Persona implements Serializable {
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
     @Column(name = "version", nullable = false)
-    private int version;
+    private Integer version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<DireccionPersona> direcciones;
     @JoinColumn(name = "cod_pais_nacimiento", referencedColumnName = "cod_pais")
@@ -268,11 +268,11 @@ public class Persona implements Serializable {
         this.discapacidad = discapacidad;
     }
 
-    public Short getPorcentajeDiscapacidad() {
+    public Integer getPorcentajeDiscapacidad() {
         return porcentajeDiscapacidad;
     }
 
-    public void setPorcentajeDiscapacidad(Short porcentajeDiscapacidad) {
+    public void setPorcentajeDiscapacidad(Integer porcentajeDiscapacidad) {
         this.porcentajeDiscapacidad = porcentajeDiscapacidad;
     }
 
@@ -308,11 +308,11 @@ public class Persona implements Serializable {
         this.audIp = audIp;
     }
 
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 

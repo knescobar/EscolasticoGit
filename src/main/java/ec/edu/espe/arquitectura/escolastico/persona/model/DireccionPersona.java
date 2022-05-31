@@ -21,7 +21,7 @@ public class DireccionPersona implements Serializable {
     @Column(name = "cod_tipo_direccion", nullable = false, length = 3)
     private String codTipoDireccion;
     @Column(name = "cod_org_geo_direccion", nullable = false)
-    private int codOrgGeoDireccion;
+    private Integer codOrgGeoDireccion;
     @Column(name = "calle_principal", nullable = false, length = 100)
     private String callePrincipal;
     @Column(name = "numeracion", nullable = false, length = 15)
@@ -46,7 +46,7 @@ public class DireccionPersona implements Serializable {
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
     @Column(name = "version", nullable = false)
-    private int version;
+    private Integer version;
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Persona persona;
@@ -58,7 +58,7 @@ public class DireccionPersona implements Serializable {
         this.pk = perDireccionPersonaPK;
     }
 
-    public DireccionPersona(int codPersona, short secDireccion) {
+    public DireccionPersona(Integer codPersona, Integer secDireccion) {
         this.pk = new DireccionPersonaPK(codPersona, secDireccion);
     }
 
@@ -78,11 +78,11 @@ public class DireccionPersona implements Serializable {
         this.codTipoDireccion = codTipoDireccion;
     }
 
-    public int getCodOrgGeoDireccion() {
+    public Integer getCodOrgGeoDireccion() {
         return codOrgGeoDireccion;
     }
 
-    public void setCodOrgGeoDireccion(int codOrgGeoDireccion) {
+    public void setCodOrgGeoDireccion(Integer codOrgGeoDireccion) {
         this.codOrgGeoDireccion = codOrgGeoDireccion;
     }
 
@@ -174,11 +174,11 @@ public class DireccionPersona implements Serializable {
         this.audIp = audIp;
     }
 
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 

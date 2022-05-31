@@ -35,7 +35,7 @@ public class Sede implements Serializable {
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
     @Column(name = "version", nullable = false)
-    private int version;
+    private Integer version;
     @OneToMany(mappedBy = "sede")
     private List<Edificio> edificios;
     @JoinColumn(name = "cod_institucion", referencedColumnName = "cod_institucion")
@@ -105,11 +105,11 @@ public class Sede implements Serializable {
         this.audIp = audIp;
     }
 
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 

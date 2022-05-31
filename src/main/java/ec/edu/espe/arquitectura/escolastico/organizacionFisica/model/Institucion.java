@@ -18,7 +18,7 @@ public class Institucion implements Serializable {
     private static final long serialVersionUID = 5865876581L;
     @Id
     @Column(name = "cod_institucion", nullable = false)
-    private Short codInstitucion;
+    private Integer codInstitucion;
     @Column(name = "ruc", nullable = false, length = 13)
     private String ruc;
     @Column(name = "razon_social", nullable = false, length = 250)
@@ -35,22 +35,22 @@ public class Institucion implements Serializable {
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
     @Column(name = "version", nullable = false)
-    private int version;
+    private Integer version;
     @OneToMany(mappedBy = "institucion")
     private List<Sede> sedes;
 
     public Institucion() {
     }
 
-    public Institucion(Short codInstitucion) {
+    public Institucion(Integer codInstitucion) {
         this.codInstitucion = codInstitucion;
     }
 
-    public Short getCodInstitucion() {
+    public Integer getCodInstitucion() {
         return codInstitucion;
     }
 
-    public void setCodInstitucion(Short codInstitucion) {
+    public void setCodInstitucion(Integer codInstitucion) {
         this.codInstitucion = codInstitucion;
     }
 
@@ -110,11 +110,11 @@ public class Institucion implements Serializable {
         this.audIp = audIp;
     }
 
-    public int getVersion() {
+    public Integer getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(Integer version) {
         this.version = version;
     }
 
