@@ -1,6 +1,7 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -38,22 +39,28 @@ public class MateriaPK implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (int) codMateria;
-        hash += (int) codDepartamento;
+        int hash = 5;
+        hash = 83 * hash + Objects.hashCode(this.codMateria);
+        hash = 83 * hash + Objects.hashCode(this.codDepartamento);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof MateriaPK)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        MateriaPK other = (MateriaPK) object;
-        if (this.codMateria != other.codMateria) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        if (this.codDepartamento != other.codDepartamento) {
+        final MateriaPK other = (MateriaPK) obj;
+        if (!Objects.equals(this.codMateria, other.codMateria)) {
+            return false;
+        }
+        if (!Objects.equals(this.codDepartamento, other.codDepartamento)) {
             return false;
         }
         return true;

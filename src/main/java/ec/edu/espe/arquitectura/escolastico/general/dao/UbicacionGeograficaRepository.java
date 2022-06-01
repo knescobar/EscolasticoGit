@@ -9,5 +9,7 @@ public interface UbicacionGeograficaRepository extends JpaRepository<UbicacionGe
     List<UbicacionGeografica> findByNombreLikeOrderByNombre(String nombrePattern);
 
     List<UbicacionGeografica> findByPaisNombreLikeOrderByNombre(String  paisPattern);
+    
+    List<UbicacionGeografica> findByCodigoPostalOrderByNombre(String  paisPattern);
 
 }
