@@ -42,7 +42,7 @@ public class Aula implements Serializable {
     private Edificio edificio;
     @JoinColumn(name = "cod_edificio_bloque", referencedColumnName = "cod_edificio_bloque")
     @ManyToOne
-    private EdificioBloque edificioBloque;
+    private EdificioBloque bloque;
     @JoinColumn(name = "cod_tipo_aula", referencedColumnName = "cod_tipo_aula")
     @ManyToOne
     private TipoAula tipoAula;
@@ -126,12 +126,12 @@ public class Aula implements Serializable {
         this.edificio = edificio;
     }
 
-    public EdificioBloque getEdificioBloque() {
-        return edificioBloque;
+    public EdificioBloque getBloque() {
+        return bloque;
     }
 
-    public void setEdificioBloque(EdificioBloque edificioBloque) {
-        this.edificioBloque = edificioBloque;
+    public void setBloque(EdificioBloque bloque) {
+        this.bloque = bloque;
     }
 
     public TipoAula getTipoAula() {

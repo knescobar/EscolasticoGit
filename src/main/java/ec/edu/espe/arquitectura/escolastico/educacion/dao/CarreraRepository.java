@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
 
-    List<Carrera> findByNombreLike(String nombrePattern);
+    List<Carrera> findByNombreLikeOrderByNombre(String nombrePattern);
 
-    List<Carrera> findByNivel(String nivel);
+    List<Carrera> findByNivelOrderByNombre(String nivel);
 
-    List<Carrera> findByModalidad(String modalidad);
+    List<Carrera> findByModalidadOrderByNombre(String modalidad);
 
 }

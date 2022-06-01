@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface InstitucionEducativaRepository extends JpaRepository<InstitucionEducativa, Integer> {
 
-    List<InstitucionEducativa> findByNombreLike(String nombrePattern);
+    List<InstitucionEducativa> findByNombreLikeOrderByNombre(String nombrePattern);
 
-    List<InstitucionEducativa> findByTipo(String tipo);
+    List<InstitucionEducativa> findByTipoOrderByNombre(String tipo);
 
 }

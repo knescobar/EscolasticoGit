@@ -37,7 +37,7 @@ public class EdificioBloque implements Serializable {
     @JoinColumn(name = "cod_edificio", referencedColumnName = "cod_edificio")
     @ManyToOne
     private Edificio edificio;
-    @OneToMany(mappedBy = "edificioBloque")
+    @OneToMany(mappedBy = "bloque")
     private List<Aula> aulas;
 
     public EdificioBloque() {

@@ -4,7 +4,7 @@ import ec.edu.espe.arquitectura.escolastico.organizacionFisica.model.Institucion
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface InstitucionRepository extends JpaRepository<Institucion, Short> {
+public interface InstitucionRepository extends JpaRepository<Institucion, Integer> {
 
     Institucion findByRuc(String ruc);
 

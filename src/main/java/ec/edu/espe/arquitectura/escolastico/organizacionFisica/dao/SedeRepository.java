@@ -6,8 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SedeRepository extends JpaRepository<Sede, String> {
 
-    List<Sede> findByNombreLike(String nombrePattern);
-
-    List<Sede> findByEsPrincipal(String esPrincipal);
-
+    List<Sede> findByNombreLikeOrderByNombre(String nombrePattern);
+    
 }

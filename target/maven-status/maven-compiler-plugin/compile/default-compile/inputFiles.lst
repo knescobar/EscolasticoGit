@@ -1,92 +1,92 @@
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\DocumentoPersona.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\DireccionPersonaRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\dao\UsuarioRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\Perfil.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\UsuarioPerfil.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\general\dao\ErrorRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\MateriaRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\dao\EdificioRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\DocumentoPersonaPK.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\Sede.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\HistTipoPersona.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\dao\SedeRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\dao\TipoAulaRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\InstitucionGeneral.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\dao\EdificioBloqueRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\general\dao\PaisEstructuraRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\Persona.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\general\dao\PaisRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\dao\InstitucionRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\PrerequisitoRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\EdificioBloque.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\dao\RegistroSesionRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\RegistroSesion.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\MatriculaNrc.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\CarreraRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\Pais.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\PaisEstructuraPK.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\InstitucionEducativa.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\HistTipoPersonaPK.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\DepartamentoRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\Aula.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\DireccionPersona.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\MatriculaRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Periodo.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\TipoPersonaRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\FamiliarPersona.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\PerfilFuncionalidadPK.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\MatriculaNrcPK.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Departamento.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\TipoDocumentoRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\DireccionPersonaPK.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\Usuario.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\DocumentoPersonaRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\NrcHorarioRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\general\dao\InstitucionGeneralRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\MallaCarreraRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Materia.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\FamiliarPersonaPK.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\TipoPersona.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\HistTipoPersonaRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\dao\ModuloRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\MateriaPK.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\EscolasticoApplication.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\CalificacionPK.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\Funcionalidad.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Nrc.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\TipoDiscapacidad.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\NrcRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\PaisEstructura.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Calificacion.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\general\dao\UbicacionGeograficaRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\TipoAula.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Carrera.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\InstitucionEducativaRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\MatriculaNrcRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\NrcHorarioPK.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Matricula.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\Institucion.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\NrcHorario.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\FamiliarPersonaRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\MatriculaPK.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\CalificacionRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\UsuarioPerfilPK.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\UbicacionGeografica.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\PersonaRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\Error.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\Modulo.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\dao\UsuarioPerfilRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\PerfilFuncionalidad.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\dao\FuncionalidadRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\Reglas.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\TipoDocumento.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\dao\PerfilRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\NrcPK.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Prerequisito.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\Edificio.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\MallaCarrera.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\general\dao\ReglasRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\PeriodoRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\dao\AulaRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\dao\PerfilFuncionalidadRepository.java
-C:\Users\DELL\Documents\GitHub\Matricula\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\TipoDiscapacidadRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\DocumentoPersona.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\dao\AulaRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\UbicacionGeografica.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Matricula.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Nrc.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\general\dao\PaisEstructuraRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\MatriculaRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\MateriaPK.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\TipoPersona.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\general\dao\PaisRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\DocumentoPersonaPK.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\TipoPersonaRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\EscolasticoApplication.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\Funcionalidad.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\MallaCarrera.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\InstitucionEducativaRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\dao\UsuarioPerfilRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\Edificio.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\MatriculaPK.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\InstitucionGeneral.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\PrerequisitoRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\UsuarioPerfilPK.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\TipoAula.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\RegistroSesion.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\PerfilFuncionalidad.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\general\dao\ErrorRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\MateriaRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\TipoDocumentoRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\NrcHorarioRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\general\dao\UbicacionGeograficaRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\FamiliarPersonaRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Materia.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\PersonaRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\HistTipoPersona.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Prerequisito.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\HistTipoPersonaRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\dao\PerfilRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\FamiliarPersonaPK.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\MallaCarreraRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\general\dao\ReglasRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\EdificioBloque.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\HistTipoPersonaPK.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\UsuarioPerfil.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\dao\SedeRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\Usuario.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\DireccionPersonaRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\PeriodoRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\CalificacionPK.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\TipoDiscapacidadRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\PerfilFuncionalidadPK.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\dao\DocumentoPersonaRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\TipoDiscapacidad.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\dao\ModuloRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\Perfil.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\CarreraRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\general\dao\InstitucionGeneralRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\FamiliarPersona.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\Error.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\NrcHorarioPK.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\DireccionPersona.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\Sede.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\CalificacionRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Calificacion.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\dao\InstitucionRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\MatriculaNrcRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\TipoDocumento.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\dao\RegistroSesionRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\Reglas.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\Institucion.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\PaisEstructura.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\dao\UsuarioRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\dao\FuncionalidadRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\DepartamentoRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\MatriculaNrc.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\model\Aula.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\dao\TipoAulaRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\model\Modulo.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\NrcPK.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\seguridad\dao\PerfilFuncionalidadRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\InstitucionEducativa.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\NrcHorario.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\PaisEstructuraPK.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Periodo.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\dao\EdificioBloqueRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\dao\NrcRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\general\model\Pais.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\DireccionPersonaPK.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\MatriculaNrcPK.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\persona\model\Persona.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\organizacionFisica\dao\EdificioRepository.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Departamento.java
+D:\NICOLE-ESCOBAR\ESPE\ULTIMO SEMESTRE\ARQUI\EscolasticoGit\src\main\java\ec\edu\espe\arquitectura\escolastico\educacion\model\Carrera.java

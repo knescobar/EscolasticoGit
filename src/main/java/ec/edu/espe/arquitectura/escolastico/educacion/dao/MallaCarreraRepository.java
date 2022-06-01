@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MallaCarreraRepository extends JpaRepository<MallaCarrera, Integer> {
 
-    List<MallaCarrera> findByNivelAndCarrera(Integer nivel, Integer codCarrera);
+    List<MallaCarrera> findByNivelAndCarreraNombreLikeOrderByMateriaNombre(Integer nivel, String carrera);
+    
+    List<MallaCarrera> findByCarreraNombreLikeOrderByNivel(String carrera);
 
 }

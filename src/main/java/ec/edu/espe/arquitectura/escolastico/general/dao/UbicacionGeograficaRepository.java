@@ -8,6 +8,6 @@ public interface UbicacionGeograficaRepository extends JpaRepository<UbicacionGe
 
     List<UbicacionGeografica> findByNombreLike(String nombrePattern);
 
-    List<UbicacionGeografica> findByPaisEstructuraAndUbicacionGeoPadre(short nivel, Integer ubicacionGeografica);
+    List<UbicacionGeografica> findByPaisEstructuraAndUbicacionGeoPadre(Integer nivel, Integer ubicacionGeografica);
 
 }

@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PrerequisitoRepository extends JpaRepository<Prerequisito, Integer> {
 
-    List<Prerequisito> findByMateriaAndTipo(Integer materia, String tipo);
-
+    List<Prerequisito> findByMateriaNombreLikeAndTipoOrderByMateriaNombre(String materia, String tipo);
+    
 }

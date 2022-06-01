@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PersonaRepository extends JpaRepository<Persona, Integer> {
 
-    List<Persona> findByNombreCompletoLike(String nombreCompletoPattern);
+    List<Persona> findByNombreCompletoLikeOrderByNombreCompleto(String nombreCompletoPattern);
 
     Persona findByIdentificacion(String identificacion);
 

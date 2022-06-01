@@ -7,5 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CalificacionRepository extends JpaRepository<Calificacion, CalificacionPK> {
 
-    List<Calificacion> findByPkCodPersona(Integer codPersona);
+    List<Calificacion> findByPkCodPersonaOrderByMatriculaNrcNrcNombre(Integer codPersona);
+    
+    List<Calificacion> findByPkCodPersonaAndPkCodNrcOrderByMatriculaNrcNrcNombre(Integer codPersona,Integer codNrc);
 }

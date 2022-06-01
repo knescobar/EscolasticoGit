@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PeriodoRepository extends JpaRepository<Periodo, Integer> {
 
-    List<Periodo> findByNombreLike(String nombrePattern);
+    List<Periodo> findByNombreLikeOrderByNombre(String nombrePattern);
 
     List<Periodo> findByNivel(String nivel);
 
