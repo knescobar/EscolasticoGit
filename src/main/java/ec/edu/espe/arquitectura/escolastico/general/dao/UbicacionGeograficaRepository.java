@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UbicacionGeograficaRepository extends JpaRepository<UbicacionGeografica, Integer> {
 
-    List<UbicacionGeografica> findByNombreLike(String nombrePattern);
+    List<UbicacionGeografica> findByNombreLikeOrderByNombre(String nombrePattern);
 
-    List<UbicacionGeografica> findByPaisEstructuraAndUbicacionGeoPadre(Integer nivel, Integer ubicacionGeografica);
+    List<UbicacionGeografica> findByPaisNombreLikeOrderByNombre(String  paisPattern);
 
 }

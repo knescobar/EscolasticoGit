@@ -48,7 +48,7 @@ public class UbicacionGeografica implements Serializable {
     private List<InstitucionGeneral> instituciones;
     @JoinColumn(name = "cod_pais", referencedColumnName = "cod_pais")
     @ManyToOne
-    private Pais codPais;
+    private Pais pais;
     @JoinColumns({
         @JoinColumn(name = "cod_pais", referencedColumnName = "cod_pais", insertable = false, updatable = false),
         @JoinColumn(name = "nivel", referencedColumnName = "nivel", nullable = false, insertable = false, updatable = false)})
@@ -153,12 +153,12 @@ public class UbicacionGeografica implements Serializable {
         this.instituciones = instituciones;
     }
 
-    public Pais getCodPais() {
-        return codPais;
+    public Pais getPais() {
+        return pais;
     }
 
-    public void setCodPais(Pais codPais) {
-        this.codPais = codPais;
+    public void setPais(Pais pais) {
+        this.pais = pais;
     }
 
     public PaisEstructura getPaisEstructura() {

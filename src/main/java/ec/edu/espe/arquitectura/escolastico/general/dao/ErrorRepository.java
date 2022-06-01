@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ErrorRepository extends JpaRepository<Error, String> {
 
-    List<Error> findByTituloLike(String tituloPattern);
+    List<Error> findByTituloLikeOrderByDescripcion(String tituloPattern);
 
 }

@@ -8,6 +8,6 @@ public interface InstitucionGeneralRepository extends JpaRepository<InstitucionG
 
     InstitucionGeneralRepository findByRuc(String ruc);
 
-    List<InstitucionGeneralRepository> findByNombreComercialLike(String nombrePattern);
+    List<InstitucionGeneralRepository> findByNombreComercialLikeOrderByNombreComercial(String nombrePattern);
 
 }
