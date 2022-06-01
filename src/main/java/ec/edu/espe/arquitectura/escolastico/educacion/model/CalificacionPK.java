@@ -1,6 +1,7 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -49,27 +50,32 @@ public class CalificacionPK implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (codMatricula != null ? codMatricula.hashCode() : 0);
-        hash += (int) codPersona;
-        hash += (int) codNrc;
+        int hash = 7;
+        hash = 61 * hash + Objects.hashCode(this.codMatricula);
+        hash = 61 * hash + Objects.hashCode(this.codPersona);
+        hash = 61 * hash + Objects.hashCode(this.codNrc);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-
-        if (!(object instanceof CalificacionPK)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        CalificacionPK other = (CalificacionPK) object;
-        if ((this.codMatricula == null && other.codMatricula != null) || (this.codMatricula != null && !this.codMatricula.equals(other.codMatricula))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        if (this.codPersona != other.codPersona) {
+        final CalificacionPK other = (CalificacionPK) obj;
+        if (!Objects.equals(this.codMatricula, other.codMatricula)) {
             return false;
         }
-        if (this.codNrc != other.codNrc) {
+        if (!Objects.equals(this.codPersona, other.codPersona)) {
+            return false;
+        }
+        if (!Objects.equals(this.codNrc, other.codNrc)) {
             return false;
         }
         return true;
