@@ -1,6 +1,7 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -69,21 +70,27 @@ public class NrcPK implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof NrcPK)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        NrcPK other = (NrcPK) object;
-        if (this.codNrc != other.codNrc) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        if (this.codPeriodo != other.codPeriodo) {
+        final NrcPK other = (NrcPK) obj;
+        if (!Objects.equals(this.codNrc, other.codNrc)) {
             return false;
         }
-        if (this.codDepartamento != other.codDepartamento) {
+        if (!Objects.equals(this.codPeriodo, other.codPeriodo)) {
             return false;
         }
-        if (this.codMateria != other.codMateria) {
+        if (!Objects.equals(this.codDepartamento, other.codDepartamento)) {
+            return false;
+        }
+        if (!Objects.equals(this.codMateria, other.codMateria)) {
             return false;
         }
         return true;

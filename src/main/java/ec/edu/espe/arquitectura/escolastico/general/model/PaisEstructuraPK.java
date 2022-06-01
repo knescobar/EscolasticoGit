@@ -1,6 +1,7 @@
 package ec.edu.espe.arquitectura.escolastico.general.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -38,22 +39,28 @@ public class PaisEstructuraPK implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (codPais != null ? codPais.hashCode() : 0);
-        hash += (int) nivel;
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.codPais);
+        hash = 97 * hash + Objects.hashCode(this.nivel);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof PaisEstructuraPK)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        PaisEstructuraPK other = (PaisEstructuraPK) object;
-        if ((this.codPais == null && other.codPais != null) || (this.codPais != null && !this.codPais.equals(other.codPais))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        if (this.nivel != other.nivel) {
+        final PaisEstructuraPK other = (PaisEstructuraPK) obj;
+        if (!Objects.equals(this.codPais, other.codPais)) {
+            return false;
+        }
+        if (!Objects.equals(this.nivel, other.nivel)) {
             return false;
         }
         return true;

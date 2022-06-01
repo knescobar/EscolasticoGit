@@ -1,6 +1,7 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -93,27 +94,33 @@ public class NrcHorarioPK implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof NrcHorarioPK)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        NrcHorarioPK other = (NrcHorarioPK) object;
-        if (this.codNrc != other.codNrc) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        if (this.codPeriodo != other.codPeriodo) {
+        final NrcHorarioPK other = (NrcHorarioPK) obj;
+        if (!Objects.equals(this.diaSemana, other.diaSemana)) {
             return false;
         }
-        if (this.codDepartamento != other.codDepartamento) {
+        if (!Objects.equals(this.codNrc, other.codNrc)) {
             return false;
         }
-        if (this.codMateria != other.codMateria) {
+        if (!Objects.equals(this.codPeriodo, other.codPeriodo)) {
             return false;
         }
-        if (this.codAula != other.codAula) {
+        if (!Objects.equals(this.codDepartamento, other.codDepartamento)) {
             return false;
         }
-        if ((this.diaSemana == null && other.diaSemana != null) || (this.diaSemana != null && !this.diaSemana.equals(other.diaSemana))) {
+        if (!Objects.equals(this.codMateria, other.codMateria)) {
+            return false;
+        }
+        if (!Objects.equals(this.codAula, other.codAula)) {
             return false;
         }
         return true;
