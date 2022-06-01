@@ -2,6 +2,7 @@ package ec.edu.espe.arquitectura.escolastico.persona.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -176,18 +177,24 @@ public class DocumentoPersona implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (pk != null ? pk.hashCode() : 0);
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.pk);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof DocumentoPersona)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        DocumentoPersona other = (DocumentoPersona) object;
-        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DocumentoPersona other = (DocumentoPersona) obj;
+        if (!Objects.equals(this.pk, other.pk)) {
             return false;
         }
         return true;

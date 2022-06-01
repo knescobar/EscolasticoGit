@@ -5,6 +5,7 @@ import ec.edu.espe.arquitectura.escolastico.general.model.UbicacionGeografica;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -382,18 +383,24 @@ public class Persona implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (codPersona != null ? codPersona.hashCode() : 0);
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.codPersona);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof Persona)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Persona other = (Persona) object;
-        if ((this.codPersona == null && other.codPersona != null) || (this.codPersona != null && !this.codPersona.equals(other.codPersona))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Persona other = (Persona) obj;
+        if (!Objects.equals(this.codPersona, other.codPersona)) {
             return false;
         }
         return true;

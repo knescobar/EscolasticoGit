@@ -3,6 +3,7 @@ package ec.edu.espe.arquitectura.escolastico.organizacionFisica.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -181,18 +182,24 @@ public class Edificio implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (codEdificio != null ? codEdificio.hashCode() : 0);
+        int hash = 5;
+        hash = 31 * hash + Objects.hashCode(this.codEdificio);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof Edificio)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Edificio other = (Edificio) object;
-        if ((this.codEdificio == null && other.codEdificio != null) || (this.codEdificio != null && !this.codEdificio.equals(other.codEdificio))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Edificio other = (Edificio) obj;
+        if (!Objects.equals(this.codEdificio, other.codEdificio)) {
             return false;
         }
         return true;

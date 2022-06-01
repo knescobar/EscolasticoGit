@@ -1,6 +1,7 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -62,18 +63,24 @@ public class Modulo implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (codModulo != null ? codModulo.hashCode() : 0);
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.codModulo);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof Modulo)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Modulo other = (Modulo) object;
-        if ((this.codModulo == null && other.codModulo != null) || (this.codModulo != null && !this.codModulo.equals(other.codModulo))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Modulo other = (Modulo) obj;
+        if (!Objects.equals(this.codModulo, other.codModulo)) {
             return false;
         }
         return true;

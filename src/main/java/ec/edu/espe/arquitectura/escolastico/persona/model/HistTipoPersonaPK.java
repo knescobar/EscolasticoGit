@@ -1,6 +1,7 @@
 package ec.edu.espe.arquitectura.escolastico.persona.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -38,26 +39,34 @@ public class HistTipoPersonaPK implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (int) codPersona;
-        hash += (codTipoPersona != null ? codTipoPersona.hashCode() : 0);
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.codPersona);
+        hash = 59 * hash + Objects.hashCode(this.codTipoPersona);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof HistTipoPersonaPK)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        HistTipoPersonaPK other = (HistTipoPersonaPK) object;
-        if (this.codPersona != other.codPersona) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        if ((this.codTipoPersona == null && other.codTipoPersona != null) || (this.codTipoPersona != null && !this.codTipoPersona.equals(other.codTipoPersona))) {
+        final HistTipoPersonaPK other = (HistTipoPersonaPK) obj;
+        if (!Objects.equals(this.codTipoPersona, other.codTipoPersona)) {
+            return false;
+        }
+        if (!Objects.equals(this.codPersona, other.codPersona)) {
             return false;
         }
         return true;
     }
+
+
 
     @Override
     public String toString() {

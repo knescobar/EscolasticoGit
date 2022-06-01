@@ -2,6 +2,7 @@ package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -103,18 +104,24 @@ public class PerfilFuncionalidad implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (pk != null ? pk.hashCode() : 0);
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.pk);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof PerfilFuncionalidad)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        PerfilFuncionalidad other = (PerfilFuncionalidad) object;
-        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PerfilFuncionalidad other = (PerfilFuncionalidad) obj;
+        if (!Objects.equals(this.pk, other.pk)) {
             return false;
         }
         return true;

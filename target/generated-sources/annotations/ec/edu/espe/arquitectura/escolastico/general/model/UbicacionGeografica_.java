@@ -10,7 +10,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-05-31T19:18:19", comments="EclipseLink-2.7.7.v20200504-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2022-06-01T18:22:09", comments="EclipseLink-2.7.7.v20200504-rNA")
 @StaticMetamodel(UbicacionGeografica.class)
 public class UbicacionGeografica_ { 
 
@@ -19,10 +19,10 @@ public class UbicacionGeografica_ {
     public static volatile SingularAttribute<UbicacionGeografica, String> codigoPostal;
     public static volatile SingularAttribute<UbicacionGeografica, String> codUbicacionGeografica;
     public static volatile SingularAttribute<UbicacionGeografica, String> codigoAreaTelefono;
-    public static volatile SingularAttribute<UbicacionGeografica, Pais> codPais;
     public static volatile SingularAttribute<UbicacionGeografica, PaisEstructura> paisEstructura;
     public static volatile SingularAttribute<UbicacionGeografica, String> nombre;
     public static volatile SingularAttribute<UbicacionGeografica, Integer> version;
+    public static volatile SingularAttribute<UbicacionGeografica, Pais> pais;
     public static volatile SingularAttribute<UbicacionGeografica, Date> audFecha;
     public static volatile SingularAttribute<UbicacionGeografica, String> audIp;
     public static volatile SingularAttribute<UbicacionGeografica, String> codigoAlterno;

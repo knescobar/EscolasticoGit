@@ -1,12 +1,28 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
-target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
-target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
-target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
-target/surefire-reports/2022-05-29T16-59-36_519-jvmRun1.dump
-target/surefire-reports/2022-05-28T23-17-31_785-jvmRun1.dump
-target/surefire-reports/ec.edu.espe.arquitectura.escolastico.EscolasticoApplicationTests.txt
-nbactions.xml
-target/Escolastico-1.jar
-target/Escolastico-1.jar
-target/Escolastico-1.jar
-nbactions.xml
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/

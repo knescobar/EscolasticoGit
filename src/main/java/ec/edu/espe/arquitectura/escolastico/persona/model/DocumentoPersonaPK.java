@@ -1,6 +1,7 @@
 package ec.edu.espe.arquitectura.escolastico.persona.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -38,22 +39,28 @@ public class DocumentoPersonaPK implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (int) codPersona;
-        hash += (codTipoDocumento != null ? codTipoDocumento.hashCode() : 0);
+        int hash = 5;
+        hash = 71 * hash + Objects.hashCode(this.codPersona);
+        hash = 71 * hash + Objects.hashCode(this.codTipoDocumento);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof DocumentoPersonaPK)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        DocumentoPersonaPK other = (DocumentoPersonaPK) object;
-        if (this.codPersona != other.codPersona) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        if ((this.codTipoDocumento == null && other.codTipoDocumento != null) || (this.codTipoDocumento != null && !this.codTipoDocumento.equals(other.codTipoDocumento))) {
+        final DocumentoPersonaPK other = (DocumentoPersonaPK) obj;
+        if (!Objects.equals(this.codTipoDocumento, other.codTipoDocumento)) {
+            return false;
+        }
+        if (!Objects.equals(this.codPersona, other.codPersona)) {
             return false;
         }
         return true;

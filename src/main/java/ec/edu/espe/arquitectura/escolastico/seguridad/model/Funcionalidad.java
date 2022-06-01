@@ -3,6 +3,7 @@ package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -145,18 +146,24 @@ public class Funcionalidad implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (codFuncionalidad != null ? codFuncionalidad.hashCode() : 0);
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.codFuncionalidad);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof Funcionalidad)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Funcionalidad other = (Funcionalidad) object;
-        if ((this.codFuncionalidad == null && other.codFuncionalidad != null) || (this.codFuncionalidad != null && !this.codFuncionalidad.equals(other.codFuncionalidad))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Funcionalidad other = (Funcionalidad) obj;
+        if (!Objects.equals(this.codFuncionalidad, other.codFuncionalidad)) {
             return false;
         }
         return true;

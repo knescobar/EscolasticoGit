@@ -1,6 +1,7 @@
 package ec.edu.espe.arquitectura.escolastico.persona.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -38,22 +39,28 @@ public class FamiliarPersonaPK implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (int) codPersona;
-        hash += (int) secFamiliarPersona;
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.codPersona);
+        hash = 67 * hash + Objects.hashCode(this.secFamiliarPersona);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof FamiliarPersonaPK)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        FamiliarPersonaPK other = (FamiliarPersonaPK) object;
-        if (this.codPersona != other.codPersona) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        if (this.secFamiliarPersona != other.secFamiliarPersona) {
+        final FamiliarPersonaPK other = (FamiliarPersonaPK) obj;
+        if (!Objects.equals(this.codPersona, other.codPersona)) {
+            return false;
+        }
+        if (!Objects.equals(this.secFamiliarPersona, other.secFamiliarPersona)) {
             return false;
         }
         return true;

@@ -14,7 +14,6 @@ ec\edu\espe\arquitectura\escolastico\educacion\model\MatriculaNrc.class
 ec\edu\espe\arquitectura\escolastico\seguridad\model\PerfilFuncionalidad.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\MatriculaNrcPK.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\NrcHorario.class
-ec\edu\espe\arquitectura\escolastico\educacion\model\InstitucionEducativa.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\CalificacionPK_.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\Prerequisito_.class
 ec\edu\espe\arquitectura\escolastico\persona\dao\FamiliarPersonaRepository.class
@@ -26,7 +25,6 @@ ec\edu\espe\arquitectura\escolastico\educacion\model\NrcHorario_.class
 ec\edu\espe\arquitectura\escolastico\general\model\UbicacionGeografica.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\NrcPK.class
 ec\edu\espe\arquitectura\escolastico\general\model\Error.class
-ec\edu\espe\arquitectura\escolastico\educacion\dao\InstitucionEducativaRepository.class
 ec\edu\espe\arquitectura\escolastico\persona\model\FamiliarPersonaPK_.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\NrcPK_.class
 ec\edu\espe\arquitectura\escolastico\educacion\model\MatriculaNrc_.class
@@ -131,7 +129,6 @@ ec\edu\espe\arquitectura\escolastico\educacion\dao\DepartamentoRepository.class
 ec\edu\espe\arquitectura\escolastico\educacion\dao\NrcRepository.class
 ec\edu\espe\arquitectura\escolastico\general\dao\ErrorRepository.class
 ec\edu\espe\arquitectura\escolastico\organizacionFisica\dao\EdificioBloqueRepository.class
-ec\edu\espe\arquitectura\escolastico\educacion\model\InstitucionEducativa_.class
 ec\edu\espe\arquitectura\escolastico\educacion\dao\MateriaRepository.class
 ec\edu\espe\arquitectura\escolastico\organizacionFisica\dao\EdificioRepository.class
 ec\edu\espe\arquitectura\escolastico\persona\model\TipoDocumento_.class

@@ -2,6 +2,7 @@ package ec.edu.espe.arquitectura.escolastico.persona.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -86,18 +87,24 @@ public class TipoDiscapacidad implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (codTipoDiscapacidad != null ? codTipoDiscapacidad.hashCode() : 0);
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.codTipoDiscapacidad);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof TipoDiscapacidad)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        TipoDiscapacidad other = (TipoDiscapacidad) object;
-        if ((this.codTipoDiscapacidad == null && other.codTipoDiscapacidad != null) || (this.codTipoDiscapacidad != null && !this.codTipoDiscapacidad.equals(other.codTipoDiscapacidad))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TipoDiscapacidad other = (TipoDiscapacidad) obj;
+        if (!Objects.equals(this.codTipoDiscapacidad, other.codTipoDiscapacidad)) {
             return false;
         }
         return true;

@@ -2,6 +2,7 @@ package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -89,18 +90,24 @@ public class RegistroSesion implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (secuencia != null ? secuencia.hashCode() : 0);
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.secuencia);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof RegistroSesion)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        RegistroSesion other = (RegistroSesion) object;
-        if ((this.secuencia == null && other.secuencia != null) || (this.secuencia != null && !this.secuencia.equals(other.secuencia))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final RegistroSesion other = (RegistroSesion) obj;
+        if (!Objects.equals(this.secuencia, other.secuencia)) {
             return false;
         }
         return true;

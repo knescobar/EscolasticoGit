@@ -3,6 +3,7 @@ package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -110,18 +111,24 @@ public class Perfil implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (codPerfil != null ? codPerfil.hashCode() : 0);
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.codPerfil);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof Perfil)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Perfil other = (Perfil) object;
-        if ((this.codPerfil == null && other.codPerfil != null) || (this.codPerfil != null && !this.codPerfil.equals(other.codPerfil))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Perfil other = (Perfil) obj;
+        if (!Objects.equals(this.codPerfil, other.codPerfil)) {
             return false;
         }
         return true;

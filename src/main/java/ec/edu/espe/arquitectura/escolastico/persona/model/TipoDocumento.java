@@ -3,6 +3,7 @@ package ec.edu.espe.arquitectura.escolastico.persona.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -99,18 +100,24 @@ public class TipoDocumento implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (codTipoDocumento != null ? codTipoDocumento.hashCode() : 0);
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.codTipoDocumento);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof TipoDocumento)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        TipoDocumento other = (TipoDocumento) object;
-        if ((this.codTipoDocumento == null && other.codTipoDocumento != null) || (this.codTipoDocumento != null && !this.codTipoDocumento.equals(other.codTipoDocumento))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TipoDocumento other = (TipoDocumento) obj;
+        if (!Objects.equals(this.codTipoDocumento, other.codTipoDocumento)) {
             return false;
         }
         return true;

@@ -1,6 +1,7 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -38,22 +39,28 @@ public class UsuarioPerfilPK implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (codUsuario != null ? codUsuario.hashCode() : 0);
-        hash += (codPerfil != null ? codPerfil.hashCode() : 0);
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.codUsuario);
+        hash = 59 * hash + Objects.hashCode(this.codPerfil);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof UsuarioPerfilPK)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        UsuarioPerfilPK other = (UsuarioPerfilPK) object;
-        if ((this.codUsuario == null && other.codUsuario != null) || (this.codUsuario != null && !this.codUsuario.equals(other.codUsuario))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        if ((this.codPerfil == null && other.codPerfil != null) || (this.codPerfil != null && !this.codPerfil.equals(other.codPerfil))) {
+        final UsuarioPerfilPK other = (UsuarioPerfilPK) obj;
+        if (!Objects.equals(this.codUsuario, other.codUsuario)) {
+            return false;
+        }
+        if (!Objects.equals(this.codPerfil, other.codPerfil)) {
             return false;
         }
         return true;

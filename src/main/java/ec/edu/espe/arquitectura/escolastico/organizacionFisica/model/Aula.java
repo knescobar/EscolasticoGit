@@ -2,6 +2,7 @@ package ec.edu.espe.arquitectura.escolastico.organizacionFisica.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -144,18 +145,24 @@ public class Aula implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (codAula != null ? codAula.hashCode() : 0);
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.codAula);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof Aula)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Aula other = (Aula) object;
-        if ((this.codAula == null && other.codAula != null) || (this.codAula != null && !this.codAula.equals(other.codAula))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Aula other = (Aula) obj;
+        if (!Objects.equals(this.codAula, other.codAula)) {
             return false;
         }
         return true;
