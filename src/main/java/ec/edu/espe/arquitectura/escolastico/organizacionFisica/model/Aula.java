@@ -41,7 +41,7 @@ public class Aula implements Serializable {
     @JoinColumn(name = "cod_edificio", referencedColumnName = "cod_edificio")
     @ManyToOne
     private Edificio edificio;
-    @JoinColumn(name = "cod_edificio_bloque", referencedColumnName = "cod_edificio_bloque")
+    @JoinColumn(name = "cod_edificio_bloque", referencedColumnName = "cod_edificio_bloque", nullable = false, insertable = false, updatable = false)
     @ManyToOne
     private EdificioBloque bloque;
     @JoinColumn(name = "cod_tipo_aula", referencedColumnName = "cod_tipo_aula")
