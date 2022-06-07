@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "seg_modulo")
@@ -19,6 +20,7 @@ public class Modulo implements Serializable {
     private String nombre;
     @Column(name = "estado", nullable = false, length = 3)
     private String estado;
+    @Version
     @Column(name = "version", nullable = false)
     private Integer version;
 
