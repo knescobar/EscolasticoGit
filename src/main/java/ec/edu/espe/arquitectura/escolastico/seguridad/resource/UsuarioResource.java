@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/usuario")
 public class UsuarioResource {
-    
-    private UsuarioService usuarioSrvice;
 
-    public UsuarioResource(UsuarioService usuarioSrvice) {
-        this.usuarioSrvice = usuarioSrvice;
+    private UsuarioService usuarioService;
+
+    public UsuarioResource(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
     }
 
     @PostMapping
     public ResponseEntity<Usuario> crear(Usuario usuario) {
-        usuario = this.usuarioSrvice.crear(usuario);
+        usuario = this.usuarioService.crear(usuario);
         return ResponseEntity.ok(usuario);
     }
 }
