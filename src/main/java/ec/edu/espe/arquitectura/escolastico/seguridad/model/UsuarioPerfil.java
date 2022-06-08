@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "seg_usuario_perfil")
 public class UsuarioPerfil implements Serializable {
@@ -33,6 +35,7 @@ public class UsuarioPerfil implements Serializable {
     private Perfil perfil;
     @JoinColumn(name = "cod_usuario", referencedColumnName = "cod_usuario", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
+    @JsonIgnore
     private Usuario usuario;
 
     public UsuarioPerfil() {

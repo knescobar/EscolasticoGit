@@ -57,6 +57,10 @@ public class UsuarioService {
         return this.usuarioRepository.findByEstado(estado.getValor());
     }
 
+    public List<Usuario> buscarPorEstadoActivo() {
+        return this.usuarioRepository.findByEstado(EstadoPersonaEnum.ACTIVO.getValor());
+    }
+
     public Usuario crear(Usuario usuario) {
         String clave = RandomStringUtils.randomAlphabetic(8);
         usuario.setClave(DigestUtils.sha256Hex(clave));
@@ -79,4 +83,15 @@ public class UsuarioService {
         usuario.setFechaCambioClave(new Date());
         this.usuarioRepository.save(usuario);
     }
-}
+
+    public void modificar(Usuario usuario) {
+        Usuario usuarioDB = this.buscarPorCodigo(usuario.getCodUsuario());
+        usuarioDB.setNombre(usuario.getNombre());
+        usuarioDB.setMail(usuario.getMail());
+        usuarioDB.setTelefono(usuario.getTelefono());
+        usuarioDB.setEstado(usuario.getEstado());
+        usuarioDB.setAudFecha(new Date());  
+        
+        this.usuarioRepository.save(usuarioDB);
+    }
+ }
