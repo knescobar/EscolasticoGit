@@ -91,7 +91,35 @@ public class UsuarioService {
         usuarioDB.setTelefono(usuario.getTelefono());
         usuarioDB.setEstado(usuario.getEstado());
         usuarioDB.setAudFecha(new Date());  
-        
+        usuarioDB.setPerfiles(usuario.getPerfiles());
         this.usuarioRepository.save(usuarioDB);
+    }
+
+
+    public void inicioSesion(String codigoOMail, String clave) throws CambioClaveException {
+        Usuario usuario = this.buscarPorCodigoOMail(codigoOMail);
+        if (usuario == null) {
+            throw new CambioClaveException("No existe el usuario para el codigo o correo provisto");
+        }
+        if(usuario.getEstado().equals(EstadoPersonaEnum.ACTIVO.getValor())){
+
+            if(usuario.getNroIntentosFallidos()>3){
+                usuario.setEstado(EstadoPersonaEnum.BLOQUEADO.getValor());
+                usuario.setNroIntentosFallidos(0);
+            }else{
+                clave= DigestUtils.sha256Hex(clave);
+                if (!usuario.getClave().equals(clave)) {
+                    usuario.setNroIntentosFallidos(usuario.getNroIntentosFallidos()+1);
+                }else{
+                    usuario.setFechaUltimaSesion(new Date());
+                }
+                
+                this.usuarioRepository.save(usuario);
+            }
+           
+        }else{
+            throw new CambioClaveException("Usuario inactivo");
+        }
+       
     }
  }
