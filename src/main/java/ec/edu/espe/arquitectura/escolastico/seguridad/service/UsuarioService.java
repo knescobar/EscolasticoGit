@@ -2,8 +2,10 @@ package ec.edu.espe.arquitectura.escolastico.seguridad.service;
 
 import ec.edu.espe.arquitectura.escolastico.seguridad.CambioClaveException;
 import ec.edu.espe.arquitectura.escolastico.seguridad.EstadoPersonaEnum;
+import ec.edu.espe.arquitectura.escolastico.seguridad.dao.RegistroSesionRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioPerfilRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioRepository;
+import ec.edu.espe.arquitectura.escolastico.seguridad.model.RegistroSesion;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Usuario;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -18,10 +20,13 @@ public class UsuarioService {
 
     private UsuarioRepository usuarioRepository;
     private UsuarioPerfilRepository usuarioPerfilRepository;
-
-    public UsuarioService(UsuarioRepository usuarioRepository, UsuarioPerfilRepository usuarioPerfilRepository) {
+    private RegistroSesionRepository registroRepository;
+    private String error;
+    private String resultado;
+    public UsuarioService(UsuarioRepository usuarioRepository, UsuarioPerfilRepository usuarioPerfilRepository,RegistroSesionRepository registroRepository ) {
         this.usuarioRepository = usuarioRepository;
         this.usuarioPerfilRepository = usuarioPerfilRepository;
+        this.registroRepository = registroRepository;
     }
 
     public Usuario buscarPorCodigo(String codigo) {
@@ -94,32 +99,68 @@ public class UsuarioService {
         usuarioDB.setPerfiles(usuario.getPerfiles());
         this.usuarioRepository.save(usuarioDB);
     }
-
-
+    
+    public void registroSesion(String codigo,String resultado, String error) {
+        
+        RegistroSesion registroUsuario = new RegistroSesion();
+        registroUsuario.setCodUsuario(codigo);
+        registroUsuario.setIpConexion("localhost");
+        registroUsuario.setFechaConexion(new Date());
+        registroUsuario.setError(error);
+        registroUsuario.setResultado(resultado);
+        this.registroRepository.save(registroUsuario);
+      
+    }
+    
     public void inicioSesion(String codigoOMail, String clave) throws CambioClaveException {
+     
         Usuario usuario = this.buscarPorCodigoOMail(codigoOMail);
         if (usuario == null) {
             throw new CambioClaveException("No existe el usuario para el codigo o correo provisto");
         }
         if(usuario.getEstado().equals(EstadoPersonaEnum.ACTIVO.getValor())){
 
-            if(usuario.getNroIntentosFallidos()>3){
+            if(usuario.getNroIntentosFallidos()==3){
                 usuario.setEstado(EstadoPersonaEnum.BLOQUEADO.getValor());
                 usuario.setNroIntentosFallidos(0);
+                this.setError("Error");
+                this.setResultado("FAL");
             }else{
-                clave= DigestUtils.sha256Hex(clave);
+                //clave= DigestUtils.sha256Hex(clave);
                 if (!usuario.getClave().equals(clave)) {
                     usuario.setNroIntentosFallidos(usuario.getNroIntentosFallidos()+1);
+                    this.setError("Clave");
+                    this.setResultado("FAL");
+
                 }else{
                     usuario.setFechaUltimaSesion(new Date());
+                    this.setResultado("SAT");
+                    this.setError("");
                 }
-                
-                this.usuarioRepository.save(usuario);
             }
-           
+            this.usuarioRepository.save(usuario);
         }else{
             throw new CambioClaveException("Usuario inactivo");
         }
-       
+      this.registroSesion(usuario.getCodUsuario(), resultado, error);
+
+
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
     }
  }

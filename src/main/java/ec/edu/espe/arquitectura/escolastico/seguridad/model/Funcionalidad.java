@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "seg_funcionalidad")
@@ -41,6 +42,7 @@ public class Funcionalidad implements Serializable {
     private Date audFecha;
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
+    @Version
     @Column(name = "version", nullable = false)
     private Integer version;
     @JoinColumn(name = "cod_modulo", referencedColumnName = "cod_modulo", nullable = false)

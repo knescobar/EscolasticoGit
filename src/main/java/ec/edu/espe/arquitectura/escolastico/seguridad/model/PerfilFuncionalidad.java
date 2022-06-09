@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "seg_perfil_funcionalidad")
@@ -26,6 +27,7 @@ public class PerfilFuncionalidad implements Serializable {
     private Date audFecha;
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
+    @Version
     @Column(name = "version", nullable = false)
     private Integer version;
     @JoinColumn(name = "cod_funcionalidad", referencedColumnName = "cod_funcionalidad", nullable = false, insertable = false, updatable = false)

@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,6 +29,7 @@ public class UsuarioPerfil implements Serializable {
     private Date audFecha;
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
+    @Version
     @Column(name = "version", nullable = false)
     private Integer version;
     @JoinColumn(name = "cod_perfil", referencedColumnName = "cod_perfil", nullable = false, insertable = false, updatable = false)

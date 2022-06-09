@@ -54,8 +54,8 @@ public class Usuario implements Serializable {
     private Date audFecha;
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    @Column(name = "version", nullable = false)
     @Version
+    @Column(name = "version", nullable = false)
     private Integer version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
     private List<UsuarioPerfil> perfiles;

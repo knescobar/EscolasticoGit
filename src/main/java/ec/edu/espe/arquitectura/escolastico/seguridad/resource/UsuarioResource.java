@@ -1,5 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.resource;
 
+import ec.edu.espe.arquitectura.escolastico.seguridad.dto.LoginDto;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Usuario;
 import ec.edu.espe.arquitectura.escolastico.seguridad.service.UsuarioService;
 import org.springframework.http.ResponseEntity;
@@ -45,6 +46,18 @@ public class UsuarioResource {
         try{
             this.usuarioService.modificar(usuario);
             usuario = this.usuarioService.buscarPorCodigo(usuario.getCodUsuario());
+            return ResponseEntity.ok(usuario);
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PutMapping(path="/login")
+    public ResponseEntity<Usuario> inicoSesion(@RequestBody LoginDto loginDto){
+        try{
+            this.usuarioService.inicioSesion(loginDto.getEmail(), loginDto.getPassword());
+            Usuario usuario = this.usuarioService.buscarPorCodigoOMail(loginDto.getEmail());
             return ResponseEntity.ok(usuario);
         }catch (Exception e){
             e.printStackTrace();
