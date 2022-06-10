@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "edu_carrera")
 public class Carrera implements Serializable {
@@ -43,6 +45,7 @@ public class Carrera implements Serializable {
     private BigDecimal precioCredito;
     @Column(name = "modalidad", length = 64)
     private String modalidad;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "carrera")
     private List<MallaCarrera> mallaCarrera;
     @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)
@@ -173,7 +176,8 @@ public class Carrera implements Serializable {
             return false;
         }
         Carrera other = (Carrera) object;
-        if ((this.codCarrera == null && other.codCarrera != null) || (this.codCarrera != null && !this.codCarrera.equals(other.codCarrera))) {
+        if ((this.codCarrera == null && other.codCarrera != null)
+                || (this.codCarrera != null && !this.codCarrera.equals(other.codCarrera))) {
             return false;
         }
         return true;
