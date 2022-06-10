@@ -1,5 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -19,18 +20,24 @@ public class NrcService {
     private final PersonaRepository personaRepository;
 
     public void crear(Nrc nrc) {
-        Optional<Persona> perOpt = this.personaRepository.findById(nrc.getPersona().getCodPersona());
-        if (!perOpt.isPresent()) {
-            throw new CrearException(
-                    "Error, usuario no existe");
-        }
 
-        if (!nrc.getPersona().getTipoPersona().getCodTipoPersona().equals("DOC")) {
+        Optional<Persona> personaOpt = this.personaRepository.findById(nrc.getPersona().getCodPersona());
+        Persona persona = this.personaRepository.findByCodPersona(nrc.getPersona().getCodPersona());
+        if (!personaOpt.isPresent()) {
+            throw new CrearException(
+                    "Error, no existe el docente");
+        }
+        if (!persona.getTipoPersona().getCodTipoPersona().equals("DOC")) {
             throw new CrearException(
                     "Error, el usuario seleccionado no es docente");
 
         }
+
         this.nrcRepository.save(nrc);
+    }
+
+    public List<Nrc> listarNrc() {
+        return this.nrcRepository.findAll();
     }
 
 }
