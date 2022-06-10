@@ -5,6 +5,7 @@ import ec.edu.espe.arquitectura.escolastico.seguridad.EstadoPersonaEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.RegistroSesionRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioPerfilRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioRepository;
+import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CrearException;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.RegistroSesion;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Usuario;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -23,7 +24,9 @@ public class UsuarioService {
     private RegistroSesionRepository registroRepository;
     private String error;
     private String resultado;
-    public UsuarioService(UsuarioRepository usuarioRepository, UsuarioPerfilRepository usuarioPerfilRepository,RegistroSesionRepository registroRepository ) {
+
+    public UsuarioService(UsuarioRepository usuarioRepository, UsuarioPerfilRepository usuarioPerfilRepository,
+            RegistroSesionRepository registroRepository) {
         this.usuarioRepository = usuarioRepository;
         this.usuarioPerfilRepository = usuarioPerfilRepository;
         this.registroRepository = registroRepository;
@@ -67,6 +70,11 @@ public class UsuarioService {
     }
 
     public Usuario crear(Usuario usuario) {
+        if (usuario.getPerfiles() == null ||
+                usuario.getPerfiles().isEmpty()) {
+            throw new CrearException(
+                    "Error al crear el usuario, los perfiles son requeridas");
+        }
         String clave = RandomStringUtils.randomAlphabetic(8);
         usuario.setClave(DigestUtils.sha256Hex(clave));
         usuario.setFechaCreacion(new Date());
@@ -95,13 +103,13 @@ public class UsuarioService {
         usuarioDB.setMail(usuario.getMail());
         usuarioDB.setTelefono(usuario.getTelefono());
         usuarioDB.setEstado(usuario.getEstado());
-        usuarioDB.setAudFecha(new Date());  
+        usuarioDB.setAudFecha(new Date());
         usuarioDB.setPerfiles(usuario.getPerfiles());
         this.usuarioRepository.save(usuarioDB);
     }
-    
-    public void registroSesion(String codigo,String resultado, String error) {
-        
+
+    public void registroSesion(String codigo, String resultado, String error) {
+
         RegistroSesion registroUsuario = new RegistroSesion();
         registroUsuario.setCodUsuario(codigo);
         registroUsuario.setIpConexion("localhost");
@@ -109,41 +117,40 @@ public class UsuarioService {
         registroUsuario.setError(error);
         registroUsuario.setResultado(resultado);
         this.registroRepository.save(registroUsuario);
-      
+
     }
-    
+
     public void inicioSesion(String codigoOMail, String clave) throws CambioClaveException {
-     
+
         Usuario usuario = this.buscarPorCodigoOMail(codigoOMail);
         if (usuario == null) {
             throw new CambioClaveException("No existe el usuario para el codigo o correo provisto");
         }
-        if(usuario.getEstado().equals(EstadoPersonaEnum.ACTIVO.getValor())){
+        if (usuario.getEstado().equals(EstadoPersonaEnum.ACTIVO.getValor())) {
 
-            if(usuario.getNroIntentosFallidos()==3){
+            if (usuario.getNroIntentosFallidos() == 3) {
                 usuario.setEstado(EstadoPersonaEnum.BLOQUEADO.getValor());
                 usuario.setNroIntentosFallidos(0);
                 this.setError("Error");
                 this.setResultado("FAL");
-            }else{
-                //clave= DigestUtils.sha256Hex(clave);
+            } else {
+                // clave= DigestUtils.sha256Hex(clave);
                 if (!usuario.getClave().equals(clave)) {
-                    usuario.setNroIntentosFallidos(usuario.getNroIntentosFallidos()+1);
+                    usuario.setNroIntentosFallidos(usuario.getNroIntentosFallidos() + 1);
                     this.setError("Clave");
                     this.setResultado("FAL");
 
-                }else{
+                } else {
                     usuario.setFechaUltimaSesion(new Date());
                     this.setResultado("SAT");
                     this.setError("");
                 }
             }
             this.usuarioRepository.save(usuario);
-        }else{
+        } else {
             throw new CambioClaveException("Usuario inactivo");
         }
-      this.registroSesion(usuario.getCodUsuario(), resultado, error);
-
+        this.registroSesion(usuario.getCodUsuario(), resultado, error);
 
     }
 
@@ -155,7 +162,6 @@ public class UsuarioService {
         this.error = error;
     }
 
-
     public String getResultado() {
         return resultado;
     }
@@ -163,4 +169,4 @@ public class UsuarioService {
     public void setResultado(String resultado) {
         this.resultado = resultado;
     }
- }
+}

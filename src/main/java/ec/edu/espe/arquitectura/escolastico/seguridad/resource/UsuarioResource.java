@@ -24,42 +24,35 @@ public class UsuarioResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<Usuario>> getUsuariosActivos(){
+    public ResponseEntity<List<Usuario>> getUsuariosActivos() {
         return ResponseEntity.ok(this.usuarioService.buscarPorEstadoActivo());
     }
 
     @PostMapping
     public ResponseEntity<Usuario> crear(@RequestBody Usuario usuario) {
-        try{
-            usuario = this.usuarioService.crear(usuario);
-            return ResponseEntity.ok(usuario);
-        }catch (Exception e){
-            e.printStackTrace();
-            return ResponseEntity.badRequest().build();
-        }
-
-        
+        usuario = this.usuarioService.crear(usuario);
+        return ResponseEntity.ok(usuario);
     }
 
     @PutMapping
-    public ResponseEntity<Usuario> modificar(@RequestBody Usuario usuario){
-        try{
+    public ResponseEntity<Usuario> modificar(@RequestBody Usuario usuario) {
+        try {
             this.usuarioService.modificar(usuario);
             usuario = this.usuarioService.buscarPorCodigo(usuario.getCodUsuario());
             return ResponseEntity.ok(usuario);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().build();
         }
     }
 
-    @PutMapping(path="/login")
-    public ResponseEntity<Usuario> inicoSesion(@RequestBody LoginDto loginDto){
-        try{
+    @PutMapping(path = "/login")
+    public ResponseEntity<Usuario> inicoSesion(@RequestBody LoginDto loginDto) {
+        try {
             this.usuarioService.inicioSesion(loginDto.getEmail(), loginDto.getPassword());
             Usuario usuario = this.usuarioService.buscarPorCodigoOMail(loginDto.getEmail());
             return ResponseEntity.ok(usuario);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().build();
         }

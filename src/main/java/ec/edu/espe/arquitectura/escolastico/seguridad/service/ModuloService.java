@@ -10,15 +10,15 @@ import java.util.Optional;
 
 @Service
 public class ModuloService {
-    
+
     private ModuloRepository moduloRepository;
-    
+
     public ModuloService(ModuloRepository moduloRepository) {
-        this.moduloRepository = moduloRepository;
+        this.moduloRepository = moduloRepository;gv
     }
 
     public Modulo obtenerPorCodigo(String codigo) {
-        Optional<Modulo>  moduloOpt = this.moduloRepository.findById(codigo);
+        Optional<Modulo> moduloOpt = this.moduloRepository.findById(codigo);
         if (moduloOpt.isPresent()) {
             return moduloOpt.get();
         } else {

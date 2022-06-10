@@ -23,19 +23,14 @@ public class PerfilResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<Perfil>> getPerfilActivos(){
+    public ResponseEntity<List<Perfil>> getPerfilActivos() {
         return ResponseEntity.ok(this.perfilService.listarModulosActivos());
     }
 
     @PostMapping
     public ResponseEntity<String> crear(@RequestBody Perfil perfil) {
-        try {
-            this.perfilService.crear(perfil);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().build();
-        }
+        this.perfilService.crear(perfil);
+        return ResponseEntity.ok().build();
     }
 
     @PutMapping
@@ -48,6 +43,6 @@ public class PerfilResource {
             e.printStackTrace();
             return ResponseEntity.badRequest().build();
         }
-    } 
-    
+    }
+
 }

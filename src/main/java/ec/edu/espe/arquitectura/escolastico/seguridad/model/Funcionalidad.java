@@ -18,6 +18,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "seg_funcionalidad")
 public class Funcionalidad implements Serializable {
@@ -49,6 +51,7 @@ public class Funcionalidad implements Serializable {
     @ManyToOne(optional = false)
     private Modulo modulo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "funcionalidad")
+    @JsonIgnore
     private List<PerfilFuncionalidad> perfilFuncionalidades;
 
     public Funcionalidad() {
@@ -173,7 +176,8 @@ public class Funcionalidad implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.escolastico.model.SegFuncionalidad[ codFuncionalidad=" + codFuncionalidad + " ]";
+        return "ec.edu.espe.arquitectura.escolastico.model.SegFuncionalidad[ codFuncionalidad=" + codFuncionalidad
+                + " ]";
     }
 
 }

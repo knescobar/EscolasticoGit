@@ -38,6 +38,7 @@ public class Perfil implements Serializable {
     @Column(name = "version", nullable = false)
     private Integer version;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "perfil")
+    
     private List<PerfilFuncionalidad> perfilesFuncionalidad;
 
     public Perfil() {

@@ -13,6 +13,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "seg_perfil_funcionalidad")
 public class PerfilFuncionalidad implements Serializable {
@@ -32,9 +34,11 @@ public class PerfilFuncionalidad implements Serializable {
     private Integer version;
     @JoinColumn(name = "cod_funcionalidad", referencedColumnName = "cod_funcionalidad", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
+    @JsonIgnore
     private Funcionalidad funcionalidad;
     @JoinColumn(name = "cod_perfil", referencedColumnName = "cod_perfil", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
+    @JsonIgnore
     private Perfil perfil;
 
     public PerfilFuncionalidad() {
@@ -131,7 +135,8 @@ public class PerfilFuncionalidad implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.escolastico.model.SegPerfilFuncionalidad[ segPerfilFuncionalidadPK=" + pk + " ]";
+        return "ec.edu.espe.arquitectura.escolastico.model.SegPerfilFuncionalidad[ segPerfilFuncionalidadPK=" + pk
+                + " ]";
     }
 
 }
