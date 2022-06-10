@@ -14,7 +14,7 @@ public class ModuloService {
     private ModuloRepository moduloRepository;
 
     public ModuloService(ModuloRepository moduloRepository) {
-        this.moduloRepository = moduloRepository;gv
+        this.moduloRepository = moduloRepository;
     }
 
     public Modulo obtenerPorCodigo(String codigo) {

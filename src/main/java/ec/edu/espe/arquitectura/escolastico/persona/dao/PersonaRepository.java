@@ -10,6 +10,8 @@ public interface PersonaRepository extends JpaRepository<Persona, Integer> {
 
     Persona findByIdentificacion(String identificacion);
 
+    Persona findByCodPersona(Integer cod);
+
     Persona findByEmailOrEmailAlterno(String email, String emailAlterno);
 
     List<Persona> findByGenero(String genero);
