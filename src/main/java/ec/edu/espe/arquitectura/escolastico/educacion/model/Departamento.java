@@ -99,7 +99,8 @@ public class Departamento implements Serializable {
             return false;
         }
         Departamento other = (Departamento) object;
-        if ((this.codDepartamento == null && other.codDepartamento != null) || (this.codDepartamento != null && !this.codDepartamento.equals(other.codDepartamento))) {
+        if ((this.codDepartamento == null && other.codDepartamento != null)
+                || (this.codDepartamento != null && !this.codDepartamento.equals(other.codDepartamento))) {
             return false;
         }
         return true;

@@ -31,14 +31,8 @@ public class CarreraService {
         if (carrera.getDepartamento() == null) {
             throw new CrearException(
                     "Error al crear la carrera, el departamento es requerido");
-        } else if (carrera.getMallaCarrera() == null
-                || carrera.getMallaCarrera().isEmpty()) {
-            throw new CrearException(
-                    "Error al crear la carrera, la malla es requerida");
         }
-
         this.carreraRepository.save(carrera);
-        this.mallaCarreraRepository.saveAll(carrera.getMallaCarrera());
     }
 
     public void modificar(Carrera carrera) {

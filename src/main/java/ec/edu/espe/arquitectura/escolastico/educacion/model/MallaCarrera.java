@@ -9,6 +9,8 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "edu_malla_carrera")
 public class MallaCarrera implements Serializable {
@@ -21,10 +23,11 @@ public class MallaCarrera implements Serializable {
     private Integer nivel;
     @JoinColumn(name = "cod_carrera", referencedColumnName = "cod_carrera", nullable = false)
     @ManyToOne(optional = false)
+    @JsonBackReference
     private Carrera carrera;
     @JoinColumns({
-        @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false),
-        @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)})
+            @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false),
+            @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false) })
     @ManyToOne(optional = false)
     private Materia materia;
 
@@ -80,7 +83,8 @@ public class MallaCarrera implements Serializable {
             return false;
         }
         MallaCarrera other = (MallaCarrera) object;
-        if ((this.codMateriacarrera == null && other.codMateriacarrera != null) || (this.codMateriacarrera != null && !this.codMateriacarrera.equals(other.codMateriacarrera))) {
+        if ((this.codMateriacarrera == null && other.codMateriacarrera != null)
+                || (this.codMateriacarrera != null && !this.codMateriacarrera.equals(other.codMateriacarrera))) {
             return false;
         }
         return true;
@@ -88,7 +92,8 @@ public class MallaCarrera implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.escolastico.model.EduMallaCarrera[ codMateriacarrera=" + codMateriacarrera + " ]";
+        return "ec.edu.espe.arquitectura.escolastico.model.EduMallaCarrera[ codMateriacarrera=" + codMateriacarrera
+                + " ]";
     }
 
 }

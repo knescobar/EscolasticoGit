@@ -14,7 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "edu_carrera")
@@ -45,11 +47,12 @@ public class Carrera implements Serializable {
     private BigDecimal precioCredito;
     @Column(name = "modalidad", length = 64)
     private String modalidad;
-    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "carrera")
+    @JsonManagedReference
     private List<MallaCarrera> mallaCarrera;
     @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)
     @ManyToOne(optional = false)
+    @JsonBackReference
     private Departamento departamento;
 
     public Carrera() {
