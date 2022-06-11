@@ -13,6 +13,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "edu_nrc_horario")
 public class NrcHorario implements Serializable {
@@ -22,19 +25,23 @@ public class NrcHorario implements Serializable {
     private NrcHorarioPK pk;
     @Column(name = "hora_inicio", nullable = false)
     @Temporal(TemporalType.TIME)
+    @JsonFormat(pattern = "HH:mm:ss")
     private Date horaInicio;
     @Column(name = "hora_fin", nullable = false)
     @Temporal(TemporalType.TIME)
+    @JsonFormat(pattern = "HH:mm:ss")
     private Date horaFin;
     @JoinColumns({
-        @JoinColumn(name = "cod_nrc", referencedColumnName = "cod_nrc", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false)})
+            @JoinColumn(name = "cod_nrc", referencedColumnName = "cod_nrc", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false) })
     @ManyToOne(optional = false)
+    @JsonIgnore
     private Nrc nrc;
     @JoinColumn(name = "cod_aula", referencedColumnName = "cod_aula", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
+    @JsonIgnore
     private Aula aula;
 
     public NrcHorario() {
@@ -44,7 +51,8 @@ public class NrcHorario implements Serializable {
         this.pk = eduNrcHorarioPK;
     }
 
-    public NrcHorario(Integer codNrc, Integer codPeriodo, Integer codDepartamento, Integer codMateria, Integer codAula, String diaSemana) {
+    public NrcHorario(Integer codNrc, Integer codPeriodo, Integer codDepartamento, Integer codMateria, Integer codAula,
+            String diaSemana) {
         this.pk = new NrcHorarioPK(codNrc, codPeriodo, codDepartamento, codMateria, codAula, diaSemana);
     }
 
