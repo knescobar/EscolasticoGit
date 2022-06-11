@@ -9,6 +9,8 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "edu_prerequisito")
 public class Prerequisito implements Serializable {
@@ -20,14 +22,16 @@ public class Prerequisito implements Serializable {
     @Column(name = "tipo", nullable = false, length = 3)
     private String tipo;
     @JoinColumns({
-        @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false),
-        @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)})
+            @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false),
+            @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false) })
     @ManyToOne(optional = false)
+    @JsonBackReference
     private Materia materia;
     @JoinColumns({
-        @JoinColumn(name = "cod_materia_prerequisito", referencedColumnName = "cod_materia", nullable = false),
-        @JoinColumn(name = "edu_cod_departamento", referencedColumnName = "cod_departamento", nullable = false)})
+            @JoinColumn(name = "cod_materia_prerequisito", referencedColumnName = "cod_materia", nullable = false),
+            @JoinColumn(name = "edu_cod_departamento", referencedColumnName = "cod_departamento", nullable = false) })
     @ManyToOne(optional = false)
+    @JsonBackReference
     private Materia prerequisito;
 
     public Prerequisito() {
@@ -87,7 +91,8 @@ public class Prerequisito implements Serializable {
             return false;
         }
         Prerequisito other = (Prerequisito) object;
-        if ((this.codPrerequisito == null && other.codPrerequisito != null) || (this.codPrerequisito != null && !this.codPrerequisito.equals(other.codPrerequisito))) {
+        if ((this.codPrerequisito == null && other.codPrerequisito != null)
+                || (this.codPrerequisito != null && !this.codPrerequisito.equals(other.codPrerequisito))) {
             return false;
         }
         return true;
