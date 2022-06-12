@@ -2,6 +2,7 @@ package ec.edu.espe.arquitectura.escolastico.educacion.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -29,8 +30,23 @@ public class MateriaService {
 
     public void crear(Materia materia) {
         this.materiaRepository.save(materia);
+        if (materia.getPrerequisito() != null) {
 
-        this.prerequisitoRepository.saveAll(materia.getPrerequisito());
+            this.prerequisitoRepository.saveAll(materia.getPrerequisito());
+            boolean isMateria = materia.getPrerequisito().stream()
+                    .filter(pr -> pr.getPrerequisito().getPk().equals(materia.getPk()))
+                    .collect(Collectors.toList())
+                    .size() != 0;
+
+            if (isMateria) {
+                throw new CrearException("Error, los prerequisitos no pueden ser la misma materia.");
+            }
+            this.materiaRepository.save(materia);
+            this.prerequisitoRepository.saveAll(materia.getPrerequisito());
+
+        } else {
+            this.materiaRepository.save(materia);
+        }
     }
 
     public void modificar(Materia materia) {
