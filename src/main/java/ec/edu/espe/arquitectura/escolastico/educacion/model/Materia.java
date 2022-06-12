@@ -130,7 +130,9 @@ public class Materia implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.escolastico.model.EduMateria[ eduMateriaPK=" + pk + " ]";
+        return "Materia [creditos=" + creditos + ", departamento=" + departamento + ", horas=" + horas + ", materia="
+                + materia + ", nombre=" + nombre + ", pk=" + pk + ", ponderacion=" + ponderacion + ", prerequisito="
+                + prerequisito + "]";
     }
 
 }

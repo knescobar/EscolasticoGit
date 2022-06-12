@@ -68,7 +68,7 @@ public class MatriculaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.escolastico.model.EduMatriculaPK[ codMatricula=" + codMatricula + ", codPersona=" + codPersona + " ]";
+        return "MatriculaPK [codMatricula=" + codMatricula + ", codPersona=" + codPersona + "]";
     }
 
 }

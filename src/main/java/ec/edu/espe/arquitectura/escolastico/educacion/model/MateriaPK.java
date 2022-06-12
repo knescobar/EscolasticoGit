@@ -68,7 +68,8 @@ public class MateriaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.escolastico.model.EduMateriaPK[ codMateria=" + codMateria + ", codDepartamento=" + codDepartamento + " ]";
+        return "ec.edu.espe.arquitectura.escolastico.model.MateriaPK[ codMateria=" + codMateria + ", codDepartamento="
+                + codDepartamento + " ]";
     }
 
 }

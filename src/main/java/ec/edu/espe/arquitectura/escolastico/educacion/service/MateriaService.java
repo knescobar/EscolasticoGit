@@ -12,7 +12,6 @@ import ec.edu.espe.arquitectura.escolastico.educacion.dao.PrerequisitoRepository
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Materia;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.MateriaPK;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Nrc;
-import ec.edu.espe.arquitectura.escolastico.educacion.model.Prerequisito;
 import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CrearException;
 import lombok.RequiredArgsConstructor;
 
@@ -29,10 +28,8 @@ public class MateriaService {
     }
 
     public void crear(Materia materia) {
-        this.materiaRepository.save(materia);
-        if (materia.getPrerequisito() != null) {
 
-            this.prerequisitoRepository.saveAll(materia.getPrerequisito());
+        if (materia.getPrerequisito() != null) {
             boolean isMateria = materia.getPrerequisito().stream()
                     .filter(pr -> pr.getPrerequisito().getPk().equals(materia.getPk()))
                     .collect(Collectors.toList())
