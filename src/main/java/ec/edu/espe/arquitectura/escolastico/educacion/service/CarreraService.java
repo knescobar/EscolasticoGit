@@ -3,7 +3,6 @@ package ec.edu.espe.arquitectura.escolastico.educacion.service;
 import org.springframework.stereotype.Service;
 
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.CarreraRepository;
-import ec.edu.espe.arquitectura.escolastico.educacion.dao.MallaCarreraRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Carrera;
 import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CrearException;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,6 @@ import java.util.Optional;
 public class CarreraService {
 
     private final CarreraRepository carreraRepository;
-    private final MallaCarreraRepository mallaCarreraRepository;
 
     public Carrera obtenerPorCodigo(Integer codigo) {
         Optional<Carrera> carreraOpt = this.carreraRepository.findById(codigo);

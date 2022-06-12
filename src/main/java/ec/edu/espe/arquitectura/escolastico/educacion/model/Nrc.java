@@ -13,13 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "edu_nrc", uniqueConstraints = {
-        @UniqueConstraint(columnNames = { "cod_periodo" }) })
+@Table(name = "edu_nrc")
 public class Nrc implements Serializable {
 
     private static final long serialVersionUID = 5724581L;
@@ -38,14 +36,13 @@ public class Nrc implements Serializable {
     @JsonIgnore
     private Materia materia;
     @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private Periodo periodo;
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false)
     @ManyToOne(optional = false)
-
     private Persona persona;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nrc")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nrc", orphanRemoval = true)
     private List<NrcHorario> horario;
 
     public Nrc() {

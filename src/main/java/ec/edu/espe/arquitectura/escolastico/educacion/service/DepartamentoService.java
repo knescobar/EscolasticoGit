@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.DepartamentoRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.exception.NoEncontradoException;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Departamento;
+import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CrearException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -18,15 +19,19 @@ public class DepartamentoService {
         return obtenerPorCodigoOLanzarNoEncontrado(codigo);
     }
 
-    public void modificar(Departamento departameto) {
-        Departamento departamentoDb = obtenerPorCodigoOLanzarNoEncontrado(
-                departameto.getCodDepartamento());
+    public void crear(Departamento departamento) {
+        this.departamentoRepository.save(departamento);
+    }
 
-        departamentoDb.setNombre(departameto.getNombre());
-        departamentoDb.setDescripcion(departameto.getDescripcion());
-        departamentoDb.setSiglas(departameto.getSiglas());
-        departamentoDb.setCarreras(departameto.getCarreras());
-        departamentoDb.setMaterias(departameto.getMaterias());
+    public void modificar(Departamento departamento) {
+        Departamento departamentoDb = obtenerPorCodigoOLanzarNoEncontrado(
+                departamento.getCodDepartamento());
+
+        departamentoDb.setNombre(departamento.getNombre());
+        departamentoDb.setDescripcion(departamento.getDescripcion());
+        departamentoDb.setSiglas(departamento.getSiglas());
+        departamentoDb.setCarreras(departamento.getCarreras());
+        departamentoDb.setMaterias(departamento.getMaterias());
 
         this.departamentoRepository.save(departamentoDb);
     }

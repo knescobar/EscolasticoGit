@@ -22,17 +22,12 @@ public class NrcResource {
 
     @PostMapping
     public ResponseEntity<String> crear(@RequestBody Nrc nrc) {
-        try {
-            this.nrcService.crear(nrc);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().build();
-        }
+        this.nrcService.crear(nrc);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping
-    public ResponseEntity<List<Nrc>> getNrcs() {
+    public ResponseEntity<List<Nrc>> getNrc() {
         return ResponseEntity.ok(this.nrcService.listarNrc());
     }
 

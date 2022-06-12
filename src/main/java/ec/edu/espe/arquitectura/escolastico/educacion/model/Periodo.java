@@ -2,12 +2,15 @@ package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -34,10 +37,10 @@ public class Periodo implements Serializable {
     private Date fechaFin;
     @Column(name = "parciales", nullable = false)
     private Integer parciales;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "periodo")
-    private Nrc nrc;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "periodo")
-    private Matricula matricula;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodo")
+    private List<Nrc> nrc;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodo")
+    private List<Matricula> matriculas;
 
     public Periodo() {
     }
@@ -94,20 +97,20 @@ public class Periodo implements Serializable {
         this.parciales = parciales;
     }
 
-    public Nrc getNrc() {
+    public List<Nrc> getNrc() {
         return nrc;
     }
 
-    public void setNrc(Nrc nrc) {
+    public void setNrc(List<Nrc> nrc) {
         this.nrc = nrc;
     }
 
-    public Matricula getMatricula() {
-        return matricula;
+    public List<Matricula> getMatriculas() {
+        return matriculas;
     }
 
-    public void setMatricula(Matricula matricula) {
-        this.matricula = matricula;
+    public void setMatriculas(List<Matricula> matriculas) {
+        this.matriculas = matriculas;
     }
 
     @Override
@@ -123,7 +126,8 @@ public class Periodo implements Serializable {
             return false;
         }
         Periodo other = (Periodo) object;
-        if ((this.codPeriodo == null && other.codPeriodo != null) || (this.codPeriodo != null && !this.codPeriodo.equals(other.codPeriodo))) {
+        if ((this.codPeriodo == null && other.codPeriodo != null)
+                || (this.codPeriodo != null && !this.codPeriodo.equals(other.codPeriodo))) {
             return false;
         }
         return true;
