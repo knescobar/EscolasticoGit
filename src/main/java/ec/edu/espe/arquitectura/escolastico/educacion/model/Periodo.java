@@ -1,5 +1,7 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -39,6 +41,7 @@ public class Periodo implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodo")
     private List<Nrc> nrc;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodo")
+    @JsonManagedReference
     private List<Matricula> matriculas;
 
     public Periodo() {
