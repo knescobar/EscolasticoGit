@@ -8,9 +8,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface NrcRepository extends JpaRepository<Nrc, NrcPK> {
 
     List<Nrc> findByPeriodoNombreAndNombreLikeOrderByNombre(String periodo, String materia);
-    
+
     List<Nrc> findByPeriodoNombre(String periodo);
-    
-    List<Nrc> findByPeriodoNombreAndPersonaNombreCompletoLikeOrderByNombre(String periodo,String docente);
+
+    List<Nrc> findByPkCodMateria(Integer materia);
+
+    List<Nrc> findByPeriodoNombreAndPersonaNombreCompletoLikeOrderByNombre(String periodo, String docente);
 
 }
