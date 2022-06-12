@@ -1,8 +1,13 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.service;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
@@ -15,6 +20,8 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class CalificacionService {
+    private final static MathContext PRECISION_NOTA = new MathContext(4, RoundingMode.HALF_UP);
+
     private final CalificacionRepository calificacionRepository;
 
     public Calificacion obtenerPorCodigo(CalificacionPK pk) {
@@ -27,20 +34,17 @@ public class CalificacionService {
     }
 
     public void crear(Calificacion calificacion) {
-        BigDecimal promedio = new BigDecimal(0);
 
         if (calificacion.getPk() == null) {
             throw new CrearException(
                     "Error al crear la calificacion, la información de la matrícula y estudiante es requerida");
         }
 
-        if (calificacion.getMatriculaNrc() == null) {
-            throw new CrearException(
-                    "Error al crear la calificacion, la materia es requerida");
-        }
-
+        BigDecimal promedio = calcularPromedio(calificacion);
+        calificacion.setPromedio(promedio);
         this.calificacionRepository.save(calificacion);
     }
+
 
     public void modificar(Calificacion calificacion) {
         Calificacion calificacionDB = this.obtenerPorCodigo(calificacion.getPk());
@@ -54,5 +58,24 @@ public class CalificacionService {
 
     public List<Calificacion> listarCalifiacionesNrc(Integer codNrc) {
         return this.calificacionRepository.findByPkCodNrc(codNrc);
+    }
+
+    private BigDecimal calcularPromedio(Calificacion calificacion) {
+        List<BigDecimal> notasActuales = Stream.of(
+                        calificacion.getNota1(),
+                        calificacion.getNota2(),
+                        calificacion.getNota3(),
+                        calificacion.getNota4(),
+                        calificacion.getNota5(),
+                        calificacion.getNota6(),
+                        calificacion.getNota7(),
+                        calificacion.getNota8(),
+                        calificacion.getNota9(),
+                        calificacion.getNota10())
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+
+        BigDecimal total = notasActuales.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+        return total.divide(BigDecimal.valueOf(notasActuales.size()), PRECISION_NOTA);
     }
 }
