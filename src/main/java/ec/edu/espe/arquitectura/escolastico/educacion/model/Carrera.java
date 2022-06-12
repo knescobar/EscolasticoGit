@@ -48,11 +48,11 @@ public class Carrera implements Serializable {
     @Column(name = "modalidad", length = 64)
     private String modalidad;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "carrera")
-    @JsonManagedReference
+    @JsonManagedReference(value = "malla-carrera")
     private List<MallaCarrera> mallaCarrera;
     @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)
     @ManyToOne(optional = false)
-    @JsonBackReference
+    @JsonBackReference(value = "carrera-departamento")
     private Departamento departamento;
 
     public Carrera() {

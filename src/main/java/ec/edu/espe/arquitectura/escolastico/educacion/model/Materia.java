@@ -32,11 +32,14 @@ public class Materia implements Serializable {
     @Column(name = "ponderacion", nullable = false, precision = 5, scale = 2)
     private BigDecimal ponderacion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")
-
+    @JsonManagedReference(value = "malla-materia")
     private List<Prerequisito> prerequisito;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")
+    @JsonManagedReference(value = "malla-materia-prerquisito")
+    private List<Prerequisito> materia;
     @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    @JsonIgnore
+    @JsonBackReference(value = "departameto-materias")
     private Departamento departamento;
 
     public Materia() {
@@ -88,14 +91,6 @@ public class Materia implements Serializable {
 
     public void setPonderacion(BigDecimal ponderacion) {
         this.ponderacion = ponderacion;
-    }
-
-    public List<Prerequisito> getMateria() {
-        return materia;
-    }
-
-    public void setMateria(List<Prerequisito> materia) {
-        this.materia = materia;
     }
 
     public List<Prerequisito> getPrerequisito() {

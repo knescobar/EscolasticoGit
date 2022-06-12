@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "edu_departamento")
 public class Departamento implements Serializable {
@@ -27,8 +30,10 @@ public class Departamento implements Serializable {
     @Column(name = "siglas", nullable = false, length = 32)
     private String siglas;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "departamento")
+    @JsonManagedReference(value = "carrera-departamento")
     private List<Carrera> carreras;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "departamento")
+    @JsonManagedReference(value = "departameto-materias")
     private List<Materia> materias;
 
     public Departamento() {

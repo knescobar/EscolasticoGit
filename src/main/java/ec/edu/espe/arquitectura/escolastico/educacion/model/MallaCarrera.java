@@ -23,12 +23,13 @@ public class MallaCarrera implements Serializable {
     private Integer nivel;
     @JoinColumn(name = "cod_carrera", referencedColumnName = "cod_carrera", nullable = false)
     @ManyToOne(optional = false)
-    @JsonBackReference
+    @JsonBackReference(value = "malla-carrera")
     private Carrera carrera;
     @JoinColumns({
             @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false),
             @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false) })
     @ManyToOne(optional = false)
+    @JsonBackReference(value = "malla-materia")
     private Materia materia;
 
     public MallaCarrera() {

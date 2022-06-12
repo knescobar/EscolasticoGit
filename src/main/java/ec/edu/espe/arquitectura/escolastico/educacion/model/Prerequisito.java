@@ -25,13 +25,13 @@ public class Prerequisito implements Serializable {
             @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false),
             @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false) })
     @ManyToOne(optional = false)
-    @JsonBackReference
+    @JsonBackReference(value = "malla-materia-prerquisito")
     private Materia materia;
     @JoinColumns({
             @JoinColumn(name = "cod_materia_prerequisito", referencedColumnName = "cod_materia", nullable = false),
             @JoinColumn(name = "edu_cod_departamento", referencedColumnName = "cod_departamento", nullable = false) })
     @ManyToOne(optional = false)
-    @JsonBackReference
+    @JsonBackReference(value = "malla-materia")
     private Materia prerequisito;
 
     public Prerequisito() {
