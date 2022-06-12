@@ -12,7 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "edu_materia")
@@ -30,8 +32,7 @@ public class Materia implements Serializable {
     @Column(name = "ponderacion", nullable = false, precision = 5, scale = 2)
     private BigDecimal ponderacion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")
-    private List<Prerequisito> materia;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "prerequisito")
+
     private List<Prerequisito> prerequisito;
     @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
