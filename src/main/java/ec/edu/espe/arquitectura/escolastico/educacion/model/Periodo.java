@@ -41,7 +41,7 @@ public class Periodo implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodo")
     private List<Nrc> nrc;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodo")
-    @JsonManagedReference
+    @JsonManagedReference(value = "matricula-periodo")
     private List<Matricula> matriculas;
 
     public Periodo() {

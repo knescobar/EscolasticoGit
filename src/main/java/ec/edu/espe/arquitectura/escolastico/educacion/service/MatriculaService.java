@@ -1,6 +1,7 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.service;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -41,6 +42,11 @@ public class MatriculaService {
                 estudianteNombre);
     }
 
+    public List<Matricula> listarMatriculasPersona(String estudianteNombre) {
+        return this.matriculaRepository
+                .findByPersonaNombreCompletoLikeOrderByFecha(estudianteNombre);
+    }
+
     public void crear(Matricula matricula) {
         Persona persona = this.personaRepository.findById(matricula.getPersona().getCodPersona())
                 .orElseThrow(() -> new CrearException("Error, no existe el estudiante"));
@@ -53,7 +59,7 @@ public class MatriculaService {
 
         if (matricula.getCarrera() == null) {
             throw new CrearException(
-                    "Error al crear la matricula, la matricula es requerida");
+                    "Error al crear la matricula, la carrera es requerida");
         }
 
         if (matricula.getMatriculaNrc() == null ||
@@ -63,9 +69,15 @@ public class MatriculaService {
         }
 
         verificarTipoMatricula(matricula);
+        matricula.getPk().setCodMatricula(obtenerCodigoMatricula());
         matricula.setFecha(new Date());
         this.matriculaRepository.save(matricula);
         this.matriculaNrcRepository.saveAll(matricula.getMatriculaNrc());
+    }
+
+    private String obtenerCodigoMatricula() {
+        DecimalFormat format = new DecimalFormat("00000");
+        return format.format(Integer.valueOf(matriculaRepository.findTopByOrderByPkCodMatriculaDesc()) + 1);
     }
 
     public void modificar(Matricula matricula) {

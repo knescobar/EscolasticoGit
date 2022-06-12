@@ -10,4 +10,8 @@ public interface MatriculaRepository extends JpaRepository<Matricula, MatriculaP
     List<Matricula> findByPeriodoNombreLikeAndPersonaNombreCompletoLikeOrderByFecha(String periodo,
             String estudianteNombre);
 
+    List<Matricula> findByPersonaNombreCompletoLikeOrderByFecha(String estudianteNombre);
+
+    String findTopByOrderByPkCodMatriculaDesc();
+
 }

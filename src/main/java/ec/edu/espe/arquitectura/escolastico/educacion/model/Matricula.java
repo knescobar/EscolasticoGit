@@ -41,7 +41,7 @@ public class Matricula implements Serializable {
     private Carrera carrera;
     @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false)
     @OneToOne(optional = false)
-    @JsonBackReference
+    @JsonBackReference(value = "matricula-periodo")
     private Periodo periodo;
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
