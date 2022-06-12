@@ -52,4 +52,7 @@ public class CalificacionService {
                 codNrc);
     }
 
+    public List<Calificacion> listarCalifiacionesNrc(Integer codNrc) {
+        return this.calificacionRepository.findByPkCodNrc(codNrc);
+    }
 }
