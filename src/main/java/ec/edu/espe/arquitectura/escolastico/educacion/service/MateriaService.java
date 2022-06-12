@@ -9,7 +9,6 @@ import ec.edu.espe.arquitectura.escolastico.educacion.dao.MateriaRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.PrerequisitoRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Materia;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.MateriaPK;
-import ec.edu.espe.arquitectura.escolastico.educacion.model.Prerequisito;
 import lombok.RequiredArgsConstructor;
 
 @Service

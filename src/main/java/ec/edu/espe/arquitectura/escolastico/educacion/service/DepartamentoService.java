@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.DepartamentoRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.exception.NoEncontradoException;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Departamento;
-import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CrearException;
 import lombok.RequiredArgsConstructor;
 
 @Service
