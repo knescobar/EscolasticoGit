@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "per_direccion_persona")
 public class DireccionPersona implements Serializable {
@@ -50,6 +52,7 @@ public class DireccionPersona implements Serializable {
     private Integer version;
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
+    @JsonBackReference(value = "persona-direcciones")
     private Persona persona;
 
     public DireccionPersona() {

@@ -18,9 +18,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "edu_matricula", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"cod_periodo"})})
+        @UniqueConstraint(columnNames = { "cod_periodo" }) })
 public class Matricula implements Serializable {
 
     private static final long serialVersionUID = 35684651L;
@@ -41,8 +44,10 @@ public class Matricula implements Serializable {
     private Periodo periodo;
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
+    @JsonBackReference(value = "matricula-persona")
     private Persona persona;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "matricula")
+    @JsonManagedReference(value = "matricula-nrcs")
     private List<MatriculaNrc> matriculaNrc;
 
     public Matricula() {

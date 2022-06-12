@@ -13,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "edu_matricula_nrc")
 public class MatriculaNrc implements Serializable {
@@ -27,18 +30,21 @@ public class MatriculaNrc implements Serializable {
     @Column(name = "costo", nullable = false, precision = 7, scale = 2)
     private BigDecimal costo;
     @JoinColumns({
-        @JoinColumn(name = "cod_matricula", referencedColumnName = "cod_matricula", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)})
+            @JoinColumn(name = "cod_matricula", referencedColumnName = "cod_matricula", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false) })
     @ManyToOne(optional = false)
+    @JsonBackReference(value = "matricula-nrcs")
     private Matricula matricula;
     @JoinColumns({
-        @JoinColumn(name = "cod_nrc", referencedColumnName = "cod_nrc", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false)})
+            @JoinColumn(name = "cod_nrc", referencedColumnName = "cod_nrc", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false) })
     @ManyToOne(optional = false)
+    @JsonBackReference(value = "nrcs-nrc")
     private Nrc nrc;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "matriculaNrc")
+    @JsonManagedReference(value = "nrcs-calificacion")
     private List<Calificacion> calificaciones;
 
     public MatriculaNrc() {
@@ -48,7 +54,8 @@ public class MatriculaNrc implements Serializable {
         this.pk = eduMatriculaNrcPK;
     }
 
-    public MatriculaNrc(String codMatricula, int codPersona, Integer codNrc, int codPeriodo, int codDepartamento, int codMateria) {
+    public MatriculaNrc(String codMatricula, int codPersona, Integer codNrc, int codPeriodo, int codDepartamento,
+            int codMateria) {
         this.pk = new MatriculaNrcPK(codMatricula, codPersona, codNrc, codPeriodo, codDepartamento, codMateria);
     }
 

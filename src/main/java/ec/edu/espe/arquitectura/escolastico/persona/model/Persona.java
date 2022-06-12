@@ -19,6 +19,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "per_persona")
 public class Persona implements Serializable {
@@ -81,25 +84,33 @@ public class Persona implements Serializable {
     @Column(name = "version", nullable = false)
     private Integer version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+    @JsonManagedReference(value = "persona-direcciones")
     private List<DireccionPersona> direcciones;
     @JoinColumn(name = "cod_pais_nacimiento", referencedColumnName = "cod_pais")
     @ManyToOne
+    @JsonBackReference(value = "persona-pais")
     private Pais paisNacionalidad;
     @JoinColumn(name = "nacionalidad", referencedColumnName = "cod_pais", nullable = false)
     @ManyToOne(optional = false)
+    @JsonBackReference(value = "persona-nacionalidad")
     private Pais nacionalidad;
     @JoinColumn(name = "lugar_nacimiento", referencedColumnName = "cod_ubicacion_geo_int", nullable = false)
     @ManyToOne(optional = false)
+    @JsonBackReference(value = "persona-lugar-nacimiento")
     private UbicacionGeografica lugarNacimiento;
     @JoinColumn(name = "cod_tipo_discapacidad", referencedColumnName = "cod_tipo_discapacidad")
     @ManyToOne
+    @JsonBackReference(value = "persona-discapacidad")
     private TipoDiscapacidad tipoDiscapacidad;
     @JoinColumn(name = "cod_tipo_persona", referencedColumnName = "cod_tipo_persona")
     @ManyToOne
+    @JsonBackReference(value = "persona-tipo")
     private TipoPersona tipoPersona;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+    @JsonManagedReference(value = "persona-documentos")
     private List<DocumentoPersona> documentos;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+    @JsonManagedReference(value = "persona-familiares")
     private List<FamiliarPersona> familiares;
 
     public Persona() {
