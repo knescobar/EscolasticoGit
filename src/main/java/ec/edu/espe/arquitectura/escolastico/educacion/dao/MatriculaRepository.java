@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MatriculaRepository extends JpaRepository<Matricula, MatriculaPK> {
 
-    List<Matricula> findByPeriodoNombreLikeAndPersonaNombreCompletoLikeOrderByFecha(String periodo, String estudianteNombre);
+    List<Matricula> findByPeriodoNombreLikeAndPersonaNombreCompletoLikeOrderByFecha(String periodo,
+            String estudianteNombre);
 
 }
