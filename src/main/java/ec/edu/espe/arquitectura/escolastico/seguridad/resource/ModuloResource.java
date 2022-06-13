@@ -24,13 +24,8 @@ public class ModuloResource {
 
     @PostMapping
     public ResponseEntity<String> crear(@RequestBody Modulo modulo) {
-        try {
-            this.service.crear(modulo);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().build();
-        }
+        this.service.crear(modulo);
+        return ResponseEntity.ok("Módulo creado");
     }
 
     @PutMapping

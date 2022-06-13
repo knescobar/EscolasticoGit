@@ -39,13 +39,8 @@ public class CalificacionResoruce {
 
     @PostMapping
     public ResponseEntity<String> crear(@RequestBody Calificacion calificacion) {
-        try {
-            this.calificacionService.crear(calificacion);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().build();
-        }
+        this.calificacionService.crear(calificacion);
+        return ResponseEntity.ok("Calificación creada");
     }
 
     @PutMapping

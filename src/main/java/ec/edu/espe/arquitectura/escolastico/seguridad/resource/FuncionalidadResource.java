@@ -30,13 +30,8 @@ public class FuncionalidadResource {
 
     @PostMapping
     public ResponseEntity<String> crear(@RequestBody Funcionalidad funcionalidad) {
-        try {
-            this.funcionalidadService.crear(funcionalidad);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().build();
-        }
+        this.funcionalidadService.crear(funcionalidad);
+        return ResponseEntity.ok("Funcionalidad creada");
     }
 
     @PutMapping

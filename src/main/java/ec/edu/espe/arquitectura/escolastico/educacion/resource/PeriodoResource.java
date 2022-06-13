@@ -29,13 +29,8 @@ public class PeriodoResource {
 
     @PostMapping
     public ResponseEntity<String> crear(@RequestBody Periodo periodo) {
-        try {
-            this.periodoService.crear(periodo);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().build();
-        }
+        this.periodoService.crear(periodo);
+        return ResponseEntity.ok("Periodo creado");
     }
 
     @PutMapping

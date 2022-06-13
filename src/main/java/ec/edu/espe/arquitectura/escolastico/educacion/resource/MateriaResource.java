@@ -29,13 +29,8 @@ public class MateriaResource {
 
     @PostMapping
     public ResponseEntity<String> crear(@RequestBody Materia materia) {
-        try {
-            this.materiaService.crear(materia);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().build();
-        }
+        this.materiaService.crear(materia);
+        return ResponseEntity.ok("Materia creada");
     }
 
     @PutMapping
