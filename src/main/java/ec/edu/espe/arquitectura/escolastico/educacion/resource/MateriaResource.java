@@ -35,13 +35,10 @@ public class MateriaResource {
 
     @PutMapping
     public ResponseEntity<Materia> modificar(@RequestBody Materia materia) {
-        try {
+        
             this.materiaService.modificar(materia);
             materia = this.materiaService.obtenerPorCodigo(materia.getPk());
             return ResponseEntity.ok(materia);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().build();
-        }
+       
     }
 }

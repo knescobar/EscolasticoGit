@@ -49,7 +49,17 @@ public class MateriaService {
         materiaDB.setCreditos(materia.getCreditos());
         materiaDB.setHoras(materia.getHoras());
         materiaDB.setPonderacion(materia.getPonderacion());
-        materiaDB.setPrerequisito(materia.getPrerequisito());
+        if (materia.getPrerequisito() != null) {
+            boolean isMateria = materia.getPrerequisito().stream()
+                    .filter(pr -> pr.getPrerequisito().getPk().equals(materia.getPk()))
+                    .collect(Collectors.toList())
+                    .size() != 0;
+            if (isMateria) {
+                throw new CrearException("Error, los prerequisitos no pueden ser la misma materia.");
+            }
+            materiaDB.setPrerequisito(materia.getPrerequisito());
+
+        }
         List<Nrc> nrcModificar = this.nrcRepository.findByPkCodMateria(materiaDB.getPk().getCodMateria()).stream()
                 .filter(nrc -> nrc.getMateria().getPk().getCodMateria().equals(materiaDB.getPk()
                         .getCodMateria()))
