@@ -11,9 +11,18 @@ import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
+import ec.edu.espe.arquitectura.escolastico.educacion.TipoCalificacionEnum;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.CalificacionRepository;
+import ec.edu.espe.arquitectura.escolastico.educacion.dao.MateriaRepository;
+import ec.edu.espe.arquitectura.escolastico.educacion.dao.MatriculaNrcRepository;
+import ec.edu.espe.arquitectura.escolastico.educacion.dao.MatriculaRepository;
+import ec.edu.espe.arquitectura.escolastico.educacion.dao.NrcRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Calificacion;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.CalificacionPK;
+import ec.edu.espe.arquitectura.escolastico.educacion.model.Materia;
+import ec.edu.espe.arquitectura.escolastico.educacion.model.Matricula;
+import ec.edu.espe.arquitectura.escolastico.educacion.model.MatriculaNrc;
+import ec.edu.espe.arquitectura.escolastico.educacion.model.Nrc;
 import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CrearException;
 import lombok.RequiredArgsConstructor;
 
@@ -23,6 +32,9 @@ public class CalificacionService {
     private final static MathContext PRECISION_NOTA = new MathContext(4, RoundingMode.HALF_UP);
 
     private final CalificacionRepository calificacionRepository;
+    private final MatriculaNrcRepository matriculaNrcRepository;
+    private final MateriaRepository materiaRepository;
+    private final NrcRepository nrcRepository;
 
     public Calificacion obtenerPorCodigo(CalificacionPK pk) {
         Optional<Calificacion> calificacionOpt = this.calificacionRepository.findById(pk);
@@ -39,12 +51,33 @@ public class CalificacionService {
             throw new CrearException(
                     "Error al crear la calificacion, la información de la matrícula y estudiante es requerida");
         }
-
         BigDecimal promedio = calcularPromedio(calificacion);
         calificacion.setPromedio(promedio);
-        this.calificacionRepository.save(calificacion);
-    }
+        Nrc nrcDB = this.nrcRepository.findByPkCodNrc(
+                calificacion.getPk().getCodNrc());
+        Materia materiaDB = this.materiaRepository.findByPkCodMateria(
+                nrcDB.getPk().getCodMateria());
 
+        MatriculaNrc matriculaNrcDB = this.matriculaNrcRepository.findByPkCodMatriculaAndPkCodNrcAndPkCodPersona(
+                calificacion.getPk().getCodMatricula(), calificacion.getPk().getCodNrc(),
+                calificacion.getPk().getCodPersona());
+        BigDecimal ponderacion = materiaDB.getPonderacion();
+        ponderacion = ponderacion.multiply(new BigDecimal("0.7"));
+
+        if (promedio.compareTo(ponderacion) == 0) {
+            matriculaNrcDB.setEstado(TipoCalificacionEnum.APROBADO.getValor());
+            calificacion.setObservacion(TipoCalificacionEnum.APROBADO.getTexto());
+        } else if (promedio.compareTo(ponderacion) == 1) {
+            matriculaNrcDB.setEstado(TipoCalificacionEnum.APROBADO.getValor());
+            calificacion.setObservacion(TipoCalificacionEnum.APROBADO.getTexto());
+        } else {
+            matriculaNrcDB.setEstado(TipoCalificacionEnum.REPROBADO.getValor());
+            calificacion.setObservacion(TipoCalificacionEnum.REPROBADO.getTexto());
+        }
+        this.matriculaNrcRepository.save(matriculaNrcDB);
+        this.calificacionRepository.save(calificacion);
+
+    }
 
     public void modificar(Calificacion calificacion) {
         Calificacion calificacionDB = this.obtenerPorCodigo(calificacion.getPk());
@@ -62,16 +95,16 @@ public class CalificacionService {
 
     private BigDecimal calcularPromedio(Calificacion calificacion) {
         List<BigDecimal> notasActuales = Stream.of(
-                        calificacion.getNota1(),
-                        calificacion.getNota2(),
-                        calificacion.getNota3(),
-                        calificacion.getNota4(),
-                        calificacion.getNota5(),
-                        calificacion.getNota6(),
-                        calificacion.getNota7(),
-                        calificacion.getNota8(),
-                        calificacion.getNota9(),
-                        calificacion.getNota10())
+                calificacion.getNota1(),
+                calificacion.getNota2(),
+                calificacion.getNota3(),
+                calificacion.getNota4(),
+                calificacion.getNota5(),
+                calificacion.getNota6(),
+                calificacion.getNota7(),
+                calificacion.getNota8(),
+                calificacion.getNota9(),
+                calificacion.getNota10())
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
