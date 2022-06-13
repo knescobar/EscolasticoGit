@@ -24,7 +24,7 @@ public class NrcResource {
     @PostMapping
     public ResponseEntity<String> crear(@RequestBody Nrc nrc) {
         this.nrcService.crear(nrc);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("NRC creado");
     }
 
     @GetMapping
