@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -37,11 +38,11 @@ public class NrcHorario implements Serializable {
             @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false),
             @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false) })
     @ManyToOne(optional = false)
-    @JsonIgnore
+    @JsonBackReference(value = "nrc-horario")
     private Nrc nrc;
     @JoinColumn(name = "cod_aula", referencedColumnName = "cod_aula", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    @JsonIgnore
+    @JsonBackReference(value = "horario-aula")
     private Aula aula;
 
     public NrcHorario() {

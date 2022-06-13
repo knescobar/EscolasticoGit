@@ -81,6 +81,40 @@ public class CalificacionService {
 
     public void modificar(Calificacion calificacion) {
         Calificacion calificacionDB = this.obtenerPorCodigo(calificacion.getPk());
+        calificacionDB.setNota1(calificacion.getNota1());
+        calificacionDB.setNota2(calificacion.getNota2());
+        calificacionDB.setNota3(calificacion.getNota3());
+        calificacionDB.setNota4(calificacion.getNota4());
+        calificacionDB.setNota5(calificacion.getNota5());
+        calificacionDB.setNota6(calificacion.getNota6());
+        calificacionDB.setNota7(calificacion.getNota7());
+        calificacionDB.setNota8(calificacion.getNota8());
+        calificacionDB.setNota9(calificacion.getNota9());
+        calificacionDB.setNota10(calificacion.getNota10());
+        BigDecimal promedio = calcularPromedio(calificacion);
+        calificacionDB.setPromedio(promedio);
+        Nrc nrcDB = this.nrcRepository.findByPkCodNrc(
+                calificacion.getPk().getCodNrc());
+        Materia materiaDB = this.materiaRepository.findByPkCodMateria(
+                nrcDB.getPk().getCodMateria());
+
+        MatriculaNrc matriculaNrcDB = this.matriculaNrcRepository.findByPkCodMatriculaAndPkCodNrcAndPkCodPersona(
+                calificacion.getPk().getCodMatricula(), calificacion.getPk().getCodNrc(),
+                calificacion.getPk().getCodPersona());
+        BigDecimal ponderacion = materiaDB.getPonderacion();
+        ponderacion = ponderacion.multiply(new BigDecimal("0.7"));
+
+        if (promedio.compareTo(ponderacion) == 0) {
+            matriculaNrcDB.setEstado(TipoCalificacionEnum.APROBADO.getValor());
+            calificacionDB.setObservacion(TipoCalificacionEnum.APROBADO.getTexto());
+        } else if (promedio.compareTo(ponderacion) == 1) {
+            matriculaNrcDB.setEstado(TipoCalificacionEnum.APROBADO.getValor());
+            calificacionDB.setObservacion(TipoCalificacionEnum.APROBADO.getTexto());
+        } else {
+            matriculaNrcDB.setEstado(TipoCalificacionEnum.REPROBADO.getValor());
+            calificacionDB.setObservacion(TipoCalificacionEnum.REPROBADO.getTexto());
+        }
+        this.matriculaNrcRepository.save(matriculaNrcDB);
         this.calificacionRepository.save(calificacionDB);
     }
 

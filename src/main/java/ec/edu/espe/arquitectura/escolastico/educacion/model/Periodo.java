@@ -39,6 +39,7 @@ public class Periodo implements Serializable {
     @Column(name = "parciales", nullable = false)
     private Integer parciales;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodo")
+    @JsonManagedReference(value = "nrc-periodo")
     private List<Nrc> nrc;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "periodo")
     @JsonManagedReference(value = "matricula-periodo")
