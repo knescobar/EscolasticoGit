@@ -118,13 +118,19 @@ public class CalificacionService {
         this.calificacionRepository.save(calificacionDB);
     }
 
-    public List<Calificacion> listarCalificacionesEstudianteNrc(Integer codPersona, Integer codNrc) {
+    public Calificacion listarCalificacionesEstudianteNrc(Integer codPersona, Integer codNrc) {
         return this.calificacionRepository.findByPkCodPersonaAndPkCodNrcOrderByMatriculaNrcNrcNombre(codPersona,
                 codNrc);
     }
 
     public List<Calificacion> listarCalifiacionesNrc(Integer codNrc) {
         return this.calificacionRepository.findByPkCodNrc(codNrc);
+    }
+
+    public List<MatriculaNrc> listarNrcAprobadosEstudiante(String periodo, Integer nombre) {
+        return this.matriculaNrcRepository.findByMatriculaPeriodoNombreLikeAndPkCodPersonaAndEstado(
+                periodo,
+                nombre, TipoCalificacionEnum.APROBADO.getValor());
     }
 
     private BigDecimal calcularPromedio(Calificacion calificacion) {

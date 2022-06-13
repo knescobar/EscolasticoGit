@@ -9,7 +9,7 @@ public interface CalificacionRepository extends JpaRepository<Calificacion, Cali
 
     List<Calificacion> findByPkCodPersonaOrderByMatriculaNrcNrcNombre(Integer codPersona);
 
-    List<Calificacion> findByPkCodPersonaAndPkCodNrcOrderByMatriculaNrcNrcNombre(Integer codPersona, Integer codNrc);
+    Calificacion findByPkCodPersonaAndPkCodNrcOrderByMatriculaNrcNrcNombre(Integer codPersona, Integer codNrc);
 
     List<Calificacion> findByPkCodNrc(Integer nrc);
 

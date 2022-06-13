@@ -3,6 +3,8 @@ package ec.edu.espe.arquitectura.escolastico.educacion.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
@@ -17,6 +19,7 @@ public class Prerequisito implements Serializable {
 
     private static final long serialVersionUID = 1585458L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_prerequisito", nullable = false)
     private Integer codPrerequisito;
     @Column(name = "tipo", nullable = false, length = 3)

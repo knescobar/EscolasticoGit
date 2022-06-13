@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Calificacion;
+import ec.edu.espe.arquitectura.escolastico.educacion.model.MatriculaNrc;
 import ec.edu.espe.arquitectura.escolastico.educacion.service.CalificacionService;
 import lombok.RequiredArgsConstructor;
 
@@ -27,8 +28,13 @@ public class CalificacionResoruce {
     }
 
     @GetMapping(path = "/buscar/estudiante")
-    public ResponseEntity<List<Calificacion>> getCalificacionNrc(@RequestParam Integer codPersona, Integer nrc) {
+    public ResponseEntity<Calificacion> getCalificacionNrc(@RequestParam Integer codPersona, Integer nrc) {
         return ResponseEntity.ok(this.calificacionService.listarCalificacionesEstudianteNrc(codPersona, nrc));
+    }
+
+    @GetMapping(path = "/buscar/nrcApr")
+    public ResponseEntity<List<MatriculaNrc>> getNrcAprobados(@RequestParam String periodo, Integer estudiante) {
+        return ResponseEntity.ok(this.calificacionService.listarNrcAprobadosEstudiante(periodo, estudiante));
     }
 
     @PostMapping
