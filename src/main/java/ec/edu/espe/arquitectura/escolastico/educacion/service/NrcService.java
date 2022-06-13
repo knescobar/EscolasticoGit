@@ -84,12 +84,21 @@ public class NrcService {
                 .size() != 0;
     }
 
-    public void verificarDisponibilidadCuposNRCs(List<Nrc> nrcsInscritos) {
+    public void verificarDisponibilidadCuposNRCsInscritos(List<Nrc> nrcsInscritos) {
+        StringBuilder mensajeCuposInsuficientes = new StringBuilder();
+        boolean existeNrcSinCupos = false;
+
         for (Nrc nrc : nrcsInscritos) {
             if (nrc.getCupoDisponible().equals(0)) {
-                throw new CuposInsuficientesException(
-                        "El NRC " + nrc.getPk().getCodNrc() + " no tiene cupos disponibles");
+                existeNrcSinCupos = true;
+                mensajeCuposInsuficientes.append("El NRC ")
+                        .append(nrc.getPk().getCodNrc())
+                        .append(" no tiene cupos disponibles.\n");
             }
+        }
+
+        if (existeNrcSinCupos) {
+            throw new CuposInsuficientesException(mensajeCuposInsuficientes.toString());
         }
     }
 
