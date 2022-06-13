@@ -34,13 +34,10 @@ public class MateriaService {
                     .filter(pr -> pr.getPrerequisito().getPk().equals(materia.getPk()))
                     .collect(Collectors.toList())
                     .size() != 0;
-
             if (isMateria) {
                 throw new CrearException("Error, los prerequisitos no pueden ser la misma materia.");
             }
             this.materiaRepository.save(materia);
-            this.prerequisitoRepository.saveAll(materia.getPrerequisito());
-
         } else {
             this.materiaRepository.save(materia);
         }
@@ -58,11 +55,13 @@ public class MateriaService {
                         .getCodMateria()))
                 .collect(Collectors.toList());
 
-        nrcModificar.forEach(
-                nrc -> nrc.setNombre(materia.getNombre()));
-
+        if (nrcModificar.size() != 0) {
+            nrcModificar.forEach(
+                    nrc -> nrc.setNombre(materia.getNombre()));
+            this.nrcRepository.saveAll(nrcModificar);
+        }
         this.materiaRepository.save(materiaDB);
-        this.nrcRepository.saveAll(nrcModificar);
+
     }
 
     public Materia obtenerPorCodigo(MateriaPK pk) {
