@@ -3,6 +3,7 @@ package ec.edu.espe.arquitectura.escolastico.educacion.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import ec.edu.espe.arquitectura.escolastico.educacion.exception.CuposInsuficientesException;
 import org.springframework.stereotype.Service;
 
 import ec.edu.espe.arquitectura.escolastico.educacion.TipoPersonaEnum;
@@ -81,5 +82,21 @@ public class NrcService {
                                 ha.getHoraFin().equals(hb.getHoraFin())))
                 .collect(Collectors.toList())
                 .size() != 0;
+    }
+
+    public void verificarDisponibilidadCuposNRCs(List<Nrc> nrcsInscritos) {
+        for (Nrc nrc : nrcsInscritos) {
+            if (nrc.getCupoDisponible().equals(0)) {
+                throw new CuposInsuficientesException(
+                        "El NRC " + nrc.getPk().getCodNrc() + " no tiene cupos disponibles");
+            }
+        }
+    }
+
+    public Nrc tomarUnCupoEnNRC(Nrc nrc) {
+        nrc.setCupoDisponible(nrc.getCupoDisponible() - 1);
+        nrc.setCupoRegistrado(nrc.getCupoRegistrado() + 1);
+
+        return nrc;
     }
 }
