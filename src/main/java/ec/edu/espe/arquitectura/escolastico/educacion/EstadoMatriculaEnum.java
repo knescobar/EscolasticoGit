@@ -6,11 +6,11 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public enum TipoMatriculaEnum {
-
-    PRIMERA("1", "Primera matrícula"),
-    SEGUNDA("2", "Segunda matrícula"),
-    TERCERA("3", "Tercera matrícula");
+public enum EstadoMatriculaEnum {
+    APROBADO("APR", "Aprobado"),
+    REPROBADO("REP", "Reprobado"),
+    INSCRITO("INS", "Inscrito"),
+    RETIRADO("RET", "Retirado");
 
     private final String valor;
     private final String texto;

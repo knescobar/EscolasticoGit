@@ -12,6 +12,6 @@ public interface MatriculaRepository extends JpaRepository<Matricula, MatriculaP
 
     List<Matricula> findByPersonaNombreCompletoLikeOrderByFecha(String estudianteNombre);
 
-    String findTopByOrderByPkCodMatriculaDesc();
+    Matricula findTopByOrderByPkCodMatriculaDesc();
 
 }

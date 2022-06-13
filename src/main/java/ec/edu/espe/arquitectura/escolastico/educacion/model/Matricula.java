@@ -22,8 +22,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "edu_matricula", uniqueConstraints = {
-        @UniqueConstraint(columnNames = { "cod_periodo" }) })
+@Table(name = "edu_matricula")
 public class Matricula implements Serializable {
 
     private static final long serialVersionUID = 35684651L;

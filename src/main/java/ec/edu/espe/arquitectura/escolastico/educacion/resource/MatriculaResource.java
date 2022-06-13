@@ -34,7 +34,7 @@ public class MatriculaResource {
     }
 
     @PostMapping
-    public ResponseEntity<Matricula> crear(@RequestBody Matricula matricula) {
+    public ResponseEntity<String> crear(@RequestBody Matricula matricula) {
         try {
             this.matriculaService.crear(matricula);
             return ResponseEntity.ok().build();
