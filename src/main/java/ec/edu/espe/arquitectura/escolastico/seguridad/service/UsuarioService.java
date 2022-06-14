@@ -133,12 +133,14 @@ public class UsuarioService {
                 usuario.setNroIntentosFallidos(0);
                 this.setError("Error");
                 this.setResultado("FAL");
+
             } else {
                 // clave= DigestUtils.sha256Hex(clave);
                 if (!usuario.getClave().equals(clave)) {
                     usuario.setNroIntentosFallidos(usuario.getNroIntentosFallidos() + 1);
                     this.setError("Clave");
                     this.setResultado("FAL");
+                    throw new CrearException("Clave incorrecta");
 
                 } else {
                     usuario.setFechaUltimaSesion(new Date());
@@ -148,7 +150,7 @@ public class UsuarioService {
             }
             this.usuarioRepository.save(usuario);
         } else {
-            throw new CambioClaveException("Usuario inactivo");
+            throw new CrearException("Usuario inactivo");
         }
         this.registroSesion(usuario.getCodUsuario(), resultado, error);
 
