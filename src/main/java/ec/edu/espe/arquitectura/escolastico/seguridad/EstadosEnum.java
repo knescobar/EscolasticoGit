@@ -1,9 +1,11 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad;
 
 public enum EstadosEnum {
-    
+
     ACTIVO("ACT", "Activo"),
-    INACTIVO("INA", "Inactivo");
+    INACTIVO("INA", "Inactivo"),
+    SATISFACTORIO("SAT", "Satisfactorio"),
+    FALLIDO("FAL", "Fallido");
 
     private final String valor;
     private final String texto;

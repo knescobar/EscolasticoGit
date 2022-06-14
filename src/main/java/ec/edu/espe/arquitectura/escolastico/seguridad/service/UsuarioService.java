@@ -2,6 +2,7 @@ package ec.edu.espe.arquitectura.escolastico.seguridad.service;
 
 import ec.edu.espe.arquitectura.escolastico.seguridad.CambioClaveException;
 import ec.edu.espe.arquitectura.escolastico.seguridad.EstadoPersonaEnum;
+import ec.edu.espe.arquitectura.escolastico.seguridad.EstadosEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.RegistroSesionRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioPerfilRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioRepository;
@@ -132,19 +133,19 @@ public class UsuarioService {
                 usuario.setEstado(EstadoPersonaEnum.BLOQUEADO.getValor());
                 usuario.setNroIntentosFallidos(0);
                 this.setError("Error");
-                this.setResultado("FAL");
-
+                this.setResultado(EstadosEnum.FALLIDO.getValor());
+                throw new CrearException("Demasiados intentos, usuario bloqueado");
             } else {
                 // clave= DigestUtils.sha256Hex(clave);
                 if (!usuario.getClave().equals(clave)) {
                     usuario.setNroIntentosFallidos(usuario.getNroIntentosFallidos() + 1);
                     this.setError("Clave");
-                    this.setResultado("FAL");
+                    this.setResultado(EstadosEnum.FALLIDO.getValor());
                     throw new CrearException("Clave incorrecta");
 
                 } else {
                     usuario.setFechaUltimaSesion(new Date());
-                    this.setResultado("SAT");
+                    this.setResultado(EstadosEnum.SATISFACTORIO.getValor());
                     this.setError("");
                 }
             }
