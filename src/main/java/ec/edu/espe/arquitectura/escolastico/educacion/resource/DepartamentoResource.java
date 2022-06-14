@@ -28,13 +28,8 @@ public class DepartamentoResource {
 
     @PostMapping
     public ResponseEntity<String> crear(@RequestBody Departamento departamento) {
-        try {
-            this.departamentoService.crear(departamento);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().build();
-        }
+        this.departamentoService.crear(departamento);
+        return ResponseEntity.ok("Departamento creado");
     }
 
     @PutMapping

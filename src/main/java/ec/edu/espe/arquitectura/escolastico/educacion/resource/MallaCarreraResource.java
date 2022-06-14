@@ -29,13 +29,8 @@ public class MallaCarreraResource {
 
     @PostMapping
     public ResponseEntity<String> crear(@RequestBody MallaCarrera mallaCarrera) {
-        try {
-            this.mallaCarreraService.crear(mallaCarrera);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().build();
-        }
+        this.mallaCarreraService.crear(mallaCarrera);
+        return ResponseEntity.ok("Malla carrera creada");
     }
 
     @PutMapping

@@ -30,7 +30,7 @@ public class PerfilResource {
     @PostMapping
     public ResponseEntity<String> crear(@RequestBody Perfil perfil) {
         this.perfilService.crear(perfil);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Perfil creado");
     }
 
     @PutMapping

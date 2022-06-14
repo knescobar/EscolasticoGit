@@ -4,8 +4,6 @@ import java.util.List;
 
 import ec.edu.espe.arquitectura.escolastico.educacion.dto.MatriculaDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -29,7 +27,7 @@ public class MatriculaResource {
 
     @GetMapping(path = "/buscar/periodoPersona")
     public ResponseEntity<List<Matricula>> getMatriculaPeriodoPersona(@RequestParam String periodo,
-                                                                      @RequestParam String estudianteNombre) {
+            @RequestParam String estudianteNombre) {
         return ResponseEntity.ok(this.matriculaService.listarMatriculasPersonaPeriodo(periodo, estudianteNombre));
     }
 

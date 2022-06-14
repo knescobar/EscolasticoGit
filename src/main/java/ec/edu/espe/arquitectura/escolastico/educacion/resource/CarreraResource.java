@@ -34,13 +34,8 @@ public class CarreraResource {
 
     @PostMapping
     public ResponseEntity<String> crear(@RequestBody Carrera carrera) {
-        try {
-            this.carreraService.crear(carrera);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().build();
-        }
+        this.carreraService.crear(carrera);
+        return ResponseEntity.ok("Carrera creada");
     }
 
     @PutMapping
