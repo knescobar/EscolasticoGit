@@ -8,6 +8,7 @@ import ec.edu.espe.arquitectura.escolastico.educacion.dto.MatriculaDto;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.*;
 import ec.edu.espe.arquitectura.escolastico.persona.dao.PersonaRepository;
 import ec.edu.espe.arquitectura.escolastico.persona.model.Persona;
+import ec.edu.espe.arquitectura.escolastico.seguridad.exception.ActualizarException;
 import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CrearException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -112,30 +113,75 @@ public class MatriculaService {
     private List<Nrc> obtenerNrcsPorPKs(List<MatriculaNrcPK> matriculaNrcPKS) {
         List<NrcPK> nrcPKs = matriculaNrcPKS.stream()
                 .map(mNPk -> new NrcPK(
-                       mNPk.getCodNrc(),
-                       mNPk.getCodPeriodo(),
-                       mNPk.getCodDepartamento(),
-                       mNPk.getCodMateria()
+                        mNPk.getCodNrc(),
+                        mNPk.getCodPeriodo(),
+                        mNPk.getCodDepartamento(),
+                        mNPk.getCodMateria()
                 ))
                 .collect(Collectors.toList());
         return this.nrcRepository.findAllById(nrcPKs);
     }
 
     public void modificar(MatriculaDto matriculaDto) {
-        Matricula matriculaDB = this.obtenerPorCodigo(
-                new MatriculaPK(matriculaDto.getCodMatricula(), matriculaDto.getCodPersona()));
-//        matriculaDB.setMatriculaNrc(matricula.getMatriculaNrc());
+        Matricula matriculaDB = this.matriculaRepository.findById(
+                        new MatriculaPK(matriculaDto.getCodMatricula(), matriculaDto.getCodPersona()))
+                .orElseThrow(() -> new ActualizarException("Matrícula no encontrada"));
 
         verificarNumeroNrcsEnTerceraMatricula(matriculaDB.getTipo(), matriculaDto.getMatriculaNrcPKs().size());
 
-        List<Materia> materiasInscritas = obtenerMateriasPorPKs(matriculaDto.getMatriculaNrcPKs());
-        BigDecimal costoNrc = matriculaDto.getTipo().equals(TipoMatriculaEnum.PRIMERA.getValor())
-                ? VALOR_PRIMERA_MATRICULA
-                : calcularCostoTotalMatricula(materiasInscritas, matriculaDB.getCarrera().getPrecioCredito());
+        boolean esPrimeraMatricula = matriculaDto.getTipo().equals(TipoMatriculaEnum.PRIMERA.getValor());
 
-        // TODO: Asignar los costos
+        List<Nrc> antiguosNrcInscritos = nrcService.listarNrcsPorPKs(matriculaDB.getMatriculaNrc()
+                .stream()
+                .map(MatriculaNrc::getNrc)
+                .map(Nrc::getPk)
+                .collect(Collectors.toList()));
+
+        antiguosNrcInscritos.replaceAll(nrcService::retornarUnCupoEnNRC);
+        this.nrcRepository.saveAll(antiguosNrcInscritos);
+
+        List<Materia> nuevasMateriasInscritas = obtenerMateriasPorPKs(matriculaDto.getMatriculaNrcPKs());
+        List<Nrc> nrcsInscritos = obtenerNrcsPorPKs(matriculaDto.getMatriculaNrcPKs());
+        List<MatriculaNrc> matriculaNrcs = new ArrayList<>();
+
+        this.nrcService.verificarDisponibilidadCuposNRCsInscritos(nrcsInscritos);
+
+        for (int i = 0; i < nuevasMateriasInscritas.size(); i++) {
+            nrcsInscritos.set(i, this.nrcService.tomarUnCupoEnNRC(nrcsInscritos.get(i)));
+
+            MatriculaNrcPK matriculaNrcPK = matriculaDto.getMatriculaNrcPKs().get(i);
+            matriculaNrcPK.setCodMatricula(matriculaDB.getPk().getCodMatricula());
+
+            BigDecimal precioCreditoCarrera = matriculaDB.getCarrera().getPrecioCredito();
+            BigDecimal numeroCreditosMateria = nuevasMateriasInscritas.get(i).getCreditos();
+            BigDecimal costoMatriculaNrc = esPrimeraMatricula
+                    ? VALOR_PRIMERA_MATRICULA
+                    : precioCreditoCarrera.multiply(numeroCreditosMateria);
+
+            MatriculaNrc matriculaNrc = new MatriculaNrc(matriculaNrcPK);
+            matriculaNrc.setEstado(EstadoMatriculaEnum.INSCRITO.getValor());
+            matriculaNrc.setNumero(0);
+            matriculaNrc.setCosto(costoMatriculaNrc);
+
+            matriculaNrcs.add(matriculaNrc);
+        }
+
+        BigDecimal costoTotalMatricula = esPrimeraMatricula
+                ? VALOR_PRIMERA_MATRICULA
+                : calcularCostoTotalMatricula(nuevasMateriasInscritas, matriculaDB.getCarrera().getPrecioCredito());
+
+        matriculaDB.setMatriculaNrc(matriculaNrcs);
+        matriculaDB.setCosto(costoTotalMatricula);
 
         this.matriculaRepository.save(matriculaDB);
+    }
+
+    private BigDecimal calcularCostoTotalMatricula(List<Materia> materias, BigDecimal precioCreditoCarrera) {
+        BigDecimal creditosTotales = materias.stream()
+                .map(Materia::getCreditos)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        return creditosTotales.multiply(precioCreditoCarrera);
     }
 
     private void verificarNumeroNrcsEnTerceraMatricula(String tipoMatricula, Integer nrcsSeleccionados) {
@@ -157,12 +203,5 @@ public class MatriculaService {
         return this.materiaRepository.findAllById(materiaPKs);
     }
 
-    private BigDecimal calcularCostoTotalMatricula(List<Materia> materias, BigDecimal precioCreditoCarrera) {
-        BigDecimal creditosTotales = materias.stream()
-                .map(Materia::getCreditos)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-
-        return creditosTotales.multiply(precioCreditoCarrera);
-    }
 
 }

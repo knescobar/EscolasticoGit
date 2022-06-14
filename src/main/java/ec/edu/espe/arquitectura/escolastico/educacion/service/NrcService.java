@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import ec.edu.espe.arquitectura.escolastico.educacion.exception.CuposInsuficientesException;
+import ec.edu.espe.arquitectura.escolastico.educacion.model.NrcPK;
 import org.springframework.stereotype.Service;
 
 import ec.edu.espe.arquitectura.escolastico.educacion.TipoPersonaEnum;
@@ -30,6 +31,10 @@ public class NrcService {
 
     public List<Nrc> listarNrc() {
         return this.nrcRepository.findAll();
+    }
+
+    public List<Nrc> listarNrcsPorPKs(List<NrcPK> pks) {
+        return this.nrcRepository.findAllById(pks);
     }
 
     public void crear(Nrc nrc) {
@@ -161,6 +166,13 @@ public class NrcService {
     public Nrc tomarUnCupoEnNRC(Nrc nrc) {
         nrc.setCupoDisponible(nrc.getCupoDisponible() - 1);
         nrc.setCupoRegistrado(nrc.getCupoRegistrado() + 1);
+
+        return nrc;
+    }
+
+    public Nrc retornarUnCupoEnNRC(Nrc nrc) {
+        nrc.setCupoDisponible(nrc.getCupoDisponible() + 1);
+        nrc.setCupoRegistrado(nrc.getCupoRegistrado() - 1);
 
         return nrc;
     }
