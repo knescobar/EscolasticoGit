@@ -1,57 +1,52 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.service;
 
-import ec.edu.espe.arquitectura.escolastico.seguridad.CambioClaveException;
-import ec.edu.espe.arquitectura.escolastico.seguridad.EstadoPersonaEnum;
-import ec.edu.espe.arquitectura.escolastico.seguridad.EstadosEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.RegistroSesionRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioPerfilRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioRepository;
-import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CrearException;
+import ec.edu.espe.arquitectura.escolastico.seguridad.enums.EstadoPersonaEnum;
+import ec.edu.espe.arquitectura.escolastico.seguridad.enums.EstadosEnum;
+import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CambioClaveException;
+import ec.edu.espe.arquitectura.escolastico.seguridad.exception.InicioSesionException;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.RegistroSesion;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Usuario;
+import ec.edu.espe.arquitectura.escolastico.shared.exception.CrearException;
+import ec.edu.espe.arquitectura.escolastico.shared.exception.NoEncontradoException;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 
+import javax.security.auth.login.LoginException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UsuarioService {
+    private static final int MAX_NUM_INTENTOS_FALLIDOS = 3;
 
-    private UsuarioRepository usuarioRepository;
-    private UsuarioPerfilRepository usuarioPerfilRepository;
-    private RegistroSesionRepository registroRepository;
+    private final UsuarioRepository usuarioRepository;
+    private final UsuarioPerfilRepository usuarioPerfilRepository;
+    private final RegistroSesionRepository registroRepository;
     private String error;
     private String resultado;
 
-    public UsuarioService(UsuarioRepository usuarioRepository, UsuarioPerfilRepository usuarioPerfilRepository,
-            RegistroSesionRepository registroRepository) {
-        this.usuarioRepository = usuarioRepository;
-        this.usuarioPerfilRepository = usuarioPerfilRepository;
-        this.registroRepository = registroRepository;
-    }
-
     public Usuario buscarPorCodigo(String codigo) {
-        Optional<Usuario> usuarioOpt = this.usuarioRepository.findById(codigo);
-        if (usuarioOpt.isPresent()) {
-            return usuarioOpt.get();
-        } else {
-            return null;
-        }
+        return this.usuarioRepository.findById(codigo)
+                .orElseThrow(() -> new NoEncontradoException("No existe un usuario con el código indicado."));
     }
 
     public Usuario buscarPorMail(String mail) {
-        return this.usuarioRepository.findByMail(mail);
+        return this.usuarioRepository.findByMail(mail)
+                .orElseThrow(() -> new NoEncontradoException("No existe un usuario con el correo indicado."));
     }
 
-    public Usuario buscarPorCodigoOMail(String valor) {
-        Usuario usuario = this.buscarPorCodigo(valor);
-        if (usuario == null) {
-            usuario = this.buscarPorMail(valor);
-        }
-        return usuario;
+    private Usuario buscarPorCodigoOMail(String valor) {
+        return this.usuarioRepository.findByMail(valor)
+                .orElse(this.usuarioRepository.findById(valor)
+                        .orElseThrow(() -> new InicioSesionException(
+                                "No existe el usuario para el codigo o correo provisto")));
     }
 
     public List<Usuario> buscarPorNombre(String nombrePattern) {
@@ -117,44 +112,41 @@ public class UsuarioService {
         registroUsuario.setFechaConexion(new Date());
         registroUsuario.setError(error);
         registroUsuario.setResultado(resultado);
-        this.registroRepository.save(registroUsuario);
 
+        this.registroRepository.save(registroUsuario);
     }
 
-    public void inicioSesion(String codigoOMail, String clave) throws CambioClaveException {
-
+    public void inicioSesion(String codigoOMail, String clave) {
         Usuario usuario = this.buscarPorCodigoOMail(codigoOMail);
-        if (usuario == null) {
-            throw new CambioClaveException("No existe el usuario para el codigo o correo provisto");
-        }
-        if (usuario.getEstado().equals(EstadoPersonaEnum.ACTIVO.getValor())) {
 
-            if (usuario.getNroIntentosFallidos() == 3) {
-                usuario.setEstado(EstadoPersonaEnum.BLOQUEADO.getValor());
-                usuario.setNroIntentosFallidos(0);
-                this.setError("Error");
-                this.setResultado(EstadosEnum.FALLIDO.getValor());
-                throw new CrearException("Demasiados intentos, usuario bloqueado");
-            } else {
-                // clave= DigestUtils.sha256Hex(clave);
-                if (!usuario.getClave().equals(clave)) {
-                    usuario.setNroIntentosFallidos(usuario.getNroIntentosFallidos() + 1);
-                    this.setError("Clave");
-                    this.setResultado(EstadosEnum.FALLIDO.getValor());
-                    throw new CrearException("Clave incorrecta");
-
-                } else {
-                    usuario.setFechaUltimaSesion(new Date());
-                    this.setResultado(EstadosEnum.SATISFACTORIO.getValor());
-                    this.setError("");
-                }
-            }
-            this.usuarioRepository.save(usuario);
-        } else {
-            throw new CrearException("Usuario inactivo");
+        boolean esUsuarioInactivo = usuario.getEstado().equals(EstadoPersonaEnum.INACTIVO.getValor());
+        if (esUsuarioInactivo) {
+            throw new InicioSesionException("El usuario se encuentra inactivo.");
         }
+
+        if (usuario.getNroIntentosFallidos() == MAX_NUM_INTENTOS_FALLIDOS) {
+            usuario.setEstado(EstadoPersonaEnum.BLOQUEADO.getValor());
+            usuario.setNroIntentosFallidos(0);
+
+            this.setError("Error");
+            this.setResultado(EstadosEnum.FALLIDO.getValor());
+
+            throw new InicioSesionException("Demasiados intentos fallidos, usuario bloqueado");
+        }
+
+        if (!usuario.getClave().equals(clave)) {
+            usuario.setNroIntentosFallidos(usuario.getNroIntentosFallidos() + 1);
+            this.setError("Clave");
+            this.setResultado(EstadosEnum.FALLIDO.getValor());
+            throw new CrearException("Clave incorrecta");
+        }
+
+        usuario.setFechaUltimaSesion(new Date());
+        this.setResultado(EstadosEnum.SATISFACTORIO.getValor());
+        this.setError("");
+
+        this.usuarioRepository.save(usuario);
         this.registroSesion(usuario.getCodUsuario(), resultado, error);
-
     }
 
     public String getError() {

@@ -1,7 +1,7 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.service;
 
-import ec.edu.espe.arquitectura.escolastico.seguridad.EstadosEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.ModuloRepository;
+import ec.edu.espe.arquitectura.escolastico.seguridad.enums.EstadosEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Modulo;
 import org.springframework.stereotype.Service;
 

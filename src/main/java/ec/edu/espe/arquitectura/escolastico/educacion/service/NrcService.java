@@ -7,18 +7,16 @@ import java.util.stream.Collectors;
 import ec.edu.espe.arquitectura.escolastico.educacion.exception.CuposInsuficientesException;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.NrcPK;
 import org.springframework.stereotype.Service;
-
-import ec.edu.espe.arquitectura.escolastico.educacion.TipoPersonaEnum;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.MateriaRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.NrcHorarioRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.NrcRepository;
+import ec.edu.espe.arquitectura.escolastico.educacion.enums.TipoPersonaEnum;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Materia;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Nrc;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.NrcHorario;
-import ec.edu.espe.arquitectura.escolastico.educacion.model.NrcPK;
 import ec.edu.espe.arquitectura.escolastico.persona.dao.PersonaRepository;
 import ec.edu.espe.arquitectura.escolastico.persona.model.Persona;
-import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CrearException;
+import ec.edu.espe.arquitectura.escolastico.shared.exception.CrearException;
 import lombok.RequiredArgsConstructor;
 
 @Service

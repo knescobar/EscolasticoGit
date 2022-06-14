@@ -11,19 +11,17 @@ import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
-import ec.edu.espe.arquitectura.escolastico.educacion.TipoCalificacionEnum;
+import ec.edu.espe.arquitectura.escolastico.educacion.enums.TipoCalificacionEnum;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.CalificacionRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.MateriaRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.MatriculaNrcRepository;
-import ec.edu.espe.arquitectura.escolastico.educacion.dao.MatriculaRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.NrcRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Calificacion;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.CalificacionPK;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Materia;
-import ec.edu.espe.arquitectura.escolastico.educacion.model.Matricula;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.MatriculaNrc;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Nrc;
-import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CrearException;
+import ec.edu.espe.arquitectura.escolastico.shared.exception.CrearException;
 import lombok.RequiredArgsConstructor;
 
 @Service

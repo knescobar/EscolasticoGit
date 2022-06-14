@@ -1,4 +1,4 @@
-package ec.edu.espe.arquitectura.escolastico.educacion;
+package ec.edu.espe.arquitectura.escolastico.educacion.enums;
 
 import lombok.AccessLevel;
 import lombok.Getter;

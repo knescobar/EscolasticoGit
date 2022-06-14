@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping(path = "/usuario")
 public class UsuarioResource {
 
-    private UsuarioService usuarioService;
+    private final UsuarioService usuarioService;
 
     public UsuarioResource(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
@@ -34,11 +34,12 @@ public class UsuarioResource {
         return ResponseEntity.ok(usuario);
     }
 
+    // TODO: Hacer que esto retorne un MessageResponse:w
     @PutMapping
     public ResponseEntity<Usuario> modificar(@RequestBody Usuario usuario) {
         try {
             this.usuarioService.modificar(usuario);
-            usuario = this.usuarioService.buscarPorCodigo(usuario.getCodUsuario());
+            //usuario = this.usuarioService.buscarPorCodigo(usuario.getCodUsuario());
             return ResponseEntity.ok(usuario);
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,11 +48,11 @@ public class UsuarioResource {
     }
 
     @PutMapping(path = "/login")
-    public ResponseEntity<Usuario> inicoSesion(@RequestBody LoginDto loginDto) {
+    public ResponseEntity<String> inicoSesion(@RequestBody LoginDto loginDto) {
         try {
             this.usuarioService.inicioSesion(loginDto.getEmail(), loginDto.getPassword());
-            Usuario usuario = this.usuarioService.buscarPorCodigoOMail(loginDto.getEmail());
-            return ResponseEntity.ok(usuario);
+            //Usuario usuario = this.usuarioService.buscarPorCodigoOMail(loginDto.getEmail());
+            return ResponseEntity.ok("Logged in");
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().build();

@@ -6,8 +6,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import ec.edu.espe.arquitectura.escolastico.seguridad.EstadosEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.FuncionalidadRepository;
+import ec.edu.espe.arquitectura.escolastico.seguridad.enums.EstadosEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Funcionalidad;
 import lombok.RequiredArgsConstructor;
 

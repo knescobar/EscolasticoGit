@@ -1,15 +1,15 @@
 package ec.edu.espe.arquitectura.escolastico.educacion.service;
 
-import ec.edu.espe.arquitectura.escolastico.educacion.EstadoMatriculaEnum;
-import ec.edu.espe.arquitectura.escolastico.educacion.TipoMatriculaEnum;
-import ec.edu.espe.arquitectura.escolastico.educacion.TipoPersonaEnum;
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.*;
 import ec.edu.espe.arquitectura.escolastico.educacion.dto.MatriculaDto;
+import ec.edu.espe.arquitectura.escolastico.educacion.enums.EstadoMatriculaEnum;
+import ec.edu.espe.arquitectura.escolastico.educacion.enums.TipoMatriculaEnum;
+import ec.edu.espe.arquitectura.escolastico.educacion.enums.TipoPersonaEnum;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.*;
 import ec.edu.espe.arquitectura.escolastico.persona.dao.PersonaRepository;
 import ec.edu.espe.arquitectura.escolastico.persona.model.Persona;
 import ec.edu.espe.arquitectura.escolastico.seguridad.exception.ActualizarException;
-import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CrearException;
+import ec.edu.espe.arquitectura.escolastico.shared.exception.CrearException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

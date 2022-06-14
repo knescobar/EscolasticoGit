@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.CarreraRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Carrera;
-import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CrearException;
+import ec.edu.espe.arquitectura.escolastico.shared.exception.CrearException;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

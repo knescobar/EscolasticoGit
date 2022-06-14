@@ -1,16 +1,17 @@
-package ec.edu.espe.arquitectura.escolastico.seguridad;
+package ec.edu.espe.arquitectura.escolastico.seguridad.enums;
 
-public enum EstadosEnum {
-
+public enum EstadoPersonaEnum {
+    
     ACTIVO("ACT", "Activo"),
     INACTIVO("INA", "Inactivo"),
-    SATISFACTORIO("SAT", "Satisfactorio"),
-    FALLIDO("FAL", "Fallido");
+    SUSPENDIDO("SUS", "Suspendido"),
+    BLOQUEADO("BLO", "Bloqueado"),
+    CREADO("CRE", "Creado");
 
     private final String valor;
     private final String texto;
 
-    private EstadosEnum(String valor, String texto) {
+    private EstadoPersonaEnum(String valor, String texto) {
         this.valor = valor;
         this.texto = texto;
     }

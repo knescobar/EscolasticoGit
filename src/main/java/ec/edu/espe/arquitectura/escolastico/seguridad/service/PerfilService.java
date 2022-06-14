@@ -5,11 +5,11 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import ec.edu.espe.arquitectura.escolastico.seguridad.EstadosEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.PerfilFuncionalidadRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.PerfilRepository;
-import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CrearException;
+import ec.edu.espe.arquitectura.escolastico.seguridad.enums.EstadosEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Perfil;
+import ec.edu.espe.arquitectura.escolastico.shared.exception.CrearException;
 
 @Service
 public class PerfilService {

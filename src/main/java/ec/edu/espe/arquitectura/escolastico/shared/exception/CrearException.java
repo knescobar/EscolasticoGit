@@ -1,4 +1,4 @@
-package ec.edu.espe.arquitectura.escolastico.seguridad.exception;
+package ec.edu.espe.arquitectura.escolastico.shared.exception;
 
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.http.HttpStatus;

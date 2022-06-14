@@ -12,7 +12,7 @@ import ec.edu.espe.arquitectura.escolastico.educacion.dao.PrerequisitoRepository
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Materia;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.MateriaPK;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Nrc;
-import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CrearException;
+import ec.edu.espe.arquitectura.escolastico.shared.exception.CrearException;
 import lombok.RequiredArgsConstructor;
 
 @Service

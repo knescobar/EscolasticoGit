@@ -9,7 +9,7 @@ import ec.edu.espe.arquitectura.escolastico.educacion.dao.MallaCarreraRepository
 import ec.edu.espe.arquitectura.escolastico.educacion.dao.MateriaRepository;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.MallaCarrera;
 import ec.edu.espe.arquitectura.escolastico.educacion.model.Materia;
-import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CrearException;
+import ec.edu.espe.arquitectura.escolastico.shared.exception.CrearException;
 import lombok.RequiredArgsConstructor;
 
 @Service
