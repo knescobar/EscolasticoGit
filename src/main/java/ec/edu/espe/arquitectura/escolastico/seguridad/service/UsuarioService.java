@@ -3,12 +3,12 @@ package ec.edu.espe.arquitectura.escolastico.seguridad.service;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.RegistroSesionRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioPerfilRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioRepository;
+import ec.edu.espe.arquitectura.escolastico.seguridad.dto.CrearUsuarioDto;
 import ec.edu.espe.arquitectura.escolastico.seguridad.enums.EstadoPersonaEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.enums.EstadosEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CambioClaveException;
 import ec.edu.espe.arquitectura.escolastico.seguridad.exception.InicioSesionException;
-import ec.edu.espe.arquitectura.escolastico.seguridad.model.RegistroSesion;
-import ec.edu.espe.arquitectura.escolastico.seguridad.model.Usuario;
+import ec.edu.espe.arquitectura.escolastico.seguridad.model.*;
 import ec.edu.espe.arquitectura.escolastico.shared.exception.CrearException;
 import ec.edu.espe.arquitectura.escolastico.shared.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
@@ -16,10 +16,10 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 
-import javax.security.auth.login.LoginException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -65,20 +65,47 @@ public class UsuarioService {
         return this.usuarioRepository.findByEstado(EstadoPersonaEnum.ACTIVO.getValor());
     }
 
-    public Usuario crear(Usuario usuario) {
-        if (usuario.getPerfiles() == null ||
-                usuario.getPerfiles().isEmpty()) {
-            throw new CrearException(
-                    "Error al crear el usuario, los perfiles son requeridas");
-        }
+    public String crear(CrearUsuarioDto dto) {
+        existeUsuarioPorCodigoOMail(dto.getCodUsuario(), dto.getMail());
+        Usuario nuevoUsuario = new Usuario();
+
+        List<UsuarioPerfil> usuarioPerfiles = dto.getPerfiles().stream()
+                .map((perfiles) -> new UsuarioPerfilPK(dto.getCodUsuario(), perfiles))
+                .map((pk) -> {
+                    UsuarioPerfil usuarioPerfil = new UsuarioPerfil();
+                    usuarioPerfil.setPk(pk);
+                    usuarioPerfil.setAudFecha(new Date());
+                    usuarioPerfil.setAudUsuario("");
+                    usuarioPerfil.setAudIp("localhost");
+                    return usuarioPerfil;
+                })
+                .collect(Collectors.toList());
+
         String clave = RandomStringUtils.randomAlphabetic(8);
-        usuario.setClave(DigestUtils.sha256Hex(clave));
-        usuario.setFechaCreacion(new Date());
-        this.usuarioRepository.save(usuario);
-        this.usuarioPerfilRepository.saveAll(usuario.getPerfiles());
-        return usuario;
+        nuevoUsuario.setCodUsuario(dto.getCodUsuario());
+        nuevoUsuario.setMail(dto.getMail());
+        nuevoUsuario.setNombre(dto.getNombre());
+        nuevoUsuario.setOrigen(dto.getOrigen());
+        nuevoUsuario.setTelefono(dto.getTelefono());
+        nuevoUsuario.setClave(clave);
+        nuevoUsuario.setNroIntentosFallidos(0);
+        nuevoUsuario.setFechaCreacion(new Date());
+        nuevoUsuario.setEstado("ACT");
+        nuevoUsuario.setAudUsuario("");
+        nuevoUsuario.setAudFecha(new Date());
+        nuevoUsuario.setAudIp("localhost");
+        this.usuarioRepository.save(nuevoUsuario);
+        this.usuarioPerfilRepository.saveAll(usuarioPerfiles);
+        return clave;
     }
 
+    private void existeUsuarioPorCodigoOMail(String codUsuario, String mail) throws CrearException {
+        Optional<Usuario> usuarioCodigoOpt = usuarioRepository.findById(codUsuario);
+        Optional<Usuario> usuarioMailOpt = usuarioRepository.findByMail(mail);
+        if(usuarioCodigoOpt.isPresent()|| usuarioMailOpt.isPresent() ){
+            throw new CrearException("El código de usuario o mail indicado ya existe");
+        }
+    }
     public void cambiarClave(String codigoOMail, String claveAntigua, String claveNueva) throws CambioClaveException {
         Usuario usuario = this.buscarPorCodigoOMail(codigoOMail);
         if (usuario == null) {
