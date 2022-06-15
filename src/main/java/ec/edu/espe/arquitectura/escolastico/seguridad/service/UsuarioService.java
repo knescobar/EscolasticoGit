@@ -90,7 +90,7 @@ public class UsuarioService {
     }
 
     private List<UsuarioPerfil> obtenerPerfilesDeUsuario(CrearUsuarioDto dto) {
-        List<UsuarioPerfil> usuarioPerfiles = dto.getPerfiles().stream()
+        return dto.getPerfiles().stream()
                 .map((perfiles) -> new UsuarioPerfilPK(dto.getCodUsuario(), perfiles))
                 .map((pk) -> {
                     UsuarioPerfil usuarioPerfil = new UsuarioPerfil();
@@ -101,7 +101,6 @@ public class UsuarioService {
                     return usuarioPerfil;
                 })
                 .collect(Collectors.toList());
-        return usuarioPerfiles;
     }
 
     private void existeUsuarioPorCodigoOMail(String codUsuario, String mail) throws CrearException {
