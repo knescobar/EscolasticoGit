@@ -4,16 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
-import javax.persistence.Version;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "seg_usuario", uniqueConstraints = {
@@ -57,7 +48,7 @@ public class Usuario implements Serializable {
     @Version
     @Column(name = "version", nullable = false)
     private Integer version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario")
     private List<UsuarioPerfil> perfiles;
 
     public Usuario() {

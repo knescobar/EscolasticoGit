@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @Getter
 @RequiredArgsConstructor
-public class CrearUsuarioDto {
+public class UsuarioDto {
     private String codUsuario;
 
     @Email(message = "El correo ingresado no es válido")

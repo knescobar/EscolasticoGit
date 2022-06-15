@@ -1,6 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.resource;
 
-import ec.edu.espe.arquitectura.escolastico.seguridad.dto.CrearUsuarioDto;
+import ec.edu.espe.arquitectura.escolastico.seguridad.dto.UsuarioDto;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dto.LoginDto;
 import ec.edu.espe.arquitectura.escolastico.seguridad.model.Usuario;
 import ec.edu.espe.arquitectura.escolastico.seguridad.service.UsuarioService;
@@ -30,14 +30,14 @@ public class UsuarioResource {
     }
 
     @PostMapping
-    public ResponseEntity<String> crear(@RequestBody CrearUsuarioDto usuarioDto) {
+    public ResponseEntity<String> crear(@RequestBody UsuarioDto usuarioDto) {
         String claveUsuario = this.usuarioService.crear(usuarioDto);
         return ResponseEntity.ok("Usuario "+usuarioDto.getCodUsuario()+" creado correctamente con la clave: "+claveUsuario );
     }
 
     // TODO: Hacer que esto retorne un MessageResponse:w
     @PutMapping
-    public ResponseEntity<CrearUsuarioDto> modificar(@RequestBody CrearUsuarioDto usuarioDto) {
+    public ResponseEntity<UsuarioDto> modificar(@RequestBody UsuarioDto usuarioDto) {
         this.usuarioService.modificar(usuarioDto);
         return ResponseEntity.ok(usuarioDto);
     }

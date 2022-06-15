@@ -1,11 +1,9 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.service;
 
-import ec.edu.espe.arquitectura.escolastico.educacion.model.MatriculaNrc;
-import ec.edu.espe.arquitectura.escolastico.educacion.model.Nrc;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.RegistroSesionRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioPerfilRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioRepository;
-import ec.edu.espe.arquitectura.escolastico.seguridad.dto.CrearUsuarioDto;
+import ec.edu.espe.arquitectura.escolastico.seguridad.dto.UsuarioDto;
 import ec.edu.espe.arquitectura.escolastico.seguridad.enums.EstadoPersonaEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.enums.EstadosEnum;
 import ec.edu.espe.arquitectura.escolastico.seguridad.exception.CambioClaveException;
@@ -66,7 +64,7 @@ public class UsuarioService {
         return this.usuarioRepository.findByEstado(EstadoPersonaEnum.ACTIVO.getValor());
     }
 
-    public String crear(CrearUsuarioDto dto) {
+    public String crear(UsuarioDto dto) {
         existeUsuarioPorCodigoOMail(dto.getCodUsuario(), dto.getMail());
         Usuario nuevoUsuario = new Usuario();
 
@@ -88,21 +86,6 @@ public class UsuarioService {
         this.usuarioPerfilRepository.saveAll(usuarioPerfiles);
         return clave;
     }
-
-    private List<UsuarioPerfil> obtenerPerfilesDeUsuario(CrearUsuarioDto dto) {
-        return dto.getPerfiles().stream()
-                .map((perfiles) -> new UsuarioPerfilPK(dto.getCodUsuario(), perfiles))
-                .map((pk) -> {
-                    UsuarioPerfil usuarioPerfil = new UsuarioPerfil();
-                    usuarioPerfil.setPk(pk);
-                    usuarioPerfil.setAudFecha(new Date());
-                    usuarioPerfil.setAudUsuario("");
-                    usuarioPerfil.setAudIp("localhost");
-                    return usuarioPerfil;
-                })
-                .collect(Collectors.toList());
-    }
-
     private void existeUsuarioPorCodigoOMail(String codUsuario, String mail) throws CrearException {
         Optional<Usuario> usuarioCodigoOpt = usuarioRepository.findById(codUsuario);
         Optional<Usuario> usuarioMailOpt = usuarioRepository.findByMail(mail);
@@ -124,10 +107,8 @@ public class UsuarioService {
         this.usuarioRepository.save(usuario);
     }
 
-    public void modificar(CrearUsuarioDto dto) {
+    public void modificar(UsuarioDto dto) {
         Usuario usuarioDB = this.buscarPorCodigo(dto.getCodUsuario());
-        this.usuarioPerfilRepository.deleteAll(usuarioDB.getPerfiles());
-        usuarioDB.setPerfiles(null);
         usuarioDB.setNombre(dto.getNombre());
         usuarioDB.setMail(dto.getMail());
         usuarioDB.setTelefono(dto.getTelefono());
@@ -135,6 +116,19 @@ public class UsuarioService {
         usuarioDB.setPerfiles(obtenerPerfilesDeUsuario(dto));
         this.usuarioPerfilRepository.saveAll(obtenerPerfilesDeUsuario(dto));
         this.usuarioRepository.save(usuarioDB);
+    }
+    private List<UsuarioPerfil> obtenerPerfilesDeUsuario(UsuarioDto dto) {
+        return dto.getPerfiles().stream()
+                .map((perfiles) -> new UsuarioPerfilPK(dto.getCodUsuario(), perfiles))
+                .map((pk) -> {
+                    UsuarioPerfil usuarioPerfil = new UsuarioPerfil();
+                    usuarioPerfil.setPk(pk);
+                    usuarioPerfil.setAudFecha(new Date());
+                    usuarioPerfil.setAudUsuario("");
+                    usuarioPerfil.setAudIp("localhost");
+                    return usuarioPerfil;
+                })
+                .collect(Collectors.toList());
     }
 
     public void registroSesion(String codigo, String resultado, String error) {
