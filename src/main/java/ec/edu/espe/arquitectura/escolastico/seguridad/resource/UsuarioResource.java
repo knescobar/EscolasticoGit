@@ -37,26 +37,15 @@ public class UsuarioResource {
 
     // TODO: Hacer que esto retorne un MessageResponse:w
     @PutMapping
-    public ResponseEntity<Usuario> modificar(@RequestBody Usuario usuario) {
-        try {
-            this.usuarioService.modificar(usuario);
-            //usuario = this.usuarioService.buscarPorCodigo(usuario.getCodUsuario());
-            return ResponseEntity.ok(usuario);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().build();
-        }
+    public ResponseEntity<CrearUsuarioDto> modificar(@RequestBody CrearUsuarioDto usuarioDto) {
+        this.usuarioService.modificar(usuarioDto);
+        return ResponseEntity.ok(usuarioDto);
     }
 
     @PutMapping(path = "/login")
     public ResponseEntity<String> inicoSesion(@RequestBody LoginDto loginDto) {
-        try {
-            this.usuarioService.inicioSesion(loginDto.getCodigoOMail(), loginDto.getPassword());
-            //Usuario usuario = this.usuarioService.buscarPorCodigoOMail(loginDto.getEmail());
-            return ResponseEntity.ok("Logged in");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().build();
-        }
+        this.usuarioService.inicioSesion(loginDto.getCodigoOMail(), loginDto.getPassword());
+        //Usuario usuario = this.usuarioService.buscarPorCodigoOMail(loginDto.getEmail());
+        return ResponseEntity.ok("Logged in");
     }
 }

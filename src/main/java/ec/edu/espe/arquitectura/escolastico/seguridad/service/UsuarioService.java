@@ -1,5 +1,7 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.service;
 
+import ec.edu.espe.arquitectura.escolastico.educacion.model.MatriculaNrc;
+import ec.edu.espe.arquitectura.escolastico.educacion.model.Nrc;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.RegistroSesionRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioPerfilRepository;
 import ec.edu.espe.arquitectura.escolastico.seguridad.dao.UsuarioRepository;
@@ -25,7 +27,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UsuarioService {
     private static final int MAX_NUM_INTENTOS_FALLIDOS = 3;
-
     private final UsuarioRepository usuarioRepository;
     private final UsuarioPerfilRepository usuarioPerfilRepository;
     private final RegistroSesionRepository registroRepository;
@@ -69,6 +70,26 @@ public class UsuarioService {
         existeUsuarioPorCodigoOMail(dto.getCodUsuario(), dto.getMail());
         Usuario nuevoUsuario = new Usuario();
 
+        List<UsuarioPerfil> usuarioPerfiles = obtenerPerfilesDeUsuario(dto);
+        String clave = RandomStringUtils.randomAlphabetic(8);
+        nuevoUsuario.setCodUsuario(dto.getCodUsuario());
+        nuevoUsuario.setMail(dto.getMail());
+        nuevoUsuario.setNombre(dto.getNombre());
+        nuevoUsuario.setOrigen(dto.getOrigen());
+        nuevoUsuario.setTelefono(dto.getTelefono());
+        nuevoUsuario.setClave(DigestUtils.sha256Hex(clave));
+        nuevoUsuario.setNroIntentosFallidos(0);
+        nuevoUsuario.setFechaCreacion(new Date());
+        nuevoUsuario.setEstado("ACT");
+        nuevoUsuario.setAudUsuario("");
+        nuevoUsuario.setAudFecha(new Date());
+        nuevoUsuario.setAudIp("localhost");
+        this.usuarioRepository.save(nuevoUsuario);
+        this.usuarioPerfilRepository.saveAll(usuarioPerfiles);
+        return clave;
+    }
+
+    private List<UsuarioPerfil> obtenerPerfilesDeUsuario(CrearUsuarioDto dto) {
         List<UsuarioPerfil> usuarioPerfiles = dto.getPerfiles().stream()
                 .map((perfiles) -> new UsuarioPerfilPK(dto.getCodUsuario(), perfiles))
                 .map((pk) -> {
@@ -80,23 +101,7 @@ public class UsuarioService {
                     return usuarioPerfil;
                 })
                 .collect(Collectors.toList());
-
-        String clave = RandomStringUtils.randomAlphabetic(8);
-        nuevoUsuario.setCodUsuario(dto.getCodUsuario());
-        nuevoUsuario.setMail(dto.getMail());
-        nuevoUsuario.setNombre(dto.getNombre());
-        nuevoUsuario.setOrigen(dto.getOrigen());
-        nuevoUsuario.setTelefono(dto.getTelefono());
-        nuevoUsuario.setClave(clave);
-        nuevoUsuario.setNroIntentosFallidos(0);
-        nuevoUsuario.setFechaCreacion(new Date());
-        nuevoUsuario.setEstado("ACT");
-        nuevoUsuario.setAudUsuario("");
-        nuevoUsuario.setAudFecha(new Date());
-        nuevoUsuario.setAudIp("localhost");
-        this.usuarioRepository.save(nuevoUsuario);
-        this.usuarioPerfilRepository.saveAll(usuarioPerfiles);
-        return clave;
+        return usuarioPerfiles;
     }
 
     private void existeUsuarioPorCodigoOMail(String codUsuario, String mail) throws CrearException {
@@ -120,14 +125,16 @@ public class UsuarioService {
         this.usuarioRepository.save(usuario);
     }
 
-    public void modificar(Usuario usuario) {
-        Usuario usuarioDB = this.buscarPorCodigo(usuario.getCodUsuario());
-        usuarioDB.setNombre(usuario.getNombre());
-        usuarioDB.setMail(usuario.getMail());
-        usuarioDB.setTelefono(usuario.getTelefono());
-        usuarioDB.setEstado(usuario.getEstado());
+    public void modificar(CrearUsuarioDto dto) {
+        Usuario usuarioDB = this.buscarPorCodigo(dto.getCodUsuario());
+        this.usuarioPerfilRepository.deleteAll(usuarioDB.getPerfiles());
+        usuarioDB.setPerfiles(null);
+        usuarioDB.setNombre(dto.getNombre());
+        usuarioDB.setMail(dto.getMail());
+        usuarioDB.setTelefono(dto.getTelefono());
         usuarioDB.setAudFecha(new Date());
-        usuarioDB.setPerfiles(usuario.getPerfiles());
+        usuarioDB.setPerfiles(obtenerPerfilesDeUsuario(dto));
+        this.usuarioPerfilRepository.saveAll(obtenerPerfilesDeUsuario(dto));
         this.usuarioRepository.save(usuarioDB);
     }
 
@@ -154,24 +161,25 @@ public class UsuarioService {
         if (usuario.getNroIntentosFallidos() == MAX_NUM_INTENTOS_FALLIDOS) {
             usuario.setEstado(EstadoPersonaEnum.BLOQUEADO.getValor());
             usuario.setNroIntentosFallidos(0);
-
             this.setError("Error");
             this.setResultado(EstadosEnum.FALLIDO.getValor());
-
+            this.registroSesion(usuario.getCodUsuario(), resultado, error);
+            this.usuarioRepository.save(usuario);
             throw new InicioSesionException("Demasiados intentos fallidos, usuario bloqueado");
         }
 
-        if (!usuario.getClave().equals(clave)) {
+        if (!usuario.getClave().equals(DigestUtils.sha256Hex(clave))) {
             usuario.setNroIntentosFallidos(usuario.getNroIntentosFallidos() + 1);
             this.setError("Clave");
             this.setResultado(EstadosEnum.FALLIDO.getValor());
+            this.registroSesion(usuario.getCodUsuario(), resultado, error);
+            this.usuarioRepository.save(usuario);
             throw new CrearException("Clave incorrecta");
         }
 
         usuario.setFechaUltimaSesion(new Date());
         this.setResultado(EstadosEnum.SATISFACTORIO.getValor());
-        this.setError("");
-
+        this.setError(null);
         this.usuarioRepository.save(usuario);
         this.registroSesion(usuario.getCodUsuario(), resultado, error);
     }

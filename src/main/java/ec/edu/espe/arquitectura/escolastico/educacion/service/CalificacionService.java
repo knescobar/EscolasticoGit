@@ -145,7 +145,9 @@ public class CalificacionService {
                 calificacion.getNota10())
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
-
+        if (notasActuales.size() == 0) {
+            return BigDecimal.valueOf(0);
+        }
         BigDecimal total = notasActuales.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
         return total.divide(BigDecimal.valueOf(notasActuales.size()), PRECISION_NOTA);
     }
