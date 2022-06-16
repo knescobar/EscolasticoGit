@@ -12,5 +12,5 @@ public interface MateriaRepository extends JpaRepository<Materia, MateriaPK> {
     List<Materia> findByDepartamentoNombreLikeOrderByNombre(String nombrePattern);
 
     Materia findByPkCodMateria(Integer codMateria);
-
+    Materia findTopByPkCodMateria(Integer codMateria);
 }

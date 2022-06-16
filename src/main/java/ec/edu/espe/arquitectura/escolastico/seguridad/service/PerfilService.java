@@ -1,5 +1,6 @@
 package ec.edu.espe.arquitectura.escolastico.seguridad.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,11 +29,7 @@ public class PerfilService {
 
     public Perfil obtenerPorCodigo(String codigo) {
         Optional<Perfil> perfilOpt = this.perfilRepository.findById(codigo);
-        if (perfilOpt.isPresent()) {
-            return perfilOpt.get();
-        } else {
-            return null;
-        }
+        return perfilOpt.orElse(null);
     }
 
     public void crear(Perfil perfil) {
@@ -43,6 +40,9 @@ public class PerfilService {
         }
 
         perfil.setEstado(EstadosEnum.ACTIVO.getValor());
+        perfil.setAudFecha(new Date());
+        perfil.setAudIp("localhost");
+        perfil.setAudUsuario("");
         this.perfilRepository.save(perfil);
         this.perfilFuncionalidadRepository.saveAll(perfil.getPerfilesFuncionalidad());
     }

@@ -72,7 +72,7 @@ public class NrcService {
             }
         }
 
-        Materia materiaDB = this.materiaRepository.findByPkCodMateria(nrc.getPk().getCodMateria());
+        Materia materiaDB = this.materiaRepository.findTopByPkCodMateria(nrc.getPk().getCodMateria());
         nrc.setNombre(materiaDB.getNombre());
         this.nrcRepository.save(nrc);
         this.nrcHorarioRepository.saveAll(nrc.getHorario());
@@ -80,11 +80,7 @@ public class NrcService {
 
     public Nrc obtenerPorCodigo(NrcPK codigo) {
         Optional<Nrc> nrcOpt = this.nrcRepository.findById(codigo);
-        if (nrcOpt.isPresent()) {
-            return nrcOpt.get();
-        } else {
-            return null;
-        }
+        return nrcOpt.orElse(null);
     }
 
     public void modificar(Nrc nrc) {

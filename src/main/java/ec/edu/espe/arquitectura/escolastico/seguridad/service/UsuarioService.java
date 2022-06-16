@@ -113,8 +113,11 @@ public class UsuarioService {
         usuarioDB.setMail(dto.getMail());
         usuarioDB.setTelefono(dto.getTelefono());
         usuarioDB.setAudFecha(new Date());
-        usuarioDB.setPerfiles(obtenerPerfilesDeUsuario(dto));
-        this.usuarioPerfilRepository.saveAll(obtenerPerfilesDeUsuario(dto));
+        List<UsuarioPerfil> perfilesAntiguosUsuario = this.usuarioPerfilRepository.findByPkCodUsuario(dto.getCodUsuario());
+        List<UsuarioPerfil> perfilesNuevosUsuario= obtenerPerfilesDeUsuario(dto);
+        this.usuarioPerfilRepository.deleteAll(perfilesAntiguosUsuario);
+        usuarioDB.setPerfiles(perfilesNuevosUsuario);
+        usuarioDB.setAudFecha(new Date());
         this.usuarioRepository.save(usuarioDB);
     }
     private List<UsuarioPerfil> obtenerPerfilesDeUsuario(UsuarioDto dto) {
